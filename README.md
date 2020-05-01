@@ -42,9 +42,11 @@
 	- word processors, compilers, web browsers, database systems, video games, ...
 * Users
 	- People, machines, other computers
- <img src="https://github.com/missystem/cis415review/blob/master/Screen%20Shot%202020-05-01%20at%202.01.40%20PM.png">
+ <img src="https://github.com/missystem/cis415review/blob/master/ch1_OSstructure.png">
 
 **Basic Computer System Organization**
 * Computer-system operation
-	- 
+	- One or more CPUs, device ontrollers connect through common bus providing access to shared memory
+	- Concurrent execution of CPUs and devices competing for memory cycles
+<img src="https://github.com/missystem/cis415review/blob/master/ch1_systembus.png">
 
