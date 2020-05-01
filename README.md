@@ -34,10 +34,13 @@ OS system goals:
 Computer System Structure:
 * Hardware
 	- provides basic computing resources
-	* CPU, memory, I/O devices
+	- CPU, memory, I/O devices
 * Operating system
-	* controls and coordinates use of hardware among various applications and users
+	- controls and coordinates use of hardware among various applications and users
 * Application programs
+	- use system resources to solve computing problems
+	- word processors, compilers, web browsers, database systems, video games, ...
 * Users
+	- People, machines, other computers
  <img src="https://github.com/missystem/cis415review/blob/master/Screen%20Shot%202020-05-01%20at%202.01.40%20PM.png">
 
