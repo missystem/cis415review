@@ -20,6 +20,8 @@
 * [Lecture 08: Deadlocks (Chapter 8)](https://github.com/missystem/cis415review/blob/master/lecture-8-deadlocks.pdf)
 
 
+### [Lecture 01: Introduction to Operating Systems (Chapter 1)](https://github.com/missystem/cis415review/blob/master/lecture-1-introduction.pdf)
 
-  
+**Operating System** is a program that acts as an intermediary between a user of a computer and the computer hardware
+ <img src="https://github.com/missystem/cis415review/blob/master/Screen%20Shot%202020-05-01%20at%202.01.40%20PM.png">
   
