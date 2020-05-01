@@ -51,3 +51,38 @@
 	- Concurrent execution of CPUs and devices competing for memory cycles
 <img src="https://github.com/missystem/cis415review/blob/master/ch1_systembus.png">
 
+**Computer System Architecture**
+* Traditionally, most systems use a single general-purpose processor 
+	- Most systems have special-purpose processors as well
+* Modern computers use multiprocessor systems now
+	- Advantages:
+		- Increased throughput
+		- Economy of scale
+		- Increased reliability – graceful degradation or fault tolerance
+	- Types:
+		- Symmetric multiprocessing (SMP) - each processor performs all tasks
+		- asymmetric multiprocessing – each processor has a specific task
+
+	- Can run parallel applications
+
+**Computer System Operation**
+* I/O devices & the CPU can execute concurrently
+* Each device controller 
+	- is in charge of a device type
+	- has a local buffer
+* CPU moves data between main memory & local buffers associated with I/O devices
+* I/O is from the device -> local buffer of controller
+* Device controller informs CPU that it has finished its operation by causing an *interrupt*
+
+
+
+
+
+
+
+
+
+
+
+
+
