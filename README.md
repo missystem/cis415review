@@ -25,13 +25,13 @@
 **Operating System** is a program that acts as an intermediary between a user of a computer and the computer hardware
 
  
-OS system goals:
+**OS system goals**
 * Execute user programs
 * Make solving user problems easier
 * Make the computer system covenient to use
 * Use the computer hardware in an efficient manner
 
-Computer System Structure:
+**Computer System Structure**
 * Hardware
 	- provides basic computing resources
 	- CPU, memory, I/O devices
@@ -43,4 +43,8 @@ Computer System Structure:
 * Users
 	- People, machines, other computers
  <img src="https://github.com/missystem/cis415review/blob/master/Screen%20Shot%202020-05-01%20at%202.01.40%20PM.png">
+
+**Basic Computer System Organization**
+* Computer-system operation
+	- 
 
