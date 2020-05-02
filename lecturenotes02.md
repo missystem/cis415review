@@ -444,7 +444,7 @@ the I/O device
 9. Final work in user mode
 10. Ordinary return to user code
 
-<ins>system operations</ins>
+<ins>system operations</ins><br />
 libc <br />
 int 0x80 <br />
 sys_read, mmap2 <br />
