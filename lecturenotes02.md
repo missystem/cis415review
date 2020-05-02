@@ -183,7 +183,20 @@ operations
 	- Abnormal conditions that cannot be corrected (disk failure)
 * Interrupt vectors are used to decide what to do with different interrupts
 	- Address where interrupt routines live in the OS for different interrupt types
- 
+ <img src="https://github.com/missystem/cis415review/blob/master/figure1.5_Intel_processor_event_vector_table">
+
+### Hardware Interrupts
+* Signal from a device
+	- Implemented by a controller (e.g., memory)
+* Examples
+	- Timer (clock)
+	- keyboard, mouse
+	- end of DMA transfer
+* Response to processor request
+* Unsolicited response
+	- asynchronous
+
+
 
 
 
