@@ -306,4 +306,29 @@ the I/O device
 		- Intel: LOCK prefix (XCHG, ADD, DEC, ...)
 	- Used to implement locks 
 
+### Process Address Space
+* Process Address Space is all locations that are addressable by the process
+* Every running program can have its own private address space
+* Can restrict use of addresses so as to isolate different area
+	- Restrictions are enforced by OS
+	- Text section
+		- read only program instructions are stored in
+		- the executable code
+	- Data section
+		- hold the data for the running process (read/write)
+		- global variables
+	- Heap section
+		- memory that is dynamically allocated during program run time
+		- allows for dynamic data expansion
+	- Stack section
+		- temporary data storage when invoking functions <br />
+		(such as function parameters, return addresses, and local variables)
+<img src="https://github.com/missystem/cis415review/blob/master/figure3.1_layout_of_a_process_in_memory.png">
+
+
+
+
+
+
+
 
