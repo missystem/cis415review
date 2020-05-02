@@ -26,7 +26,7 @@
 	- disk, monitor, network, printer
 * Bus
 	- systems interconnection for communication
-<img src="https://github.com/missystem/cis415review/blob/master/figure2.1_operating_system_services">
+<img src="https://github.com/missystem/cis415review/blob/master/canonical_system_hardware.png">
 
 
 
