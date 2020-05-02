@@ -59,11 +59,29 @@
 	- refreshing DRAM to maintain contents
 	- address translation circuitry for virtual memory
 
+<img src="https://github.com/missystem/cis415review/blob/master/pc_motherboard.png">
+
 ### I/O Devices, Hard Disks, and SSD
 *  Large variety, varying speeds, lot of diversity
 	- Disk, tape, monitor, mouse, keyboard, NIC, ...
 	- Serial or parallel interfaces
-* 
+* Each device has a **controller**
+	- Hides low-level details from OS (hardware interface)
+	- Manages data flow between device and CPU/memory
+* Hard disks are *secondary storage devices*
+	- Mechanically operated with sequential access
+	- Cheap (bytes / $), but slow
+	- Orders of magnitude slower than main memory
+* Solid state devices (SSD) are increasingly common
+
+### Interconnects
+* **bus** - hardware interconnect for supporting the exchange of data, control, signals, ...
+		- Physicalspecification
+		- Defined by a protocol
+		- Data and control arbitration
+
+
+
 
 
 
