@@ -454,7 +454,7 @@ disk is slow <br /><br /><br />
 libc
 
 ### Details on x86 / Linux
-* [A more accurate picture](https://github.com/missystem/cis415review/blob/master/system_execution_detail_01.png):
+* ![A more accurate picture](https://github.com/missystem/cis415review/blob/master/system_execution_detail_01.png):
 	- Consider a typical Linux process
 	- Its “thread of execution” can be several places
 		- in your program’s code
