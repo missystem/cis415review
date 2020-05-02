@@ -18,9 +18,7 @@
 6. [CPU Scheduling (Chapter 5)](https://github.com/missystem/cis415review/blob/master/lecturenotes06.md)
 7. [Concurrency and Synchronization (Chapter 6/7)](https://github.com/missystem/cis415review/blob/master/lecturenotes07.md)
 8. [Deadlocks (Chapter 8)](https://github.com/missystem/cis415review/blob/master/lecturenotes08.md)
-
-
-[Midterm Review](https://github.com/missystem/cis415review/blob/master/midtermreview.md)
+9. [Midterm Review](https://github.com/missystem/cis415review/blob/master/midtermreview.md)
 
 
 
