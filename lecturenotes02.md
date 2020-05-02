@@ -452,8 +452,17 @@ read from disk <br />
 disk is slow <br /><br /><br />
 libc
 
-
-
+### Details on x86 / Linux
+* A more accurate picture:
+	- Consider a typical Linux process
+	- Its “thread of execution” can be several places
+		- in your program’s code
+		- in glibc, a shared library containing the C standard library, POSIX support, and more
+		- in the Linux architecture - independent code
+		- in Linux x86-32/x86-64 code
+<img src="https://github.com/missystem/cis415review/blob/master/program_execution01.png"> 
+<img src="https://github.com/missystem/cis415review/blob/master/program_execution02.png"> 
+<img src="https://github.com/missystem/cis415review/blob/master/program_execution03.png"> 
 
 
 
