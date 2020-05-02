@@ -181,7 +181,19 @@ After I/O starts, control returns to user program ...
 	- I/O interrupts upon completion
 
 ### Device Status Table
+<img src="https://github.com/missystem/cis415review/blob/master/ch1_device_status_table.png">
+* When a kernel supports asynchronous I/O, it must be able to keep track of many I/O requests at the same time. For this purpose, the operating system might attach the wait queue to a device-status table. The kernel manages this table, which contains an entry for each I/O device. Each table entry indicates the device’s type, address, and state (not functioning, idle, or busy). If the device is busy with a request, the type of request and other parameters will be stored in the table entry for that device.
 
+### Timer Interrupts for Kernel Control
+* Prevent infinite loop / process hogging resources
+	- Timer is set to interrupt the computer after some time period
+	- Keep a counter that is decremented by the physical clock
+	- Operating system set the counter (privileged instruction)
+	- When counter reaches zero, generate an interrupt
+	- Set up before scheduling process to regain control or terminate program that exceeds allotted time
+
+### Process Management
+* 
 
 
 
