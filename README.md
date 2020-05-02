@@ -324,6 +324,47 @@ After I/O starts, control returns to user program ...
 ### Computing Environments – Mobile
 * Handheld smartphones, tablets, ...
 * What is the functional difference between them and a "traditional" laptop?
+	- Extra feature 
+	- more OS features (GPS, gyroscope)
+	- Allows new types of apps like augmented reality
+	- Use IEEE 802.11 wireless, or cellular data networks for connectivity
+	- Leaders: Apple IOS, Google Android
+	- "Internet of Things" (IoT)
+
+### Computing Environments – Virtualization
+* Allows OSes to run applications within other OSes
+* Emulation used when source CPU type different from target type (i.e., PowerPC to Intel x86)
+	- Generally slowest method
+	- When computer language not compiled to native code - Interpretation
+* Virtalization
+	- OS natively compiled for CPU, running guest OSes also natively compiled
+		- Consider VMware running WinXP guests, each running applications, all on native WinXP host OS
+		- VMM (Virtual Machine Manager) provides virtualization services
+* Use cases involve laptops and desktops running multiple OSes for exploration or compatibility
+	- Apple laptop running Mac OS X host, Windows as a guest
+	- Developing apps for multiple OSes without having multiple systems
+	- QA testing applications without having multiple systems
+	- Executing and managing computing environments within data centers
+* VMM can run natively, in which case they are also the host
+	- Then there is no general purpose host (VMware ESX and Citrix XenServer)
+
+### Computing Environments – Cloud Computing
+* Delivers computing, storage, even applications as a service across a network
+	- IaaS, PaaS, SaaS
+* Logical extension of virtualization because it uses virtualization as the base for it functionality
+* Cloud computing environments composed of traditional OSes, plus VMMs, plus cloud management tools
+	- Internet connectivity requires security like firewalls
+	- Load balancers spread traffic across multiple applications
+<img src="https://github.com/missystem/cis415review/blob/master/figure1.24.png">
+
+### Open Source Operating Systems
+* Operating systems made available in source-code format rather than just binary closed-source
+* Counter to the copy protection and Digital Rights Management (DRM) movement
+* Started by Free Software Foundation (FSF), which has “copyleft” GNU Public License (GPL)
+* Examples include GNU/Linux and BSD UNIX (including core of Mac OS X), and many more
+* Can use VMM like VMware Player (Free on Windows), VirtualBox (open source and free)
+	- Use to run guest operating systems for exploration
+
 
 
 
