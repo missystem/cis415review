@@ -137,17 +137,33 @@
 * The design of protocols using these concepts involves trade-offs (e.g., disk performance)
 
 ### Device I/O - How a modern computer works?
+How a modern computer system works?
+	von Neumann architecture
+<img src="https://github.com/missystem/cis415review/blob/master/ch1_von_Neumann_architecture.png">
 
-
-
-
-
-
-
-* trap (or exception): is a form of interrupt, which is a software-generated interrupt caused 
+### Common Functions of Interrupts
+* Interrupt transfers control to the interrupt service routine, generally through an interrupt vectors
+* The operating system preserves the state of the CPU by storing registers and the program counter
+* Determines which type of interrupt has occurred: 
+	- Polling
+	- Vectored interrupt system
+* Interrupt architecture must save the address of the
+interrupted instruction
+* A trap (or an exception) is a software-generated interrupt, caused 
 	- by an error (division by zero or invalid memory access)
-	- by a specific request from a user program that an operating-system service be performed by executing a special operation called a system call
+	- by a specific request from a user program, that an operating-system service be performed by executing a special operation called a system call
+* An operating system is interrupt driven
 
+### I/O Structure
+After I/O starts, control returns to user program ...
+- Only upon I/O completion
+	- wait instruction idles the CPU until the next interrupt 
+	- wait loop (contention for memory access)
+	- at most one I/O request is outstanding at a time
+- Without waiting for I/O completion
+	- system call – request to the OS to allow user to wait for I/O completion
+	- device-status table contains entry for each I/O device indicating its type, address, and state
+	- OS indexes into I/O device table to determine device status and to modify table entry to include interrupt
 
 
 
