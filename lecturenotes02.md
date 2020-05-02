@@ -357,7 +357,100 @@ the I/O device
 * Otherwise impossible or impractical in software
 
 ### Operating System Layers
-<img src="https://github.com/missystem/cis415review/blob/master/figure2.14_a_layered_OS.png"> <img src="https://github.com/missystem/cis415review/blob/master/unix_architecture.png"> 
+* Application
+* Libraries (in application process)
+* System Services
+* OS API
+* OS Kernel
+* Hardware
+<img src="https://github.com/missystem/cis415review/blob/master/unix_architecture.png"> 
+
+### Applications to Libraries
+* Application Programming Interface (API)
+* Libraries (e.g., *libc*)
+* Library routines (e.g., *printf()* of stdio.h)
+* All within the process's address space
+	- Statically linked
+		- libraries are included as part of the application code
+		- calls are resolved at compile time
+	- Dynamically linked
+		- libraries are loaded by the OS at execution time as needed
+		- jump tables and pointers are resolved dynamically by linker
+
+### Application to (System) Services
+* Provide syntactic sugar for using resources
+	- Printing
+	- Program management
+	- Network management
+	- File management
+* Provide special functions beyond OS
+* [UNIX man pages](http://man7.org/linux/man-pages/man7/man-pages.7.html), sections 1 and 8
+* Command line system programs
+
+### Libraries to System Routines
+* System call interface
+	- [UNIX man pages](http://man7.org/linux/man-pages/man7/man-pages.7.html), sections 2
+	- Examples:
+		- open(), [read()](http://man7.org/linux/man-pages/man2/read.2.html), [write()](http://man7.org/linux/man-pages/man2/write.2.html) – defined in unistd.h
+	- Call these via libraries? 
+		- [fopen()](http://man7.org/linux/man-pages/man3/fopen.3.html) vs. [open()](http://man7.org/linux/man-pages/man2/open.2.html)
+* Special files
+	- Drives
+	- [*/proc*](http://man7.org/linux/man-pages/man5/proc.5.html)
+	- [*sysfs*](http://man7.org/linux/man-pages/man5/sysfs.5.html)
+
+### System to Hardware
+* Software-Hardware interface
+* OS Kernel functions
+	- Concepts		<=> Managers (hardware)
+	- Files 		<=> File systems (drivers and devices)
+	- Address space <=> Virtual memory (memory)
+	- Programs 		<=> Process model (CPU, ISA)
+* OS provides abstractions of devices and hardware objects
+	- These abstractions are represented in software running in the OS and data structures that it maintains
+
+### Systems Calls
+* Programming interface to OS services via system libraries
+* Typically written in a high-level language (C, C++) 
+* Mostly accessed by programs via a high-level Application Programming Interface (API) (versus direct system call use)
+	- Win32 (Windows), POSIX (Unix, Linux, MacOS), Java (JVM)
+* Typically, a number is associated with each system call
+	- System-call interface maintains a table indexed by call #
+* System call interface invokes the intended system call in OS kernel and returns status of the system call and return values
+* Caller just obeys API and understand what OS will do
+	- Most details of OS interface hidden by API
+
+#### The handling of a user application invoking the open() system call
+<img src="https://github.com/missystem/cis415review/blob/master/figure2.6_handling_of_user application_invoking_open().png"> 
+
+#### Standard C Library Example (printf())
+<img src="https://github.com/missystem/cis415review/blob/master/printf().png"> 
+
+#### System Call Example getpid()
+<img src="https://github.com/missystem/cis415review/blob/master/getpid().png"> 
+
+### System Call Handling
+<img src="https://github.com/missystem/cis415review/blob/master/system_call_handling.png"> 
+
+### System Call Process
+1. Procedure call in user process
+2. Initial work in user mode
+3. Trap instruction to invoke kernel
+4. Preparation
+5. I/O command
+6. Wait
+7. Completion interrupt handling
+8. Return-from-interrupt instruction
+9. Final work in user mode
+10. Ordinary return to user code
+
+<ins>system operations</ins>
+libc <br />
+int 0x80 <br />
+sys_read, mmap2 <br />
+read from disk <br />
+disk is slow <br /><br /><br />
+libc
 
 
 
