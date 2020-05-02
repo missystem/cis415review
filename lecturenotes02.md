@@ -195,15 +195,115 @@ operations
 * Response to processor request
 * Unsolicited response
 	- asynchronous
+<img src="https://github.com/missystem/cis415review/blob/master/logical_diagram_of_interrupt_routing.png">
 
+### Timer 
+* OS needs timers for:
+	- Time of day, CPU scheduling, ...
+	- There can be multiple timers for different things
+* Based on a hardware clock source (e.g., 1 Ghz)
+	- Count-down timer (e.g., 1 Ghz to 1 Khz)
+	- Generates an interrupt at 0 (e.g., every 1 msec)
+* Use timers to ensure that certain future events occur
+* Most importantly, it is a way for OS to regain control
+* User programs can set up their own “software” timers
 
+### Software Interrupts
+* Software interrupts (traps)
+	- Special interrupt instructions
+		- int is the interrupt instruction
+		- int 0x80 passes control to interrupt vector 0x80
+	- Exceptions
+		- can be fixed (e.g., page fault)
+		- cannot be fixed (e.g., divide by zero)
+* All invoke OS, just like a hardware interrupt
+	- Trap starts running OS code in supervisor access space
+	- This space can not be overwritten by the user program
 
+### How Does a Process Run? (high level view)
+* OS keeps track of which process is assigned to which sections in memory along with other details
+* For a new process to run, memory is assigned by the OS, which puts the code in that location
+	- switch to user mode
+	- start running at first address of the program
+* OS keeps record of every process
+	- This is the *process context*
+	- Assigned memory, current Program Counter, ...
+	- Enough info to restart process where it left off
 
+### Then along comes an interrupt ...
+1. A hardware interrupt or a trap (software interrupt) happens
+	- Example: received input from keyboard
+2. OS records state of running process’s context
+	- stored in a Process Control Block (PCB)
+3. OS services the interrupt
+	- Example: send something to the printer
+4. OS picks process to restart
+	- which process is picked depends on scheduling
+	- moves back into user mode
 
+### Interrupt Handling
+* Each interrupt has an *interrupt handler*
+* When an interrupt request (IRQ) is received
+	- If interrupt mask allows interrupt, then ...
+		1. save state of current process
+			- at time of interrupt something else may be running
+			- state: Registers (stack pointer), program counter, ...
+		2. execute handler
+		3. return to current process or another process
 
+Interrupt (Trap) Handlers
+<img src="https://github.com/missystem/cis415review/blob/master/interrupt_handler.png">
 
+Multiple Interrupts
+<img src="https://github.com/missystem/cis415review/blob/master/multiple_interrupts.png">
 
+### Device Access
+* Port I/O
+	- uses special I/O instructions
+	- uort number, device address (not process address)
+* Memory-mapped I/O
+	- uses memory instructions (load/store)
+		- memory-mapped device registers
+	- does not require special instructions
+[<img src="https://github.com/missystem/cis415review/blob/master/isolated_vs_memory_mapped_I/O.png">](http://ece-research.unm.edu/jimp/310/slides/8086_IO1.html)
+IORC: I/O Read Control 		IOWC: I/O Write Control
 
+### Direct Memory Access (DMA)
+* Direct access to I/O controller through memory
+* Reserve area of memory for communication with
+the I/O device
+	- Video RAM
+		- CPU writes frame buffer
+		- video card displays it
+	- Network interfaces
+* DMA is efficient and convenient and fast
+	- Multiple components can talk to other components concurrently, rather than competing for cycles on a shared bus
+	- After setting up buffers, pointers, and counters for the I/O device, the device controller transfers an entire block of data directly to or from the device and main memory, with no intervention by the CPU
+	- Only one interrupt is generated per block, to tell the device driver that the operation has completed, rather than the one interrupt per byte generated for low-speed devices
+	- While the device controller is performing these operations, the CPU is available to accomplish other work
+<img src="https://github.com/missystem/cis415review/blob/master/figure1.7_how_modern_computers_work.png">
 
+### Synchronization
+* How can OS synchronize concurrent processes?
+	- multiple threads, processes, interrupts, DMA
+* CPU must provide mechanism for atomicity
+	- Series of instructions that execute as one or not at all
+* One approach:
+	- Disable interrupts, perform action, enable interrupts
+	- Advantages:
+		- Requires no hardware support
+		- Conceptually simple
+	- Disadvantages:
+		- Could cause starvation
+* A Modern Synchronization Approach
+	- Use hardware support for atomic instructions
+		- Small set of instructions that cannot be interrupted
+	- Examples:
+		- **Test-and-set (TST)** <br />
+		if word contains given value, set to new value
+		- **Compare-and-swap (CAS)** <br />
+		if word equals value, swap old value with new
+		- Intel: LOCK prefix (XCHG, ADD, DEC, ...)
+	- Used to implement locks 
 
 
