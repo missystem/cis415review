@@ -322,7 +322,9 @@ the I/O device
 		- allows for dynamic data expansion
 	- Stack section
 		- temporary data storage when invoking functions <br />
-		(such as function parameters, return addresses, and local variables)
+		(such as function parameters, return addresses, and local variables) <br />
+	the sizes of the text and data sections are fixed, as their sizes do not change during program run time <br />
+	the stack and heap sections can shrink and grow dynamically during program execution
 <img src="https://github.com/missystem/cis415review/blob/master/figure3.1_layout_of_a_process_in_memory.png">
 
 
