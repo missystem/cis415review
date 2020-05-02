@@ -191,9 +191,142 @@ After I/O starts, control returns to user program ...
 	- Operating system set the counter (privileged instruction)
 	- When counter reaches zero, generate an interrupt
 	- Set up before scheduling process to regain control or terminate program that exceeds allotted time
+<img src="https://github.com/missystem/cis415review/blob/master/figure1.13.png">
 
 ### Process Management
-* 
+* A **process** is a program in execution
+	- A **program** is a passive entity
+	- A process is an active entity (unit of work in the system)
+* Process needs resources to accomplish its task
+	- CPU, memory, I/O, files
+	- Initialization data
+* Process termination requires reclaim of any reusable resources
+* **Single-threaded process** has one program counter specifying location of next instruction to execute
+	- Process executes instructions sequentially
+	- One at a time, until completion
+* **Multi-threaded process** has one program counter per thread
+* Typically system has many processes, some user, some operating system running concurrently on one or more CPUs
+	- Concurrency by multiplexing the CPUs among the processes / threads
+
+### Process Management Activities
+* Creating & deleting both user and system processes
+* Suspending & resuming processes
+* Providing mechanisms for 
+	- process synchronization
+	- process communication
+	- deadlock handling
+
+### Scheduling
+* Determine which task to perform given:
+	- Multiple user processes
+	- Multiple hardware components
+* Provide effective performance
+	- Responsive to users, CPU utilization
+* Provide fairness
+	- Avoid starvation for low priority processes
+
+### Memory Management
+* To execute a program, all (or part) of the instructions must be in memory
+* All (or part) of the data that is needed by the program must be in memory
+* Memory management determines what is in memory and when
+	- Optimizing both the CPU utilization and the computer's responding speed users
+* Memory management activities
+	- keeping track of which parts of memory are currently being used and by whom
+	- deciding which processes (or parts thereof) and data to move into and out of memory
+	- allocating and deallocating memory space as needed
+
+### Storage Hierarchy
+<img src="https://github.com/missystem/cis415review/blob/master/figure1.6.png">
+
+### Storage Management
+* OS provides uniform, logical view of information storage
+	- Abstracts physical properties to logical storage unit - file
+	- Each medium is controlled by device
+		- varying properties include: access speed, capacity, data-transfer rate, access method (sequential or random)
+* File-System management
+	- Files usually organized into directories
+	- Access control on most systems determines who can access what
+	- OS activities include
+		- creating and deleting files and directories
+		- primitives to manipulate files and directories
+		- mapping files onto secondary storage
+		- backup files onto stable (non-volatile) storage media
+
+### Protection and Security
+* Protection
+	- any mechanism for controlling access of processes or users to resources defined by the OS
+* Security
+	- defense of the system against internal and external attacks
+* Systems generally first distinguish among users, ways to determine who can do what:
+	- User identities (user IDs, security IDs) 
+		- include name and associated number, one per user
+	- User ID
+		- associated with all files, processes of that user to determine access control
+	- Group identifier (group ID)
+		- allows set of users to be defined and controls managed, then also associated with each process, file
+	- Privilege escalation 
+		- allows user to change to effective ID with more rights
+
+### OS Structures
+* Multiprogramming (batch system)
+	- Single user cannot keep CPU and I/O devices busy at all times
+	- Multiprogramming organizes jobs (code & data) so CPU always has one to execute
+	- A subset of total jobs in system is kept in memory
+	- One job selected and run via job scheduling
+	- When it has to wait (e.g., I/O), OS switches to another job
+* Multitasking (timesharing)
+	- Logical extension of multiprogramming
+	- The CPU executes multiple processes by switching among them frequently
+	- Response time should be < 1s
+	- Each user has ≥ 1 program executing in memory
+	- If several jobs ready to run at the same time, system chooses which process will run next (CPU scheduling)
+	- Virtual memory allows the execution of a processes that is not completely in memory (ensure reasonable response time)
+
+### Computing Environments – Traditional
+* Stand-alone general purpose machines
+* But blurred as most systems interconnect with others (i.e., the Internet)
+* Portals provide web access to internal systems
+* Network computers (thin clients) are like Web terminals
+* Mobile computers (Smart phones) interconnect via wireless networks
+* Networking becoming ubiquitous 
+	- even home systems use firewalls to protect home computers from Internet attacks
+
+### Computing Environments – Distributed
+* Collection of separate, possibly heterogeneous, systems networked together
+	- network is a communications path, TCP/IP most common
+		- Local Area Network (LAN)
+		- Wide Area Network (WAN)
+		- Metropolitan Area Network (MAN)
+		- Personal Area Network (PAN)
+* Network OS provides features between systems across network
+	- communication scheme allows systems to exchange messages
+	- illusion of a single system
+
+### Computing Environments – Client-Server
+* Dumb terminals supplanted by smart PCs
+* Many systems now servers, responding to requests generated by clients
+	- compute-server system
+		- provides an interface to client to request services (i.e., database)
+	- file-server system
+		- provides interface for clients to store and retrieve files
+<img src="https://github.com/missystem/cis415review/blob/master/figure1.22.png">
+
+### Computing Environments – Peer-to-Peer (P2P)
+* Another model of distributed system
+* Does not distinguish clients & servers
+	- all nodes are considered peers
+	- each node may act as client, server or both
+	- node must join P2P network
+		- registers its service with central lookup service on network, or
+		- broadcast request for service and respond to requests for service via discovery protocol
+	- Examples: Napster and Gnutella, Voice over IP (VoIP) (e.g., Skype)
+
+### Computing Environments – Mobile
+* Handheld smartphones, tablets, ...
+* What is the functional difference between them and a "traditional" laptop?
+
+
+
 
 
 
