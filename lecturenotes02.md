@@ -265,9 +265,10 @@ Multiple Interrupts
 * Memory-mapped I/O
 	- uses memory instructions (load/store)
 		- memory-mapped device registers
-	- does not require special instructions
-[<img src="https://github.com/missystem/cis415review/blob/master/isolated_vs_memory_mapped_I/O.png">](http://ece-research.unm.edu/jimp/310/slides/8086_IO1.html)
-IORC: I/O Read Control 		IOWC: I/O Write Control
+	- does not require special instructions <br />
+[<img src="https://github.com/missystem/cis415review/blob/master/isolated_vs_memory_mapped_I:O.png">](http://ece-research.unm.edu/jimp/310/slides/8086_IO1.html)
+IORC: I/O Read Control <br />
+IOWC: I/O Write Control
 
 ### Direct Memory Access (DMA)
 * Direct access to I/O controller through memory
@@ -453,7 +454,7 @@ disk is slow <br /><br /><br />
 libc
 
 ### Details on x86 / Linux
-* [A more accurate picture](https://github.com/missystem/cis415review/blob/master/program_execution_detail_01.png):
+* [A more accurate picture](https://github.com/missystem/cis415review/blob/master/system_execution_detail_01.png):
 	- Consider a typical Linux process
 	- Its “thread of execution” can be several places
 		- in your program’s code
