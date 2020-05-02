@@ -76,9 +76,9 @@
 
 ### Interconnects
 * **bus** - hardware interconnect for supporting the exchange of data, control, signals, ...
-		- Physicalspecification
-		- Defined by a protocol
-		- Data and control arbitration
+	- Physicalspecification
+	- Defined by a protocol
+	- Data and control arbitration
 
 
 
