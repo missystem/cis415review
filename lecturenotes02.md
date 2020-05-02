@@ -141,6 +141,7 @@ Figure 2.1 A view of operating system services.
 * Instructions that require privilege, such as:
 	- Direct access to I/O
 	- Modify page table pointers or the TLB
+		- page: fixed sized block of data
 	- Enable and disable interrupts
 	- Halt the machine
 * Access sensitive registers or perform sensitive
@@ -326,6 +327,39 @@ the I/O device
 	- the sizes of the text and data sections are fixed, as their sizes do not change during program run time <br />
 	the stack and heap sections can shrink and grow dynamically during program execution
 <img src="https://github.com/missystem/cis415review/blob/master/figure3.1_layout_of_a_process_in_memory.png">
+
+### Virtual Memory
+* Provide the illusion of infinite memory
+* OS loads pages from disk as needed
+	- page: fixed sized block of data
+* Benefits
+	- Allows the execution of programs that may not fit entirely in memory
+* OS needs to maintain mapping between physical and virtual memory
+	- Page tables stored in memory
+
+### Address Translation Hardware
+* Early virtual memory systems used to do translation in software
+	- meaning the OS did it
+	- an additional memory access for each memory access
+* Address translation hardware solved this problem
+	- Translation Look-aside Buffer (TLB)
+* Modern CPUs contain TLB hardware
+	- Fmall, fast-lookup hardware cache
+	- Modern workloads are TLB-miss dominated (page number is not in the TLB)
+
+#### Takeaway
+* Modern architectures provide lots of features to help the OS do its job
+	- Protection mechanisms (modes)
+	- Interrupts
+	- Device I/O
+	- Synchronization
+	- Virtual Memory (TLB)
+* Otherwise impossible or impractical in software
+
+### Operating System Layers
+<img src="https://github.com/missystem/cis415review/blob/master/figure2.14_a_layered_OS.png"> <img src="https://github.com/missystem/cis415review/blob/master/unix_architecture.png"> 
+
+
 
 
 
