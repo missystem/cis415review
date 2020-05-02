@@ -156,15 +156,29 @@ interrupted instruction
 
 ### I/O Structure
 After I/O starts, control returns to user program ...
-- Only upon I/O completion
+* Only upon I/O completion
 	- wait instruction idles the CPU until the next interrupt 
 	- wait loop (contention for memory access)
 	- at most one I/O request is outstanding at a time
-- Without waiting for I/O completion
+* Without waiting for I/O completion
 	- system call – request to the OS to allow user to wait for I/O completion
 	- device-status table contains entry for each I/O device indicating its type, address, and state
 	- OS indexes into I/O device table to determine device status and to modify table entry to include interrupt
 
+### Interrupt Timeline
+<img src="https://github.com/missystem/cis415review/blob/master/ch1_interrupt_timeline.png">
+
+### I/O Sturcture - 2 Methods
+* Synchronous
+	- After I/O starts, control returns to user program only upon I/O completion
+	- A wait instruction idles the CPU until next interrupt
+	- Or the CPU runs a wait loop (problems?)
+	- No simultaneous I/O processing (only 1 request)
+* Asynchronous
+	- After I/O starts, control returns to user program without waiting for I/O completion
+	- User program then waits for I/O complete
+	- I/O interrupts upon completion
+* 
 
 
 
