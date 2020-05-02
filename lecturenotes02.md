@@ -79,6 +79,21 @@
 	- Physicalspecification
 	- Defined by a protocol
 	- Data and control arbitration
+* System bus - for CPU connection to memory primarily
+	- Also to bridge to device buses
+* PCI bus - for devices
+	- Connects CPU-memory subsystem to:
+		- fast devices
+		- expansion bus that connects slow devices
+* Other device "bus" types
+	- SCSI, IDE, USB, ...
+
+### Operating System Services
+* OS provides an environment for program execution
+* Some OS services are helpful to the user:
+	- User Interface (UI)
+	- Program execution (load, run, terminate)
+	- I/O operations (file or device)
 
 
 
