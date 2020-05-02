@@ -169,6 +169,7 @@ After I/O starts, control returns to user program ...
 <img src="https://github.com/missystem/cis415review/blob/master/ch1_interrupt_timeline.png">
 
 ### I/O Sturcture - 2 Methods
+<img src="https://github.com/missystem/cis415review/blob/master/ch1_two_IO_methods.png">
 * Synchronous
 	- After I/O starts, control returns to user program only upon I/O completion
 	- A wait instruction idles the CPU until next interrupt
@@ -178,8 +179,8 @@ After I/O starts, control returns to user program ...
 	- After I/O starts, control returns to user program without waiting for I/O completion
 	- User program then waits for I/O complete
 	- I/O interrupts upon completion
-* 
 
+### Device Status Table
 
 
 
