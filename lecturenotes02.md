@@ -493,25 +493,27 @@ libc
 		- in the Linux architecture - independent code
 		- in Linux x86-32/x86-64 code <br />
 <img src="https://github.com/missystem/cis415review/blob/master/system_execution_detail_01.png"> <br />
+
 * Some routines your program invokes may be *entirely handled by glibc*
 	- Without involving the kernel
 		- e.g., strcmp( ) from stdio.h
 	- some initial overhead when invoking functions in dynamically linked libraries ...
 	- ... but after symbols are resolved, invoking glibc routines is nearly as fast as a function call within your program itself <br />
 <img src="https://github.com/missystem/cis415review/blob/master/system_execution_detail_02.png"> <br />
+
 * Some routines may be *handled by glibc, but they in turn invoke Linux system calls*
 	- Example: POSIX wrappers around Linux syscalls
 		- POSIX *readdir()* --> invokes the underlying Linux *readdir()*
 	- Example: C stdio functions that read and write from files
 		- *fopen(), fclose(), fprintf()*, ... --> invoke underlying Linux *open(), read(), write(), close()*, ... <br />
-
 <img src="https://github.com/missystem/cis415review/blob/master/system_execution_detail_03.png"> <br />
+
 * Your program can choose to *directly invoke Linux system calls* as well
 	- Nothing forces you to link with glibc and use it
 	- But relying on directly invoked Linux system calls may make your program less portable across UNIX varieties <br />
  <img src="https://github.com/missystem/cis415review/blob/master/system_execution_detail_04.png"> <br />
 
-
+### 
 
 
 	
