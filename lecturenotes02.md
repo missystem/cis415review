@@ -51,7 +51,7 @@
 * Use as "main" memory for instruction and data
 * OS manages main memory
 	- It is a resource necessary for any code execution
-* CPU fetches instruction and date from memory
+* CPU fetches instruction and data from memory
 	- into its instruction processing
 	- into its cache / registers
 * Memory controller implements logic for:
@@ -59,6 +59,11 @@
 	- refreshing DRAM to maintain contents
 	- address translation circuitry for virtual memory
 
+### I/O Devices, Hard Disks, and SSD
+*  Large variety, varying speeds, lot of diversity
+	- Disk, tape, monitor, mouse, keyboard, NIC, ...
+	- Serial or parallel interfaces
+* 
 
 
 
