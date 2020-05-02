@@ -13,3 +13,32 @@
 
 ### Objectives
 * To describe computer system organization
+* To describe the services an operating system provides to users, processes, and other systems
+* To discuss the various ways of structuring an operating system
+* To explain how operating systems are installed and customized and how they boot
+
+### Canonical System Hardware
+* CPU
+	- processor to perform computations
+* Memory
+	- hold instructions and data
+* I/O devices
+	- disk, monitor, network, printer
+* Bus
+	- systems interconnection for communication
+<img src="https://github.com/missystem/cis415review/blob/master/figure2.1_operating_system_services">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
