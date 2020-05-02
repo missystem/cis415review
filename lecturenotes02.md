@@ -421,6 +421,37 @@ the I/O device
 * Caller just obeys API and understand what OS will do
 	- Most details of OS interface hidden by API
 
+### Types of System Calls
+* Process control
+	- create process, terminate process
+	- load, execute
+	- get process attributes, set process attributes
+	- wait event, signal event
+	- allocate and free memory
+* File management
+	- create file, delete file
+	- open, close
+	- read, write, reposition
+	- get file attributes, set file attributes
+* Device management
+	- request device, release device
+	- read, write, reposition
+	- get device attributes, set device attributes 
+	- logically attach or detach devices
+* Information maintenance
+	- get time or date, set time or date
+	- get system data, set system data
+	- get process, file, or device attributes
+	- set process, file, or device attributes
+* Communications
+	- create, delete communication connection
+	- send, receive messages
+	- transfer status information
+	- attach or detach remote devices
+* Protection
+	- get file permissions
+	- set file permissions
+
 #### The handling of a user application invoking the open() system call
 <img src="https://github.com/missystem/cis415review/blob/master/figure2.6_handling_of_user application_invoking_open().png"> 
 
@@ -454,17 +485,35 @@ disk is slow <br /><br /><br />
 libc
 
 ### Details on x86 / Linux
-* ![A more accurate picture](https://github.com/missystem/cis415review/blob/master/system_execution_detail_01.png):
+* A more accurate picture:
 	- Consider a typical Linux process
 	- Its “thread of execution” can be several places
 		- in your program’s code
 		- in glibc, a shared library containing the C standard library, POSIX support, and more
 		- in the Linux architecture - independent code
 		- in Linux x86-32/x86-64 code
+<img src="https://github.com/missystem/cis415review/blob/master/system_execution_detail_01.png">
+* Some routines your program invokes may be *entirely handled by glibc*
+	- Without involving the kernel
+		- e.g., strcmp( ) from stdio.h
+	- some initial overhead when invoking functions in dynamically linked libraries ...
+	- ... but after symbols are resolved, invoking glibc routines is nearly as fast as a function call within your program itself
+<img src="https://github.com/missystem/cis415review/blob/master/system_execution_detail_02.png">
+* Some routines may be *handled by glibc, but they in turn invoke Linux system calls*
+	- Example: POSIX wrappers around Linux syscalls
+		- POSIX *readdir()* --> invokes the underlying Linux *readdir()*
+	- Example: C stdio functions that read and write from files
+		- *fopen(), fclose(), fprintf()*, ... --> invoke underlying Linux *open(), read(), write(), close()*, ...
+<img src="https://github.com/missystem/cis415review/blob/master/system_execution_detail_03.png">
+* Your program can choose to *directly invoke Linux system calls* as well
+	- Nothing forces you to link with glibc and use it
+	- But relying on directly invoked Linux system calls may make your program less portable across UNIX varieties
+ <img src="https://github.com/missystem/cis415review/blob/master/system_execution_detail_04.png">
 
 
 
 
+	
 
 
 
