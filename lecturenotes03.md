@@ -261,7 +261,7 @@ all execute a file and are frontends to execve <br />
 		- all children terminated - cascading termination
 
 ### Process Layout
-<img align="left" width="350" height="350" src="https://github.com/missystem/cis415review/blob/master/process_layout.png"> <br /><br /><br />
+<img align="left" width="350" height="350" src="https://github.com/missystem/cis415review/blob/master/process_layout.png"> <br /><br />
 
 1. PCB with new PID created 
 2. Memory allocated for child initialized by copying over from the parent
