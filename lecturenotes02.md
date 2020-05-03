@@ -2,11 +2,13 @@
 
 ### Outline
 * Hardware and OS relationship
-* Operating System Services
-* User Operating System Interface q System Calls
-* Types of System Calls
-* System Programs
-* Operating System Design and Implementation q Operating System Structure
+* [Operating System Services](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#operating-system-services)
+* User Operating System Interface
+* [System Calls](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#systems-calls)
+* [Types of System Calls](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#types-of-system-calls)
+* [System Programs](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#system-programs-system-services)
+* Operating System Design and Implementation
+* Operating System Structure
 * Operating System Debugging
 * Operating System Generation
 * System Boot
@@ -592,7 +594,7 @@ libc
 		- system memory
 		- devices mounted
 		- hardware configuration
-	- A lot of [system utilities](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#operating-system-services) are simply calls to files in this directory
+	- A lot of system utilities are simply calls to files in this directory
 	- By altering files located here you can even read/change kernel parameters (sysctl) while the system is running
 * [*sysfs*](http://man7.org/linux/man-pages/man5/sysfs.5.html) files
 	- Provide functions that update kernel data
