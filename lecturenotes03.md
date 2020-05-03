@@ -440,7 +440,36 @@ all set to go now
 		- Easier to implement in a distributed system than shared memory
 <img width="553" height="353" src="https://github.com/missystem/cis415review/blob/master/communication_models.png">
 
-### 
+### IPC in Shared-Memory Systems
+* Producer-Consumer Problem
+* 2 types of buffers
+	- Unbounded buffer 
+		- Variable in size (no practical limit on the size of the buffer)
+		- The consumer may have to wait for new items
+		- The producer can always produce new items
+	- Bounded buffer
+		- Fixed in size
+		- The consumer must wait if the buffer is empty
+		- The producer must wait if the buffer is full
+
+### IPC in Message-Passing Systems
+* Communication link logical implementations
+	- Direct or indirect communication
+	- Synchronous or asynchronous communication 
+	- Automatic or explicit buffering
+* Naming
+* More sections from book p127
+
+### Communication in Client–Server Systems
+* Sockets
+	- An endpoint for communication
+	- A pair of processes communicating over a network employs a pair of sockets (one for each process) <br />
+	<img width="640" height="440" src="https://github.com/missystem/cis415review/blob/master/communication_models.png"> <br />
+* Remote Procedure Calls (RPC)
+	- message-based communication scheme
+	- Each message is addressed to an RPC daemon listening to a **port** on the remote system, and each contains an identifier specifying the function to execute and the parameters to pass to that function
+		- port: a \# included at the start of a msg packet
+	- The function is then executed as requested, and any output is sent back to the requester in a separate message
 
 ### Process Actions in Client-Server
 * Example of forking to create a new process 
@@ -476,6 +505,38 @@ all set to go now
 	- If one server is stalled, others can run <br />
 <img width="630" height="330" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_10.png">
 
-
-
-
+## Summary
+* A **process** is a program in execution
+	- the status of the current activity of a process is represented by the program counter, as well as other registers.
+* The **layout of a process in memory** is represented by 4  sections:
+	1. text
+	2. data
+	3. heap
+	4. stack
+* As a process executes, it changes state. 
+	- 4 general states of a process: 
+		1. ready
+		2. running
+		3. waiting
+		4. terminated
+* Process Control Block (PCB)
+	- the kernel data structure that represents a process in an OS
+* Process scheduler
+	- select an available process to run on a CPU
+* An operating system performs a **context switch** when it switches from running one process to running another
+* Create processes
+	- fork() is used in Linux system
+* Shared memory
+	- Two (or more) processes share the same region of memory
+* Message passing
+	- Two processes communicate by exchanging messages with one another
+* Pipe
+	- provides a conduit for two processes to communicate
+	- 2 forms of pipes:
+		- Ordinary pipes
+		- Named pipes
+* 2 common tyeps of client–server communication
+	- sockets
+		- allow two processes on different machines to communicate over a network
+	- remote procedure calls (RPCs)
+		- abstract the concept of function (procedure) calls in such a way that a function can be invoked on another process that may reside on a separate computer
