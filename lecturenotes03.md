@@ -438,7 +438,7 @@ all set to go now
 		- Communication takes place by means of messages exchanged between the cooperating processes
 		- Useful for exchanging smaller amounts of data (no conflicts need be avoided)
 		- Easier to implement in a distributed system than shared memory
-<img width="830" height="530" src="https://github.com/missystem/cis415review/blob/master/communication_models.png">
+<img width="553" height="353" src="https://github.com/missystem/cis415review/blob/master/communication_models.png">
 
 ### 
 
