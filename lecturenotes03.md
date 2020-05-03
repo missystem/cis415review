@@ -179,11 +179,16 @@ int main() {
 	- System call (switch to kernel mode)
 
 ### Process Control Block (PCB)
-* Information associated with each process
-	- also called the *task control block*
-* Process state:
-	- running, waiting, ...
-<img src="https://github.com/missystem/cis415review/blob/master/PCB.png">
+* also called the *task control block*
+* contains information associated with a specific process
+* including:
+	- Process state:
+		- new, ready, running, waiting, halted, etc
+	- Program counter
+		- indicates the address of the next executed process's instruction
+	- CPU registers
+		- for process thread
+<img style="float: right;" src="https://github.com/missystem/cis415review/blob/master/PCB.png">
 
 
 
