@@ -261,7 +261,7 @@ all execute a file and are frontends to execve <br />
 		- all children terminated - cascading termination
 
 ### Process Layout
-<img align="left" src="">
+<img align="left" src="https://github.com/missystem/cis415review/blob/master/process_layout.png">
 
 
 
