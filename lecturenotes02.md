@@ -8,10 +8,11 @@
 * [Types of System Calls](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#types-of-system-calls)
 * [System Programs](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#system-programs-system-services)
 * [Operating System Design and Implementation](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#os-design-and-implementation)
-* Operating System Structure
-* Operating System Debugging
-* Operating System Generation
-* System Boot
+* [Operating System Structure](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#operating-system-structure)
+* [Building and Booting an Operating System](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#building-and-booting-an-operating-system)
+* [Operating System Debugging](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#operating-system-debugging)
+* [Summary](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#summary)
+
 
 ### Objectives
 * To describe computer system organization
