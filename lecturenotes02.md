@@ -3,7 +3,6 @@
 ### Outline
 * Hardware and OS relationship
 * [Operating System Services](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#operating-system-services)
-* User Operating System Interface
 * [System Calls](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#systems-calls)
 * [Types of System Calls](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#types-of-system-calls)
 * [System Programs](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#system-programs-system-services)
@@ -96,6 +95,11 @@
 * Provides an environment for program execution
 * For helping the user
 	- User Interface (UI)
+		- A window system with a mouse that serves as a pointing device to direct I/O, choose from menus, and make selections and a keyboard to enter text
+		- Commonly, graphical user interface (GUI) is used
+		- Mobile systems such as phones and tablets provide a touch-screen interface
+		- command-line interface (CLI)
+			- uses text commands and a method for entering them
 	- Program execution (load, run, terminate)
 	- I/O operations (file or device)
 	- File-system manipulation (file, directories, permission)
@@ -105,9 +109,7 @@
 	- Resource allocation (across multiple, concurrent jobs)
 	- Logging (or Accounting) (how much and what kind of resources)
 	- Protection and security (resources, users)
-
-Figure 2.1 A view of operating system services.
-<img src="https://github.com/missystem/cis415review/blob/master/figure2.1_view_of_OS_services.png">
+![Figure 2.1 A view of operating system services](https://github.com/missystem/cis415review/blob/master/figure2.1_view_of_OS_services.png)
 
 ### OS Services and Hardware Support
 * Protection
