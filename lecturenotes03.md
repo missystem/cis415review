@@ -427,35 +427,35 @@ all set to go now
 ### Process Actions in Client-Server
 * Example of forking to create a new process 
 * Consider a web server
-<img width="166" height="60" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_01.png">
-* A remote “client” wants to connect and look at a webpage hosted by the web server
-<img width="300" height="150" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_02.png">
-* An interprocess communication is made and a connection is established
-<img width="300" height="150" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_03.png">
+<img width="116" height="60" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_01.png"> <br />
+* A remote “client” wants to connect and look at a webpage hosted by the web server <br />
+<img width="300" height="150" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_02.png"> <br />
+* An interprocess communication is made and a connection is established <br />
+<img width="300" height="150" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_03.png"> <br />
 * What if the web server only served this client until it was done looking at web pages?
 * How can the web server support multiple “concurrent” clients?
-* Create more “concurrency” by creating more processes!
-<img width="450" height="145" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_04.png">
+* Create more “concurrency” by creating more processes! <br />
+<img width="450" height="145" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_04.png"> <br />
 * A fork() copies the parent PCB and establish a child process initialized with that PCB
 * All of the parent’s state is inherited by the child, including the connection to the client
-* Responsibility for “servicing” the client is handed off to the “child” server process
-<img width="450" height="145" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_05.png">
+* Responsibility for “servicing” the client is handed off to the “child” server process <br />
+<img width="450" height="145" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_05.png"> <br />
 * The “parent” server process goes back to waiting for new clients
-* The “parent” server should disengage from the client by releasing its (duplicate) connection
-<img width="450" height="150" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_06.png">
+* The “parent” server should disengage from the client by releasing its (duplicate) connection <br />
+<img width="450" height="150" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_06.png"> <br />
 * The “child” server is now completely responsible for the client connection
 * There is still a logical relationship between the child / parent server processes
-* Communication takes places between the client and “child” server process
-<img width="300" height="150" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_07.png">
+* Communication takes places between the client and “child” server process <br />
+<img width="300" height="150" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_07.png"> <br />
 * The “parent” server process is not involved
-* Now, this can procedure can continue as new client connections come in
-<img width="450" height="240" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_08.png">
-* In this way, the amount of “concurrency” increases with more server processes
-<img width="620" height="270" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_09.png">
+* Now, this can procedure can continue as new client connections come in <br />
+<img width="450" height="240" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_08.png"> <br />
+* In this way, the amount of “concurrency” increases with more server processes <br />
+<img width="620" height="270" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_09.png"> <br />
 * It gives both logical isolation between the servers, as well as simplifies the design and functionality
 * Many types of servers operate this way
 * A objective is to avoid blocking in the server
-	- If one server is stalled, others can run
+	- If one server is stalled, others can run <br />
 <img width="630" height="330" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_10.png">
 
 
