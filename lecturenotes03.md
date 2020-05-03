@@ -1,11 +1,11 @@
 ## [Lecture 03: Processes (Chapter 3)](https://github.com/missystem/cis415review/blob/master/lecture-3-processes.pdf)
 
 ## Outline
-* Process concept
-* Process operation
-* System calls to create processes
-* Process management
-* Process scheduling
+* [Process Concept](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-concept)
+* Process Operation
+* System Calls to Create Processes
+* Process Management
+* Process Scheduling
 
 ### Overview of Processes
 * How are processes created?
@@ -58,4 +58,3 @@ available in that mode (kernel executes in ring 0)
 
 
 
-		
