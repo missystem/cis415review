@@ -187,8 +187,7 @@ int main() {
 	- Program counter
 		- indicates the address of the next executed process's instruction
 	- CPU registers
-		- for process thread
-<img style="float: right;" src="https://github.com/missystem/cis415review/blob/master/PCB.png">
+		- for process thread<img style="float: right;" src="https://github.com/missystem/cis415review/blob/master/PCB.png">
 
 
 
