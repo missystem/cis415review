@@ -187,7 +187,69 @@ int main() {
 	- Program counter
 		- indicates the address of the next executed process's instruction
 	- CPU registers
-		- for process thread<img style="float: right;" src="https://github.com/missystem/cis415review/blob/master/PCB.png">
+		- for process thread
+		- vary in number and type, depending on the computer architecture
+	- CPU-scheduling information
+		- includes a process priority, pointers to scheduling queues, and any other scheduling parameters
+	- Memory-management information
+		- memory allocated to the process
+	- Accounting information
+		- the amount of CPU and real time used, time limits, account numbers, job or process numbers, etc
+	- I/O status information
+		- the list of I/O devices allocated to the process
+		- a list of open files, etc
+<img style="float: right;" src="https://github.com/missystem/cis415review/blob/master/PCB.png">
+
+### Program Creation System Calls
+* *fork()*
+	- Copy address space of parent and all threads
+* *forkl()*
+	- Copy address space of parent and only calling thread
+* *vfork()*
+	- Do not copy the parent’s address space
+	- Share address space between parent and child
+* *exec()*
+	- Load new program and replace address space
+	- Some resources may be transferred (open file descriptors)
+	- Specified by arguments
+
+### Process Creation with New Program
+<img src="https://github.com/missystem/cis415review/blob/master/fork.png"><br />
+* **Parent process** calls *fork()* to spawn child process
+	- Both parent and child return from fork()
+	- Continue to execute the same program
+* **Child process** calls *exec()* to load a new program
+
+### C Program Forking Separate Process
+```
+int main( )
+{
+	pid_t pid;
+	// fork another process
+	pid = fork( );
+	if (pid < 0) { // error occurred
+		fprintf(stderr, "Fork Failed"); exit(-1);
+	} 
+
+	else if (pid == 0) { /* child process */
+		execlp("/bin/ls", "ls", NULL); // exec a file
+	} 
+
+	else { 			/* parent process */
+		// parent will wait for the child to complete
+		wait(NULL);
+		printf ("Child Complete"); 
+		exit(0);
+	} 
+	
+}
+```
+
+
+
+
+
+
 
 
 
