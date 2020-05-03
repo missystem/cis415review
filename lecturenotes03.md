@@ -270,7 +270,7 @@ Effects in memory after parent calls fork() <br />
 4. If child had called exec(), its memory is overwritten with new code and data
 5. Child added to ready queue and is
 all set to go now
-<br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br />
 
 ### Relocatable Memory
 * Program instructions use addresses that logically start at 0
