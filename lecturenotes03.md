@@ -379,6 +379,37 @@ all set to go now
 * Does this differ if we are running an interrupt handler?
 <img width="600" height="494" src="https://github.com/missystem/cis415review/blob/master/context_switch_process_to_process.png">
 
+### Context Switch Performance
+* No useful work is being done during a context switch <br />
+	(i.e., no user process is running)
+	- Want to speed up context switch processing
+	- If a system call can be done in user mode, then the OS does not have to context switch
+* Hardware support helps in context switching
+	- Multiple hardware register sets
+	- Be able to quickly set up the processor
+* However, hardware optimization may conflict
+	- Managing address translation tables is difficult
+	- Different virtual to physical mappings on different processes
+
+### Process Scheduling
+* Maximize CPU use, quickly switch processes onto CPU for time sharing
+* Process scheduler selects among available processes for next execution on CPU
+* Maintains scheduling queues of processes
+	- Job queue 
+		- set of all processes in the system
+	- Ready queue
+		- set of all processes residing in main
+	- Device queues
+		- set of processes waiting for an I/O device
+	- Processes migrate among the various queues
+
+### Representation of Process Scheduling
+* Process scheduling queueing diagram represents:
+	- queues, resources, flows
+* Processes move through the queues
+<img width="534" height="304" src="https://github.com/missystem/cis415review/blob/master/process_scheduling.png">
+
+
 
 
 
