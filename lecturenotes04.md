@@ -314,14 +314,27 @@ while (true) {
 	- Sometimes, DNS lookups
 <br /><img width="320" height="200" src="https://github.com/missystem/cis415review/blob/master/datagramSockets01.png"><br /><img width="335" height="185" src="https://github.com/missystem/cis415review/blob/master/datagramSockets02.png"><br />
 
-
-
+### Issues using Sockets
+* Communication semantics
+	- Reliable or not
+* Naming
+	- How do we know a machine’s IP address? DNS
+	- How do we know a service’s port number?
+* Protection
+	- Which ports can a process use?
+	- Who should you receive a message from?
+		- Services are often open -- listen for any connection
+* Performance
+	- How many copies are necessary?
+	- Data must be converted between various data types
 
 ### Remote Procedure Calls (RPC)
+<br /><img width="442" height="384" src="https://github.com/missystem/cis415review/blob/master/RPC.png"><br />
 * message-based communication scheme
 * Each message is addressed to an RPC daemon listening to a **port** on the remote system, and each contains an identifier specifying the function to execute and the parameters to pass to that function
 	- port: a \# included at the start of a msg packet
 * The function is then executed as requested, and any output is sent back to the requester in a separate message
+
 
 ## Summary
 * **Shared memory**
