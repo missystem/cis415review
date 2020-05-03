@@ -235,15 +235,20 @@ int main( )
 		execlp("/bin/ls", "ls", NULL); // exec a file
 	} 
 
-	else { 			/* parent process */
+	else { 		/* parent process */
 		// parent will wait for the child to complete
 		wait(NULL);
 		printf ("Child Complete"); 
 		exit(0);
-	} 
-	
+	} 	
 }
 ```
+```
+execl, execlp, execle, execv, execvp, execvpe
+```
+all execute a file and are frontends to execve <br />
+
+
 
 
 
