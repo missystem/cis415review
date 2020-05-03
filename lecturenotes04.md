@@ -345,8 +345,12 @@ while (true) {
 * Performance vs. abstractions
 	- What if the two processes are on the same machine?
 * Marshaling
-<br /><img width="650" height="365" src="https://github.com/missystem/cis415review/blob/master/marshaling.png"><br />
+<br /><img width="660" height="365" src="https://github.com/missystem/cis415review/blob/master/marshaling.png"><br />
 
+### Remote Method Invocation (RMI)
+* RMI is a Java mechanism similar to RPCs
+* RMI allows a Java program on one machine to invoke a method on a remote object
+<br /><img width="629" height="237" src="https://github.com/missystem/cis415review/blob/master/RMI.png"><br />
 
 ## Summary
 * **Shared memory**
