@@ -329,7 +329,7 @@ while (true) {
 	- Data must be converted between various data types
 
 ### Remote Procedure Calls (RPC)
-<br /><img width="442" height="384" src="https://github.com/missystem/cis415review/blob/master/RPC.png"><br />
+<br /><img width="513" height="617" src="https://github.com/missystem/cis415review/blob/master/RPC.png"><br />
 * message-based communication scheme
 * Each message is addressed to an RPC daemon listening to a **port** on the remote system, and each contains an identifier specifying the function to execute and the parameters to pass to that function
 	- port: a \# included at the start of a msg packet
