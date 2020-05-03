@@ -2,8 +2,9 @@
 
 ## Outline
 * [Process Concept](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-concept)
+* [Process Creation](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-creation)
 * Process Operation
-* System Calls to Create Processes
+* [System Calls to Create Processes](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#program-creation-system-calls)
 * Process Management
 * Process Scheduling
 
@@ -259,8 +260,8 @@ all execute a file and are frontends to execve <br />
 		- some OS do not allow child to continue if parent terminates
 		- all children terminated - cascading termination
 
-
-
+### Process Layout
+<img align="left" src="">
 
 
 
