@@ -514,30 +514,30 @@ all set to go now
 	2. data
 	3. heap
 	4. stack
-* As a process executes, it changes state. 
+* As a process executes, it changes **state** 
 	- 4 general states of a process: 
 		1. ready
 		2. running
 		3. waiting
 		4. terminated
-* Process Control Block (PCB)
+* **Process Control Block (PCB)**
 	- the kernel data structure that represents a process in an OS
-* Process scheduler
+* **Process scheduler**
 	- select an available process to run on a CPU
 * An operating system performs a **context switch** when it switches from running one process to running another
-* Create processes
+* **Create processes**
 	- fork() is used in Linux system
-* Shared memory
+* **Shared memory**
 	- Two (or more) processes share the same region of memory
-* Message passing
+* **Message passing**
 	- Two processes communicate by exchanging messages with one another
-* Pipe
+* **Pipe**
 	- provides a conduit for two processes to communicate
 	- 2 forms of pipes:
 		- Ordinary pipes
 		- Named pipes
-* 2 common tyeps of client–server communication
-	- sockets
+* 2 common tyeps of **client–server communication**
+	- **sockets**
 		- allow two processes on different machines to communicate over a network
-	- remote procedure calls (RPCs)
+	- **remote procedure calls (RPCs)**
 		- abstract the concept of function (procedure) calls in such a way that a function can be invoked on another process that may reside on a separate computer
