@@ -645,6 +645,11 @@ libc
 	- Whenever it is necessary to decide whether or not to allocate a resource, a policy decision must be made. 
 	- Whenever the question is how rather than what, it is a mechanism that must be determined.
 
+### Operating System Structure
+* Common strategy
+	- partition the task into small components, or modules
+
+
 ### Summary
 * Operating systems must balance many needs
 	- Job perspective: 
