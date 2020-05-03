@@ -59,7 +59,7 @@ available in that mode (kernel executes in ring 0)
 
 ### Process State
 * consists of:
-	- Address space (what can be addressed by a process)
+	- [Address space](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-address-space) (what can be addressed by a process)
 	- Execution state (what is need to execute on the CPU)
 	- Resources being used (by the process to execute)
 * Address space contains code and data of a process
@@ -95,6 +95,42 @@ available in that mode (kernel executes in ring 0)
 		- heap allows for dynamic data expansion
 	- Stack segment is where the stack lives
 * Process (logical) address space starts at 0 and runs to a high address
+<img src="https://github.com/missystem/cis415review/blob/master/address_space.png">
+
+### Process Address Space
+* Program (Text)
+* Global Data (Data)
+* Dynamic Data (Heap)
+	- grows up
+* Thread-local Data (Stack)
+	- grows down
+* Each thread has its own stack
+* # address bits determine the addressing range
+<img src="https://github.com/missystem/cis415review/blob/master/process_add_space01.png"> <br />
+
+```
+int value = 5;									Global
+
+int main() {
+	int *p;										Stack
+
+	p = (int *)malloc(sizeof(int));				Heap
+
+	if (p == 0) {
+		printf("ERROR: Out of memory\n”);
+		return 1; 
+	}
+
+	*p = value; 
+	printf("%d\n", *p); 
+
+	free(p);
+	return 0;
+}
+```
+
+### Process Address Space in Action
+
 
 
 
