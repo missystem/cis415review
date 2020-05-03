@@ -350,7 +350,7 @@ while (true) {
 ### Remote Method Invocation (RMI)
 * RMI is a Java mechanism similar to RPCs
 * RMI allows a Java program on one machine to invoke a method on a remote object
-<br /><img width="629" height="237" src="https://github.com/missystem/cis415review/blob/master/RMI.png"><br />
+<br /><img width="735" height="295" src="https://github.com/missystem/cis415review/blob/master/RMI.png"><br />
 
 ## Summary
 * **Shared memory**
