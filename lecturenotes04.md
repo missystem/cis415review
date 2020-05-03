@@ -1,8 +1,19 @@
 ## [Lecture 04: Interprocess Communication (Chapter 3)](https://github.com/missystem/cis415review/blob/master/lecture-4-ipc.pdf)
 
 ## Outline
+
+* Quick review of fork() and exec()
+* Brief introduction to process scheduling 
 * [Interprocesses Communication (IPC)](https://github.com/missystem/cis415review/blob/master/lecturenotes04.md#interprocess-communication-ipc)
+* [Remote Procedure Calls (RPC)]()
 * [Summary](https://github.com/missystem/cis415review/blob/master/lecturenotes04.md#summary)
+
+
+### [Process Creation with New Program](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-creation-with-new-program)
+
+### [Process Layout](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-layout)
+
+### Analogy
 
 
 ### Interprocess Communication (IPC)
