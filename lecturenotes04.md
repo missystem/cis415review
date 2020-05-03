@@ -334,6 +334,18 @@ while (true) {
 * Each message is addressed to an RPC daemon listening to a **port** on the remote system, and each contains an identifier specifying the function to execute and the parameters to pass to that function
 	- port: a \# included at the start of a msg packet
 * The function is then executed as requested, and any output is sent back to the requester in a separate message
+* Supported by systems
+	- CORBA
+	- Java RMI
+* Issues
+	- Support to build client/server stubs
+	- Marshaling arguments and code
+	- Layer on existing mechanism (e.g., sockets) 
+	- Remote server crashes ... then what?
+* Performance vs. abstractions
+	- What if the two processes are on the same machine?
+* Marshaling
+<br /><img width="650" height="365" src="https://github.com/missystem/cis415review/blob/master/marshaling.png"><br />
 
 
 ## Summary
