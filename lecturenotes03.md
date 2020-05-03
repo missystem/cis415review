@@ -72,8 +72,6 @@ available in that mode (kernel executes in ring 0)
 	- Processor: CPU (at least 1)
 
 ### A Process in Memory
-<img align="left" width="290" height="474" src="https://github.com/missystem/cis415review/blob/master/process_in_memory.png"><br />
-
 * A process has to reference memory for different purposes
 	- Instructions
 	- Stack
@@ -85,12 +83,9 @@ available in that mode (kernel executes in ring 0)
 	- \# address bits in instruction address determine logical memory size
 	- a “logical address” is from 0 to the size of logical memory (max)
 * Compiler and OS determine where things get placed in logical memory
-<br /><br /><br /><br /><br /><br /><br /><br />
-
+<img width="290" height="474" src="https://github.com/missystem/cis415review/blob/master/process_in_memory.png">
 
 ### Process Address Space
-<img align="left" width="370" height="450" src="https://github.com/missystem/cis415review/blob/master/address_space.png"><br />
-
 * All locations addressable by process
 	- Also called logical address space
 	- Every process has one
@@ -101,7 +96,7 @@ available in that mode (kernel executes in ring 0)
 		- heap allows for dynamic data expansion
 	- Stack segment is where the stack lives
 * Process (logical) address space starts at 0 and runs to a high address
-<br /><br /><br /><br /><br /><br /><br /><br />
+<img width="370" height="450" src="https://github.com/missystem/cis415review/blob/master/address_space.png">
 
 ### Process Address Space
 * Program (Text)
