@@ -620,6 +620,41 @@ libc
 
 ### OS Design and Implementation
 * Design and implementation of OS is not “solvable”
+	- There are different types for meeting different objectives
+	- Some approaches have proven successful
+* Internal structure of different OSes can vary widely
+* Start the design by defining goals and specifications
+* The design of the system will be affected by the choice of hardware and the type of system
+* The requirements can be divided into two groups:
+	- **user goals**
+		- OS should be convenient to use, easy to learn, reliable, safe, and fast
+	- **system goals**
+		- OS should be easy to design, implement, and maintain, as well as flexible, reliable, error-free, and efficient
+
+### OS Policy vs Mechanism
+* Important principle to separate
+	- Policy: 	 What will (should) be done?
+		- e.g., deciding how long the timer is to be set for a particular user is a policy decision
+	- Mechanism: How to do it?
+		- e.g., the timer construct is a mechanism for ensuring CPU protection
+* The separation of policy and mechanism is important
+	- Allows maximum *flexibility* if policy decisions are to be changed later
+	- Universal principle
+* Specifying and designing an OS is a highly creative task of software engineering
+* Policy decisions are important for all resource allocation. 
+	- Whenever it is necessary to decide whether or not to allocate a resource, a policy decision must be made. 
+	- Whenever the question is how rather than what, it is a mechanism that must be determined.
+
+### Summary
+* Operating systems must balance many needs
+	- Job perspective: 
+		- give the impression that each process has individual use of system
+	- System perspective:
+		- Comprehensive management of computer machine resources
+* Operating system structures try to make use of system resources straightforward
+	- Libraries
+	- System services
+	- System calls and other interfaces
 
 
 
