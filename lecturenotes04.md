@@ -306,6 +306,17 @@ while (true) {
 	- An application that receives connections from clients <br />
 <img width="295" height="85" src="https://github.com/missystem/cis415review/blob/master/streamSocket01.png"><br /><img width="295" height="85" src="https://github.com/missystem/cis415review/blob/master/streamSocket02.png"><br /><img width="290" height="75" src="https://github.com/missystem/cis415review/blob/master/streamSocket03.png"><br />
 
+### Datagram Sockets
+* Used less frequently than stream sockets
+	- They provide no flow control, ordering, or reliability
+* Often used as a building block
+	- Streaming media applications
+	- Sometimes, DNS lookups
+<br /><img width="320" height="200" src="https://github.com/missystem/cis415review/blob/master/datagramSockets01.png"><br /><img width="335" height="185" src="https://github.com/missystem/cis415review/blob/master/datagramSockets02.png"><br />
+
+
+
+
 ### Remote Procedure Calls (RPC)
 * message-based communication scheme
 * Each message is addressed to an RPC daemon listening to a **port** on the remote system, and each contains an identifier specifying the function to execute and the parameters to pass to that function
