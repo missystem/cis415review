@@ -178,10 +178,12 @@ int main() {
 	- Exception (program error)
 	- System call (switch to kernel mode)
 
-Process Control Block (PCB)
-
-
-
+### Process Control Block (PCB)
+* Information associated with each process
+	- also called the *task control block*
+* Process state:
+	- running, waiting, ...
+<img src="https://github.com/missystem/cis415review/blob/master/PCB.png">
 
 
 
