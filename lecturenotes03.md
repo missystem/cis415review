@@ -335,7 +335,7 @@ all set to go now
 * OS maintains a list of PCBs for all processes
 * Process state lists link in the PCBs
 
-<img width="204" height="392" src="https://github.com/missystem/cis415review/blob/master/PCB.png"> <img width="245" height="130" src="https://github.com/missystem/cis415review/blob/master/PCB_list.png">
+<img width="254" height="392" src="https://github.com/missystem/cis415review/blob/master/PCB.png"> <img width="295" height="130" src="https://github.com/missystem/cis415review/blob/master/PCB_list.png">
 
 
 
