@@ -377,6 +377,8 @@ all set to go now
 		- load the new process’s process control block into OS and registers
 	- Start the new process
 * Does this differ if we are running an interrupt handler?
+<img width="857" height="705" src="https://github.com/missystem/cis415review/blob/master/context_switch_process_to_process.png">
+
 
 
 
