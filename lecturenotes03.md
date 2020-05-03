@@ -6,6 +6,7 @@
 * [System Calls to Create Processes](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#program-creation-system-calls)
 * Process Management
 * [Process Scheduling](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-scheduling)
+* Summary
 
 ### Overview of Processes
 * How are processes created?
