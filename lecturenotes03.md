@@ -270,7 +270,7 @@ all execute a file and are frontends to execve <br />
 5. Child added to ready queue and is
 all set to go now
 <br /><br />Effects in memory after parent calls fork()
-<br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br />
 
 ### Relocatable Memory
 * Program instructions use addresses that logically start at 0
