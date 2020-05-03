@@ -4,9 +4,9 @@
 * [Process Concept](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-concept)
 * [Process Operation](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-creation)
 * [System Calls to Create Processes](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#program-creation-system-calls)
-* Process Management
 * [Process Scheduling](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-scheduling)
-* Summary
+* [Interprocesses Communication (IPC)](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#interprocess-communication-ipc)
+* [Summary](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#summary)
 
 ### Overview of Processes
 * How are processes created?
@@ -18,7 +18,7 @@
 * How can processes communicate?
 	- interprocess communication, concurrency, deadlock
 
-### Superview and User Modes
+### Supervisor and User Modes
 * OS runs in “supervisor” mode
 	- has access to protected (privileged) instructions only
 available in that mode (kernel executes in ring 0)
