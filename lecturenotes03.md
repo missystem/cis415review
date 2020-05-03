@@ -412,6 +412,52 @@ all set to go now
 ### Ready Queue And Various I/O Device Queues
 <img width="497" height="432" src="https://github.com/missystem/cis415review/blob/master/ready_IO_queues.png">
 
+### Schedulers
+* **Short-term scheduler** (process scheduler)
+	- Selects which process should be executed next
+	- Allocates CPU to running process
+* **Medium-term scheduler** (multiprogram scheduler)
+	- Manages process (jobs) in execution
+	- Moves partially executed jobs to/from disk storage
+	- Adjusts the degree of multiprogramming
+* **Long-term scheduler** (job scheduler)
+	- Selects which jobs should be allowed to run
+	- Loads process and makes it ready to run
+
+### Process Actions in Client-Server
+* Example of forking to create a new process 
+* Consider a web server
+<img width="166" height="60" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_01.png">
+* A remote “client” wants to connect and look at a webpage hosted by the web server
+<img width="300" height="150" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_02.png">
+* An interprocess communication is made and a connection is established
+<img width="300" height="150" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_03.png">
+* What if the web server only served this client until it was done looking at web pages?
+* How can the web server support multiple “concurrent” clients?
+* Create more “concurrency” by creating more processes!
+<img width="450" height="145" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_04.png">
+* A fork() copies the parent PCB and establish a child process initialized with that PCB
+* All of the parent’s state is inherited by the child, including the connection to the client
+* Responsibility for “servicing” the client is handed off to the “child” server process
+<img width="450" height="145" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_05.png">
+* The “parent” server process goes back to waiting for new clients
+* The “parent” server should disengage from the client by releasing its (duplicate) connection
+<img width="450" height="150" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_06.png">
+* The “child” server is now completely responsible for the client connection
+* There is still a logical relationship between the child / parent server processes
+* Communication takes places between the client and “child” server process
+<img width="300" height="150" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_07.png">
+* The “parent” server process is not involved
+* Now, this can procedure can continue as new client connections come in
+<img width="450" height="240" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_08.png">
+* In this way, the amount of “concurrency” increases with more server processes
+<img width="620" height="270" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_09.png">
+* It gives both logical isolation between the servers, as well as simplifies the design and functionality
+* Many types of servers operate this way
+* A objective is to avoid blocking in the server
+	- If one server is stalled, others can run
+<img width="630" height="330" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_10.png">
+
 
 
 
