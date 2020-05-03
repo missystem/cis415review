@@ -108,7 +108,7 @@ available in that mode (kernel executes in ring 0)
 * Each thread has its own stack
 * \# address bits determine the addressing range <br />
 <img width="363" height="493" src="https://github.com/missystem/cis415review/blob/master/process_add_space01.png">
-<br />
+
 ```
 int value = 5;					Global
 
