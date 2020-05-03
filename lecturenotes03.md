@@ -426,7 +426,7 @@ all set to go now
 
 ### Process Actions in Client-Server
 * Example of forking to create a new process 
-* Consider a web server
+* Consider a web server <br />
 <img width="116" height="60" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_01.png"> <br />
 * A remote “client” wants to connect and look at a webpage hosted by the web server <br />
 <img width="300" height="150" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_02.png"> <br />
