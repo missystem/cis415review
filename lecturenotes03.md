@@ -471,6 +471,19 @@ all set to go now
 <img width="630" height="330" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_10.png">
 
 ## Summary
+* Process
+	- Execution state of a program
+* Process Creation 
+	- fork and exec
+	- From binary representation
+* Process Description
+	- Necessary to manage resources and context switch
+* Process Scheduling
+	- Process states and transitions among them 
+* Interprocess Communication
+	- Ways for processes to interact (other than normal files)
+
+## Summary from book
 * A **process** is a program in execution
 	- the status of the current activity of a process is represented by the program counter, as well as other registers.
 * The **layout of a process in memory** is represented by 4  sections:
