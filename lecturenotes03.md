@@ -131,6 +131,54 @@ int main() {
 
 ### [Process Address Space in Action](https://github.com/missystem/cis415review/blob/master/ProcessAddressSpaceInAction.md)
 
+### Process Creation
+* What happens?
+	- New process object in the OS kernel is created
+		- build process data structures
+	- Allocate address space (abstract resource)
+		- later, allocate actual memory (physical resource)
+	- Add to execution (ready) queue
+		- make it runnable
+* Is the OS a process?
+	- Yes, it is the first process when system is booted
+
+### Process Creation Options (Parent and Child)
+* Process hierarchy options
+	- Parent process (very first process) creates Children processes
+	- Child processes can create other child processes
+	- Tree of processes
+	<img src="https://github.com/missystem/cis415review/blob/master/process_tree.png">
+* Resource sharing options
+	- Parent and children share all resources
+	- Children share subset of parent’s resources
+	- Parent and child share no resources
+* Execution options
+	- Parent and children execute concurrently
+	- Parent waits until children terminate
+* Address space
+	- Child duplicate of parent
+	- Child has a program loaded into it
+
+### Executing a Process
+* What is required?
+* Registers store state of execution in CPU
+	- Stack pointer
+	- Data registers
+* Program count to indicated what to execute?
+	- CPU register holding address of next instruction
+* A “thread of execution”
+	- able to execute instructions
+	- has its own stack
+	- each process has at least 1 thread of execution
+* A process thread executes instructions found in the process’s address space ...
+	- usually the text segment
+* ... until a trap or interrupt
+	- Time slice expires (timer interrupt)
+	- Another event (e.g., interrupt from other device)
+	- Exception (program error)
+	- System call (switch to kernel mode)
+
+Process Control Block (PCB)
 
 
 
