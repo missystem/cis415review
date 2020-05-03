@@ -304,9 +304,7 @@ while (true) {
 	- An application that establishes a connection to a server
 * Server 
 	- An application that receives connections from clients <br />
-<img width="295" height="85" src="https://github.com/missystem/cis415review/blob/master/streamSocket01.png"><img width="295" height="85" src="https://github.com/missystem/cis415review/blob/master/streamSocket02.png"><img width="290" height="75" src="https://github.com/missystem/cis415review/blob/master/streamSocket03.png">
-
-
+<img width="295" height="85" src="https://github.com/missystem/cis415review/blob/master/streamSocket01.png"><br /><img width="295" height="85" src="https://github.com/missystem/cis415review/blob/master/streamSocket02.png"><br /><img width="290" height="75" src="https://github.com/missystem/cis415review/blob/master/streamSocket03.png"><br />
 
 ### Remote Procedure Calls (RPC)
 * message-based communication scheme
