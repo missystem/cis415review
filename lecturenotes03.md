@@ -337,7 +337,46 @@ all set to go now
 
 <img width="254" height="392" src="https://github.com/missystem/cis415review/blob/master/PCB.png"> <img width="325" height="150" src="https://github.com/missystem/cis415review/blob/master/PCB_list.png">
 
+### Per Process Control Information
+* Process state
+	- Ready, running, waiting (momentarily)
+* Links to other processes
+	- Children
+* Memory Management
+	- Segments and page tables
+* Resources
+	- Open files
+* And much more...
 
+### [*/proc*](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#sysfs-file-and-proc-files) File System
+* Linux and Solaris
+	- *ls /proc*
+	- Process information pseudo-file system
+	- Does not contain “real” files, but runtime system information
+		- system memory
+		- devices mounted
+		- hardware configuration
+	- A directory for each process
+* A directory for each process
+	- */proc/<pid>/io* <br />
+		I/O statistics
+	- */proc/<pid>/environ* <br />
+		Environment variables (in binary)
+	- */proc/<pid>/stat* <br />
+		Process status and info
+
+### Context Switch
+* OS switches from one execution context to another
+	- One process to another process
+	- Interrupt handling
+	- Process to kernel (mode transition, not context switch)
+* Current process to new process
+	- Save the state of the current process
+		- PCB: describes the state of the process in the CPU
+	- Load the saved context for the new process
+		- load the new process’s process control block into OS and registers
+	- Start the new process
+* Does this differ if we are running an interrupt handler?
 
 
 
