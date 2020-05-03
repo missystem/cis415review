@@ -600,11 +600,26 @@ libc
 	- Provide functions that update kernel data
 		- file's write function updates kernel based on input data
 
-### 
+### Other System Calls
+* Hook the output of one program into the input of another
+	- *pipe()*
+* Block until one of several file descriptor streams is ready
+	- *select()*
+* Special calls for dealing with network
+	- AF_INET sockets, etc
+* Send a message to other (or all) processes
+	- *signal()*
+* Most of these in [section 2](http://man7.org/linux/man-pages/dir_section_2.html) of Unix/Linux manual
 
+### Syscall Functionality
+* System calls are the main interface between processes and the OS
+	- Like an extended “instruction set” for user programs that hide many details
+	- First Unix system had a couple dozen system calls
+	- Current systems have many more <br />
+		(>300 in Linux and >500 in FreeBSD)
 
-
-
+### OS Design and Implementation
+* Design and implementation of OS is not “solvable”
 
 
 
