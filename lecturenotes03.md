@@ -96,7 +96,7 @@ available in that mode (kernel executes in ring 0)
 		- heap allows for dynamic data expansion
 	- Stack segment is where the stack lives
 * Process (logical) address space starts at 0 and runs to a high address
-<img src="https://github.com/missystem/cis415review/blob/master/address_space.png">
+<img width="310" height="450" src="https://github.com/missystem/cis415review/blob/master/address_space.png">
 
 ### Process Address Space
 * Program (Text)
