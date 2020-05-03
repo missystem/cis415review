@@ -592,7 +592,7 @@ libc
 		- system memory
 		- devices mounted
 		- hardware configuration
-	- A lot of system utilities are simply calls to files in this directory
+	- A lot of [system utilities](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#operating-system-services) are simply calls to files in this directory
 	- By altering files located here you can even read/change kernel parameters (sysctl) while the system is running
 * [*sysfs*](http://man7.org/linux/man-pages/man5/sysfs.5.html) files
 	- Provide functions that update kernel data
