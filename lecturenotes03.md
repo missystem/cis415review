@@ -261,7 +261,7 @@ all execute a file and are frontends to execve <br />
 		- all children terminated - cascading termination
 
 ### Process Layout
-<img align="left" width="350" height="350" src="https://github.com/missystem/cis415review/blob/master/process_layout.png"> 
+<img align="left" width="350" height="350" src="https://github.com/missystem/cis415review/blob/master/process_layout.png"> <br /><br /><br />
 
 1. PCB with new PID created 
 2. Memory allocated for child initialized by copying over from the parent
@@ -270,7 +270,7 @@ all execute a file and are frontends to execve <br />
 5. Child added to ready queue and is
 all set to go now
 <br /><br />Effects in memory after parent calls fork()
-<br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br />
 
 ### Relocatable Memory
 * Program instructions use addresses that logically start at 0
