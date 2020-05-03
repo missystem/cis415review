@@ -204,17 +204,6 @@ execl, execlp, execle, execv, execvp, execvpe
 ```
 all execute a file and are frontends to execve <br />
 
-### Process Termination
-* Process executes last statement and asks the OS to delete it (via *exit()*)
-	- Output data from child to parent (via *wait()*)
-	- Process' resources are deallocated by OS
-* Parent may terminate execution of children processes (via *abort()*) if:
-	- Child has exceeded allocated resources
-	- Task assigned to child is no longer required
-	- Parent is exiting
-		- some OS do not allow child to continue if parent terminates
-		- all children terminated - cascading termination
-
 ### Process Layout
 <img align="left" width="350" height="350" src="https://github.com/missystem/cis415review/blob/master/process_layout.png"> <br /><br />
 
@@ -226,6 +215,30 @@ all execute a file and are frontends to execve <br />
 all set to go now
 <br /><br />Effects in memory after parent calls fork()
 <br /><br /><br /><br /><br />
+
+### Analogy
+* Doing a fork() is analogous to cloning
+	- Copy is exactly the same
+	- Completely able to live independently
+	- Each has its own ability to execute
+	- Each has its own resources
+		- gets a copy of the parent’s process address space (unless you use another variant of fork())
+		- gets a copy of the parent’s PCB (includes its memory management information)
+	- Still executes the same code
+* What if you want to change the clone’s behavior
+* Doing an exec() is analogous to replacing the brain
+	- Executing new program code
+
+### Process Termination
+* Process executes last statement and asks the OS to delete it (via *exit()*)
+	- Output data from child to parent (via *wait()*)
+	- Process' resources are deallocated by OS
+* Parent may terminate execution of children processes (via *abort()*) if:
+	- Child has exceeded allocated resources
+	- Task assigned to child is no longer required
+	- Parent is exiting
+		- some OS do not allow child to continue if parent terminates
+		- all children terminated - cascading termination
 
 ### Relocatable Memory
 * Program instructions use addresses that logically start at 0
