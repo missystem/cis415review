@@ -410,7 +410,8 @@ all set to go now
 <img width="534" height="304" src="https://github.com/missystem/cis415review/blob/master/process_scheduling.png">
 
 ### Ready Queue And Various I/O Device Queues
-<img width="442" height="384" src="https://github.com/missystem/cis415review/blob/master/ready_IO_queues.png">
+<img width="497" height="432" src="https://github.com/missystem/cis415review/blob/master/ready_IO_queues.png">
+
 
 
 
