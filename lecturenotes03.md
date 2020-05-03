@@ -457,7 +457,7 @@ all set to go now
 * A fork() copies the parent PCB and establish a child process initialized with that PCB
 * All of the parent’s state is inherited by the child, including the connection to the client
 * Responsibility for “servicing” the client is handed off to the “child” server process <br />
-<img width="450" height="145" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_05.png"> <br />
+<img width="630" height="145" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_05.png"> <br />
 * The “parent” server process goes back to waiting for new clients
 * The “parent” server should disengage from the client by releasing its (duplicate) connection <br />
 <img width="450" height="150" src="https://github.com/missystem/cis415review/blob/master/process_actions_in_Client_Server_06.png"> <br />
