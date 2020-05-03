@@ -106,7 +106,7 @@ available in that mode (kernel executes in ring 0)
 	- grows down
 * Each thread has its own stack
 * # address bits determine the addressing range <br />
-
+<br />
 <img src="https://github.com/missystem/cis415review/blob/master/process_add_space01.png"> <br />
 
 ```
