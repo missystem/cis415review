@@ -303,7 +303,7 @@ while (true) {
 * Client
 	- An application that establishes a connection to a server
 * Server 
-	- An application that receives connections from clients
+	- An application that receives connections from clients <br />
 <img width="295" height="85" src="https://github.com/missystem/cis415review/blob/master/streamSocket01.png"><img width="295" height="85" src="https://github.com/missystem/cis415review/blob/master/streamSocket02.png"><img width="290" height="75" src="https://github.com/missystem/cis415review/blob/master/streamSocket03.png">
 
 
