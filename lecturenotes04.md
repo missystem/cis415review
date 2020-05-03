@@ -352,6 +352,19 @@ while (true) {
 * RMI allows a Java program on one machine to invoke a method on a remote object
 <br /><img width="735" height="295" src="https://github.com/missystem/cis415review/blob/master/RMI.png"><br />
 
+### IPC Summary
+* Lots of mechanisms
+	- Pipes
+	- Shared memory 
+	- Sockets
+	- RPC
+* Trade-offs
+	- Ease of use, functionality, flexibility, performance
+Implementation must maximize these
+	- Minimize copies (performance)
+	- Synchronous vs Asynchronous (ease of use, flexibility)
+	- Local vs Remote (functionality)
+
 ## Summary
 * **Shared memory**
 	- Two (or more) processes share the same region of memory
