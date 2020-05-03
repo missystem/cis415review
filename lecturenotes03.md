@@ -83,7 +83,7 @@ available in that mode (kernel executes in ring 0)
 	- # address bits in instruction address determine logical memory size
 	- a “logical address” is from 0 to the size of logical memory (max)
 * Compiler and OS determine where things get placed in logical memory
-<img width="412" height="524" src="https://github.com/missystem/cis415review/blob/master/process_in_memory.png">
+<img width="412" height="550" src="https://github.com/missystem/cis415review/blob/master/process_in_memory.png">
 
 ### Process Address Space
 * All locations addressable by process
@@ -262,6 +262,7 @@ all execute a file and are frontends to execve <br />
 
 ### Process Layout
 <img align="left" width="401" height="402" src="https://github.com/missystem/cis415review/blob/master/process_layout.png">
+
 
 1. PCB with new PID created 
 2. Memory allocated for child initialized by copying over from the parent
