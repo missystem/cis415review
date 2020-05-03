@@ -422,33 +422,33 @@ the I/O device
 	- Most details of OS interface hidden by API
 
 ### Types of System Calls
-* Process control
+* **Process control**
 	- create process, terminate process
 	- load, execute
 	- get process attributes, set process attributes
 	- wait event, signal event
 	- allocate and free memory
-* File management
+* **File management**
 	- create file, delete file
 	- open, close
 	- read, write, reposition
 	- get file attributes, set file attributes
-* Device management
+* **Device management**
 	- request device, release device
 	- read, write, reposition
 	- get device attributes, set device attributes 
 	- logically attach or detach devices
-* Information maintenance
+* **Information maintenance**
 	- get time or date, set time or date
 	- get system data, set system data
 	- get process, file, or device attributes
 	- set process, file, or device attributes
-* Communications
+* **Communications**
 	- create, delete communication connection
 	- send, receive messages
 	- transfer status information
 	- attach or detach remote devices
-* Protection
+* **Protection**
 	- get file permissions
 	- set file permissions
 
@@ -513,10 +513,67 @@ libc
 	- But relying on directly invoked Linux system calls may make your program less portable across UNIX varieties <br />
  <img src="https://github.com/missystem/cis415review/blob/master/system_execution_detail_04.png"> <br />
 
+### System Programs (System Services)
+* System programs provide a convenient environment for program development and execution
+* They can be divided into categories: 
+	<!-- p75 on the book-->
+	- File manipulation (management)
+	- Status information
+	- File modification
+	- Programing-language support (program development)
+	- Program loading and execution
+	<!-- - Application programs -->
+	- Communications
+	- Background services
+* Most user’s view of the operating system is defined by system programs, not the actual system calls
+
+### File Interface
+* Goal:
+	- Provide a uniform abstraction for accessing the OS and its resources
+* Abstraction
+	- File
+* Use file system calls to access OS services
+	- Devices, sockets, pipes, etc
+	- Also use in OS in general
+
+### I/O with System Calls
+* Much I/O is based on a streaming model (sequence of bytes)
+	- *write()* sends a stream of bytes somewhere
+	- *read()* blocks until a stream of input is ready
+* Annoying details:
+	- Might fail, can block for a while
+	- Working with file descriptors
+	- Arguments are pointers to character buffers
+	- See [read()](http://man7.org/linux/man-pages/man2/read.2.html) and [write()](http://man7.org/linux/man-pages/man2/write.2.html)
+
+### File Descriptors (int fd)
+* A process might have several different I/O streams in use at any given time
+	- These are specified by a *file descriptor* (a kernel data structure)
+		- Each process has its own table of file descriptors
+	- [*open()*](http://man7.org/linux/man-pages/man2/open.2.html) **associates** a file descriptor with a file
+	- [*close()*](http://man7.org/linux/man-pages/man2/close.2.html) **destroys** a file descriptor
+* stdin and stdout are usually associated with a terminal
+
 ### 
 
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
