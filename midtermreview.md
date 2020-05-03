@@ -1,5 +1,3 @@
-
-
 ### DEFINITIONS OF COMPUTER SYSTEM COMPONENTS
 * **CPU** — The hardware that executes instructions.
 * **Processor** — A physical chip that contains one or more CPUs.
