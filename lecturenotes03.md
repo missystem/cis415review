@@ -83,7 +83,7 @@ available in that mode (kernel executes in ring 0)
 	- # address bits in instruction address determine logical memory size
 	- a “logical address” is from 0 to the size of logical memory (max)
 * Compiler and OS determine where things get placed in logical memory
-<img width="350" height="500" src="https://github.com/missystem/cis415review/blob/master/process_in_memory.png">
+<img width="320" height="400" src="https://github.com/missystem/cis415review/blob/master/process_in_memory.png">
 
 ### Process Address Space
 * All locations addressable by process
@@ -96,7 +96,7 @@ available in that mode (kernel executes in ring 0)
 		- heap allows for dynamic data expansion
 	- Stack segment is where the stack lives
 * Process (logical) address space starts at 0 and runs to a high address
-<img width="310" height="450" src="https://github.com/missystem/cis415review/blob/master/address_space.png">
+<img width="370" height="450" src="https://github.com/missystem/cis415review/blob/master/address_space.png">
 
 ### Process Address Space
 * Program (Text)
