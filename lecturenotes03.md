@@ -248,6 +248,14 @@ execl, execlp, execle, execv, execvp, execvpe
 ```
 all execute a file and are frontends to execve <br />
 
+### Process Termination
+* Process executes last statement and asks the OS to delete it (via *exit()*)
+	- Output data from child to parent (via *wait()*)
+	- Process' resources are deallocated by OS
+* Parent may terminate execution of children processes (via *abort()*)
+	- Child has exceeded allocated resources
+
+- 
 
 
 
