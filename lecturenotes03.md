@@ -56,7 +56,7 @@ available in that mode (kernel executes in ring 0)
 	- Waiting:	  The process is waiting for some event to occur
 	- Ready:      The process is waiting to run
 	- Terminated: The process has finished execution (end state)
-<img src="https://github.com/missystem/cis415review/blob/master/process_state.png">
+<img width="621" height="261" src="https://github.com/missystem/cis415review/blob/master/process_state.png">
 
 ### Process State
 * consists of:
