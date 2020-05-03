@@ -1,6 +1,6 @@
 ## [Lecutre 02: OS Structure and System Calls (Chapter 2)](https://github.com/missystem/cis415review/blob/master/lecture-2-structure.pdf)
 
-### Outline
+## Outline
 * Hardware and OS relationship
 * [Operating System Services](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#operating-system-services)
 * [System Calls](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#systems-calls)
