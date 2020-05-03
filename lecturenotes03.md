@@ -263,7 +263,12 @@ all execute a file and are frontends to execve <br />
 ### Process Layout
 <img align="left" width="401" height="402" src="https://github.com/missystem/cis415review/blob/master/process_layout.png">
 
-
+1. PCB with new PID created 
+2. Memory allocated for child initialized by copying over from the parent
+3. If parent had called wait(), it is moved to a waiting queue 
+4. If child had called exec(), its memory is overwritten with new code and data
+5. Child added to ready queue and is
+all set to go now
 
 
 
