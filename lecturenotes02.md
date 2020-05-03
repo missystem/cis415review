@@ -554,14 +554,51 @@ libc
 	- [*close()*](http://man7.org/linux/man-pages/man2/close.2.html) **destroys** a file descriptor
 * stdin and stdout are usually associated with a terminal
 
+### Regular File
+* File has a *pathname* (e.g.: /tmp/foo)
+* Can open the file
+	- *int fd = open( “/tmp/foo”, O_RDWR )*
+		- *O_RDWR* - flags for read/write access
+	- for reading and writing
+* Can read from and write to the file
+	- *bytes = read( fd, buf, max ); /\* buf get output \*/*
+	- *bytes = write( fd, buf, len ); /\* buf has input \*/*
+		- *buf* - pointer to buffer
+
+### Socket File
+* File has a *pathname* (e.g.: /tmp/bar)
+	- Files provide a persistence for a communication channel
+	- Usually used for local communication (UNIX domain sockets)
+* Open, Read, and Write via socket operations
+	- *sockfd = socket( AF_UNIX, TCP_STREAM, 0 );*
+	- *local.path* is set to */tmp/bar*
+	- *bind ( sockfd, &local, len )*
+	- Use sock operations to read and write
+
+### Device File
+* Files for interacting with physical devices
+	- */dev/null* (do nothing)
+	- */dev/cdrom* (CD-drive)
+* Use file system operations, but are handled in device-specific ways
+	- *open(), read(), write()* correspond to device-specific functions (act as function pointers!)
+	- Also, use *ioctl* (I/O control) to interact
+
+### *sysfs* File and */proc* Files
+* These files enable reading from and writing to kernel
+* [*/proc*](http://man7.org/linux/man-pages/man5/proc.5.html) files
+	- Enable reading of kernel state for a process
+	- Process information pseudo-file system
+	- Does not contain "real" files, but runtime system information
+		- system memory
+		- devices mounted
+		- hardware configuration
+	- A lot of system utilities are simply calls to files in this directory
+	- By altering files located here you can even read/change kernel parameters (sysctl) while the system is running
+* [*sysfs*](http://man7.org/linux/man-pages/man5/sysfs.5.html) files
+	- Provide functions that update kernel data
+		- file's write function updates kernel based on input data
+
 ### 
-
-
-
-
-
-
-
 
 
 
