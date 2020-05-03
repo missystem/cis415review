@@ -2,11 +2,10 @@
 
 ## Outline
 * [Process Concept](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-concept)
-* [Process Creation](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-creation)
-* Process Operation
+* [Process Operation](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-creation)
 * [System Calls to Create Processes](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#program-creation-system-calls)
 * Process Management
-* Process Scheduling
+* [Process Scheduling](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-scheduling)
 
 ### Overview of Processes
 * How are processes created?
@@ -423,6 +422,24 @@ all set to go now
 * **Long-term scheduler** (job scheduler)
 	- Selects which jobs should be allowed to run
 	- Loads process and makes it ready to run
+
+### Interprocess Communication (IPC)
+* Allow cooperating processes to exchange data
+* Why provide environment that allows process cooperation?
+	- Information sharing
+	- Computation speedup
+	- Modularity
+* 2 fundamental models:
+	- Shared memory
+		- A region of memory that is shared by the cooperating processes is established
+		- Processes can then exchange information by reading and writing data to the shared region
+		- Faster than message passing
+	- Message passing
+		- Communication takes place by means of messages exchanged between the cooperating processes
+		- Useful for exchanging smaller amounts of data (no conflicts need be avoided)
+		- Easier to implement in a distributed system than shared memory
+
+### 
 
 ### Process Actions in Client-Server
 * Example of forking to create a new process 
