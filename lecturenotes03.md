@@ -80,10 +80,10 @@ available in that mode (kernel executes in ring 0)
 		- static and dynamic (heap)
 * Logical memory
 	- is what can be referenced by an address
-	- # address bits in instruction address determine logical memory size
+	- \# address bits in instruction address determine logical memory size
 	- a “logical address” is from 0 to the size of logical memory (max)
 * Compiler and OS determine where things get placed in logical memory
-<img width="290" height="400" src="https://github.com/missystem/cis415review/blob/master/process_in_memory.png">
+<img width="290" height="474" src="https://github.com/missystem/cis415review/blob/master/process_in_memory.png">
 
 ### Process Address Space
 * All locations addressable by process
