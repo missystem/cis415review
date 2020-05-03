@@ -49,28 +49,6 @@ available in that mode (kernel executes in ring 0)
 	- Heap
 		- containing memory dynamically allocated during run time
 
-### Process Execution State
-* As a process executes, it changes state
-	- New:		  The process is being created (starting state)
-	- Running:	  Instructions are being executed
-	- Waiting:	  The process is waiting for some event to occur
-	- Ready:      The process is waiting to run
-	- Terminated: The process has finished execution (end state)
-<img width="621" height="261" src="https://github.com/missystem/cis415review/blob/master/process_state.png">
-
-### Process State
-* consists of:
-	- [Address space](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-address-space) (what can be addressed by a process)
-	- Execution state (what is need to execute on the CPU)
-	- Resources being used (by the process to execute)
-* Address space contains code and data of a process
-* Processes are individual execution contexts
-	- Threads are also include here
-* Resources are physical support necessary to execute
-	- Memory: physical memory, address translation support
-	- Storage: disk, files, ...
-	- Processor: CPU (at least 1)
-
 ### A Process in Memory
 * A process has to reference memory for different purposes
 	- Instructions
@@ -179,28 +157,6 @@ int main() {
 	- Exception (program error)
 	- System call (switch to kernel mode)
 
-### Process Control Block (PCB)
-* also called the *task control block*
-* contains information associated with a specific process
-* including:
-	- Process state:
-		- new, ready, running, waiting, halted, etc
-	- Program counter
-		- indicates the address of the next executed process's instruction
-	- CPU registers
-		- for process thread
-		- vary in number and type, depending on the computer architecture
-	- CPU-scheduling information
-		- includes a process priority, pointers to scheduling queues, and any other scheduling parameters
-	- Memory-management information
-		- memory allocated to the process
-	- Accounting information
-		- the amount of CPU and real time used, time limits, account numbers, job or process numbers, etc
-	- I/O status information
-		- the list of I/O devices allocated to the process
-		- a list of open files, etc
-<img src="https://github.com/missystem/cis415review/blob/master/PCB.png">
-
 ### Program Creation System Calls
 * *fork()*
 	- Copy address space of parent and all threads
@@ -275,9 +231,112 @@ all set to go now
 ### Relocatable Memory
 * Program instructions use addresses that logically start at 0
 * Cannot place all programs in memory at physical address 0
+* Relocation is the mechanism needed that enables the OS to place a program in an arbitrary location in memory
+	- Gives the programmer the impression that they own the processor and the memory
+* Program is loaded into memory at specific locations
+	- Need some form of address translation (relocation) to do this
+		- base-limit, segmentation, paging, virtual memory
+* Also may need to share program code across processes
 
+### Process State
+* What do we need to track about a process?
+	- How many processes?
+	- What’s the state of each of them?
+* How to track them?
+	- Process table
+		- Kernel data structure tracking processes on system
+	- Process control block (PCB)
+		- Structure for tracking process context
 
+### Process Execution State
+* As a process executes, it changes state
+	- New:		  The process is being created (starting state)
+	- Running:	  Instructions are being executed
+	- Waiting:	  The process is waiting for some event to occur
+	- Ready:      The process is waiting to run
+	- Terminated: The process has finished execution (end state)
+<img width="621" height="261" src="https://github.com/missystem/cis415review/blob/master/process_state.png">
 
+### Process State
+* consists of:
+	- [Address space](https://github.com/missystem/cis415review/blob/master/lecturenotes03.md#process-address-space) (what can be addressed by a process)
+	- Execution state (what is need to execute on the CPU)
+	- Resources being used (by the process to execute)
+* Address space contains code and data of a process
+* Processes are individual execution contexts
+	- Threads are also include here
+* Resources are physical support necessary to execute
+	- Memory: physical memory, address translation support
+	- Storage: disk, files, ...
+	- Processor: CPU (at least 1)
+
+<img width="621" height="261" src="https://github.com/missystem/cis415review/blob/master/process_state.png">
+
+### Process State 
+* Running
+	- Process is executing in the processor and in memory with all resources to run
+* Ready
+	- Process in memory with all resources to run, but is waiting for dispatch onto a processor
+* Waiting
+	- Process is not running, instead waiting for some event to occur
+
+### State Transitions
+* New Process ==> Ready
+	- Allocate resources necessary to run
+	- Place process on process queue (usually at end)
+* Ready ==> Running
+	- Process is at the head of process queue
+	- Process is scheduled onto an available processor
+* Running ==> Ready
+	- Process is interrupted
+		- usually by a timer interrupt
+	- Process could still run, in that it is not waiting something
+	- Placed back on the process queue
+
+### State Transitions: Page Fault Handling
+* Running ==> Waiting
+	- Either something exceptional happened that caused an interrupt to occur (e.g., page fault exception) <br /> 
+	or the process needs to wait on some action (e.g., it made a system call or requested I/O)
+	- Process must wait for whatever event happened to be serviced
+* Waiting ==> Ready
+	- Event has been satisfied so that the process can return to run
+	- Put it on the process (ready) queue
+* Ready ==> Running
+
+### State Transitions: Other Issues
+* Priorities
+	- Can provide policy indicating which process should run next
+* Yield
+	- System call to give up processor voluntarily
+	- For a specific amount of time (sleep)
+* Exit
+	- Terminating signal (Ctrl-C)
+
+### Process Control Block (PCB)
+* also called the *task control block*
+* contains information (metadata) associated with a specific process kept by the OS (kernel)
+* including:
+	- Process state:
+		- new, ready, running, waiting, halted, etc
+	- Program counter
+		- indicates the address of the next executed process's instruction
+	- CPU registers
+		- for process thread
+		- vary in number and type, depending on the computer architecture
+	- CPU-scheduling information
+		- includes a process priority, pointers to scheduling queues, and any other scheduling parameters
+	- Memory-management information
+		- memory allocated to the process
+	- Accounting information
+		- the amount of CPU and real time used, time limits, account numbers, job or process numbers, etc
+	- I/O status information
+		- the list of I/O devices allocated to the process
+		- a list of open files, etc
+* OS maintains a list of PCBs for all processes
+* Process state lists link in the PCBs
+
+<img src="https://github.com/missystem/cis415review/blob/master/PCB.png">
+<img src="https://github.com/missystem/cis415review/blob/master/PCB_list.png">
 
 
 
