@@ -99,7 +99,6 @@ available in that mode (kernel executes in ring 0)
 <img src="https://github.com/missystem/cis415review/blob/master/address_space.png">
 
 ### Process Address Space
-<img align="right" width="360" height="490" src="https://github.com/missystem/cis415review/blob/master/process_add_space01.png">
 * Program (Text)
 * Global Data (Data)
 * Dynamic Data (Heap)
@@ -108,7 +107,8 @@ available in that mode (kernel executes in ring 0)
 	- grows down
 * Each thread has its own stack
 * \# address bits determine the addressing range <br />
-
+<img width="363" height="493" src="https://github.com/missystem/cis415review/blob/master/process_add_space01.png">
+<br />
 ```
 int value = 5;					Global
 
