@@ -85,7 +85,7 @@ available in that mode (kernel executes in ring 0)
 	- \# address bits in instruction address determine logical memory size
 	- a “logical address” is from 0 to the size of logical memory (max)
 * Compiler and OS determine where things get placed in logical memory
-<br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br />
 
 
 ### Process Address Space
