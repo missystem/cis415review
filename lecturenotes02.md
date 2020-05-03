@@ -7,7 +7,7 @@
 * [System Calls](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#systems-calls)
 * [Types of System Calls](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#types-of-system-calls)
 * [System Programs](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#system-programs-system-services)
-* Operating System Design and Implementation
+* [Operating System Design and Implementation](https://github.com/missystem/cis415review/blob/master/lecturenotes02.md#os-design-and-implementation)
 * Operating System Structure
 * Operating System Debugging
 * Operating System Generation
