@@ -2,7 +2,8 @@
 
 ## Outline
 * [Interprocesses Communication (IPC)](https://github.com/missystem/cis415review/blob/master/lecturenotes04.md#interprocess-communication-ipc)
-* [Remote Procedure Calls (RPC)]()
+* [Sockets](https://github.com/missystem/cis415review/blob/master/lecturenotes04.md#sockets)
+* [Remote Procedure Calls (RPC)](https://github.com/missystem/cis415review/blob/master/lecturenotes04.md#remote-procedure-calls-rpc)
 * [Summary](https://github.com/missystem/cis415review/blob/master/lecturenotes04.md#summary)
 
 
