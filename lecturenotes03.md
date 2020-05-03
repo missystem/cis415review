@@ -83,7 +83,7 @@ available in that mode (kernel executes in ring 0)
 	- # address bits in instruction address determine logical memory size
 	- a “logical address” is from 0 to the size of logical memory (max)
 * Compiler and OS determine where things get placed in logical memory
-<img src="https://github.com/missystem/cis415review/blob/master/process_in_memory.png">
+<img width="412" height="524" src="https://github.com/missystem/cis415review/blob/master/process_in_memory.png">
 
 ### Process Address Space
 * All locations addressable by process
