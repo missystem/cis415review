@@ -646,8 +646,59 @@ libc
 	- Whenever the question is how rather than what, it is a mechanism that must be determined.
 
 ### Operating System Structure
-* Common strategy
+* Common approach
 	- partition the task into small components, or modules
+* Monolithic Structure (approach)
+	- a common technique for designing operating systems
+	- no structure at all
+		- place all of the functionality of the kernel into a single, static binary file that runs in a single address space 
+	- Tightly coupled system
+		- changes to one part of the system can have wide-ranging effects on other parts <br />
+<img src="https://github.com/missystem/cis415review/blob/master/figure_2.12_traditional_UNIX_system_structure.png"> <br />
+* Layered Approach 
+	- Loosely coupled system
+		- divided into separate, smaller components that have specific and limited functionality
+	- Advantage
+		- changes in one component affect only that component, and no others
+		- allowing system implementers more freedom in creating and changing the inner workings of the system 
+		- avoiding the problems of layer definition and interaction
+	- Each layer is implemented only with operations provided by lower-level layers <br />
+<img src="https://github.com/missystem/cis415review/blob/master/figure2.14_a_layered_OS.png"><br />
+* Microkernels
+	- removing all nonessential components from the kernel and implementing them as user-level programs that reside in separate address spaces
+	- smaller kernel 
+	- minimal process and memory management 
+	- Benefits:
+		- makes extending the operating system easier
+		- easier to port from one hardware design to another
+		- more security and reliability 
+	- Disadvantages:
+		-  the performance of microkernels can suffer due to increased system-function overhead
+		- the OS may have to switch from one process to the next to exchange the messages <br />
+<img src="https://github.com/missystem/cis415review/blob/master/architecture_of_typical_microkernel.png"><br />
+* **Modules**
+* Hybrid Systems
+
+### Building and Booting an Operating System
+* Operating-System Generation
+	1. Write the operating system source code (or obtain previously written source code).
+	2. Configure the operating system for the system on which it will run.
+	3. Compile the operating system.
+	4. Install the operating system.
+	5. Boot the computer and its new operating system.
+* System Boot
+	1. A small piece of code known as the bootstrap program or boot loader locates the kernel.
+	2. The kernel is loaded into memory and started.
+	3. The kernel initializes hardware.
+	4. The root file system is mounted.
+
+### Operating-System Debugging
+* Failure Analysis
+* Performance Monitoring and Tuning
+	- Counters
+* Tracing
+* BCC (BPF Compiler Collection)
+	- a rich toolkit that provides tracing features for Linux systems
 
 
 ### Summary
@@ -661,8 +712,61 @@ libc
 	- System services
 	- System calls and other interfaces
 
-
-
+* An operating system provides an environment for the execution of programs by providing services to users and programs.
+* 3 primary approaches for interacting with an operating system
+	1. command interpreters
+	2. graphical user interfaces
+	3. touch- screen interfaces.
+* Systemcalls provide an interface to the services made available by an operating system. Programmers use a system call’s application programming interface (API) for accessing system-call services.
+* System calls: 6 major categories:
+	1. process control
+	2. file management
+	3. device management
+	4. information maintenance
+	5. communications
+	6. protection.
+* The standard C library provides the system-call interface for UNIX and Linux systems.
+* OS include a collection of system programs that provide utilities to users
+* Linker
+	- combines several relocatable object modules into a single binary executable file. 
+* Loader 
+	- loads the executable file into memory, where it becomes eligible to run on an available CPU.
+* Several reasons why applications are operating-system specific.
+		- different binary formats for program executables
+		- different instruction sets for different CPUs
+		- system calls that vary from one operating system to another
+* An operating system is designed with specific goals in mind 
+	- These goals ultimately determine the operating system’s policies. 
+	- An operating system implements these policies through specific mechanisms.
+* Monolithic OS 
+	- has no structure
+	- all functionality is provided in a single, static binary file that runs in a single address space. 
+	- disadvantage: difficult to modify
+	- primary benefit: efficiency
+* Layered OS
+	- divided into a number of discrete layers, 
+	- bottom layer - hardware interface 
+	- highest layer - user interface
+	- layered software systems have had some success, 
+	- generally not ideal for designing operating systems
+		- performance problems
+* Microkernel approach
+	- uses a minimal kernel
+	- most services run as user-level applications
+	- Communication takes place via message passing
+* Modular approach
+	- provides OS services through modules that can be loaded and removed during run time
+* Hybrid
+	- Many contemporary operating systems are constructed as hybrid systems using a combination of a monolithic kernel and modules.
+* Boot loader
+	- loads an OS into memory
+	- performs initialization
+	- begins system execution
+* The performance of an OS can be monitored using either counters or tracing. 
+	- Counters 
+		- a collection of system-wide or per-process statistics
+	- Tracing 
+		- follows the execution of a program through the operating system
 
 
 
