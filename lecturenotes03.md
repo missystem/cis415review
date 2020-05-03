@@ -109,12 +109,12 @@ available in that mode (kernel executes in ring 0)
 <img src="https://github.com/missystem/cis415review/blob/master/process_add_space01.png"> <br />
 
 ```
-int value = 5;									Global
+int value = 5;						Global
 
 int main() {
-	int *p;										Stack
+	int *p;							Stack
 
-	p = (int *)malloc(sizeof(int));				Heap
+	p = (int *)malloc(sizeof(int));	Heap
 
 	if (p == 0) {
 		printf("ERROR: Out of memory\n”);
