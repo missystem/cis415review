@@ -261,7 +261,7 @@ all execute a file and are frontends to execve <br />
 		- all children terminated - cascading termination
 
 ### Process Layout
-<img align="left" width="401" height="402" src="https://github.com/missystem/cis415review/blob/master/process_layout.png"> 
+<img align="left" width="300" height=300 src="https://github.com/missystem/cis415review/blob/master/process_layout.png"> 
 Effects in memory after parent calls fork() <br />
 
 1. PCB with new PID created 
