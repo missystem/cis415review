@@ -48,7 +48,27 @@ available in that mode (kernel executes in ring 0)
 	- Heap
 		- containing memory dynamically allocated during run time
 
+### Process Execution State
+* As a process executes, it changes state
+	- New:		  The process is being created (starting state)
+	- Running:	  Instructions are being executed
+	- Waiting:	  The process is waiting for some event to occur
+	- Ready:      The process is waiting to run
+	- Terminated: The process has finished execution (end state)
+<img src="https://github.com/missystem/cis415review/blob/master/process_state.png">
 
+### Process State
+* consists of:
+	- Address space (what can be addressed by a process)
+		- contains code and data of a process
+	- Execution state (what is need to execute on the CPU)
+		- Processes are individual execution contexts
+		- Threads are also include here
+	- Resources being used (by the process to execute)
+		- Resources are physical support necessary to execute
+			- Memory: physical memory, address translation support
+			- Storage: disk, files, ...
+			- Processor: CPU (at least 1)
 
 
 
