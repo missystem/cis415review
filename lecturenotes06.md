@@ -104,7 +104,7 @@
 	- How much a CPU is used during a burst?
 	- This is a main concern ... Why?
 * Scheduling is aided by knowing the length of these bursts
-<img width="360" height="645" src="https://github.com/missystem/cis415review/blob/master/cpu_IO_burst.png">
+<img width="240" height="430" src="https://github.com/missystem/cis415review/blob/master/cpu_IO_burst.png">
 
 ### Histogram of CPU Burst Times
 * Profile for a particular process
