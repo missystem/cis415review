@@ -226,14 +226,21 @@
 * can only predict the length (do not know for sure)
 	- We expect that the next CPU burst will be similar in length to the previous ones
 	- By computing an approximation of the length of the next CPU burst, we can pick the process with the shortest predicted CPU burst
-* The next CPU burst is generally predicted as an *exponential average* of the measured lengths of previous CPU bursts
-	- Given <br />
+* The next CPU burst is generally predicted as an ***exponential average*** of the measured lengths of previous CPU bursts
+	- *Given:* <br />
 		*t<sub>n</sub> - actual length of the n-th CPU burst* <br />
 		*τ<sub>n</sub> - predicted value for the n-th CPU burst* <br />
 		*τ<sub>n+1</sub> - predicted value for the next CPU burst* <br />
 	 	*α such that 0 ≤ α ≤ 1*
-	- Define <br />
+	- *Define:* <br />
 		τ<sub>n+1</sub> =αt<sub>n</sub> +(1−α)t<sub>n</sub>
+* What to set α to?
+	- α = 0? Recent history does not count
+	- α = 1? Only the last CPU burst counts
+	- Commonly, α set to 1⁄2
+* Since both α and (1 - α) are ≤ 1, each successive term has less weight than its predecessor
+* SRTF is the preemptive version
+
 
 
 
