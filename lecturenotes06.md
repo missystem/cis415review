@@ -241,7 +241,9 @@
 * Since both α and (1 - α) are ≤ 1, each successive term has less weight than its predecessor
 * SRTF is the preemptive version
 
-
+### CPU Burst Prediction
+* α = 1/2 and τ0 = 10 <br />
+<img width="600" height="433" src="https://github.com/missystem/cis415review/blob/master/nextCPUburst.png"> <br />
 
 
 
