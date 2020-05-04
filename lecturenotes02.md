@@ -82,6 +82,7 @@
 	- Defined by a protocol
 	- Data and control arbitration
 * System bus - for CPU connection to memory primarily
+	- Main bus going to CPU, Memory, data
 	- Also to bridge to device buses
 * PCI bus - for devices
 	- Connects CPU-memory subsystem to:
@@ -89,6 +90,8 @@
 		- expansion bus that connects slow devices
 * Other device "bus" types
 	- SCSI, IDE, USB, ...
+<br /> PCI adaptor -> I/O controller
+<br /> yellow -> I/O bus <br />
 <img src="https://github.com/missystem/cis415review/blob/master/system_bus.png">
 
 ### Operating System Services
