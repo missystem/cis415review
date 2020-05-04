@@ -169,9 +169,9 @@
 
 | Process | Burst Time |
 |:-------:|:----------:| 
-|    P1   |     24     | 
-|    P2   |      3     |
-|    P3   |      3     |
+|    P<sub>1</sub>   |     24     | 
+|    P<sub>2</sub>   |      3     |
+|    P<sub>3</sub>   |      3     |
 
 * Burst time here represents the job’s entire execution time <br />
 	- Suppose that the processes arrive in the order: P1, P2, P3
@@ -208,10 +208,10 @@
 
 | Process | Arrival Time | Burst Time |
 |:-------:|:------------:|:----------:|
-|    P1   |      0.0     |      7     |
-|    P2   |      2.0     |      4     |
-|    P3   |      4.0     |      1     |
-|    P4   |      5.0     |      4     |
+|    P<sub>1</sub>   |      0.0     |      7     |
+|    P<sub>2</sub>   |      2.0     |      4     |
+|    P<sub>3</sub>   |      4.0     |      1     |
+|    P<sub>4</sub>   |      5.0     |      4     |
 
 * Nonpreemptive SJF
 	- Scheduler makes a decision at the time when the next job is to be scheduled <br />
