@@ -177,14 +177,14 @@
 	- Suppose that the processes arrive in the order: P1, P2, P3
 		- Assume processes arrive at the same time (e.g., time 0)
 	- The Gantt chart for the schedule is: <br />
-	<img width="500" height="60" src="https://github.com/missystem/cis415review/blob/master/FCFSex1.png"> <br />
+	<img width="500" height="75" src="https://github.com/missystem/cis415review/blob/master/FCFSex1.png"> <br />
 		- Waiting time for P1 = 0; P2 = 24; P3 = 27
 		- Average waiting time: (0 + 24 + 27) / 3 = 17
 * Reduce waiting time
 	- Suppose that the processes arrive in the order: P2, P3, P1
 		- Assume that they arrive at the same time
 	- The Gantt chart for the schedule is: <br />
-	<img width="1000" height="120" src="https://github.com/missystem/cis415review/blob/master/FCFSex2.png"> <br />
+	<img width="500" height="75" src="https://github.com/missystem/cis415review/blob/master/FCFSex2.png"> <br />
 		- Waiting time for P1 = 6; P2 = 0; P3 = 3
 		- Average waiting time: (6 + 0 + 3)/3 = 3
 		- Much better than previous case ... Why?
