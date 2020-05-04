@@ -146,11 +146,12 @@
 * Interprocess or Interthread communication?
 * Sharing memory between processes or threads?
 * Terminating a process or terminating a thread (not the last one)? <br />
+(vfork(): faster fork) <br />
 
 | Process creation method | Time (sec), elapsed (real) |
 | -----------------------:|:--------------------------:|
 | fork()                  | 22.27 (7.99)               |
-| vfork() (faster fork)   | 3.52 (2.49)                |
+| vfork()                 | 3.52 (2.49)                |
 | clone()                 | 2.97 (2.14)                |
 
 
