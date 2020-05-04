@@ -213,6 +213,11 @@
 |    P3   |      4.0     |      1     |
 |    P4   |      5.0     |      4     |
 
+* Scheduler makes a decision at the time when the next job is to be scheduled
+	- SJF (non-preemptive) <br />
+	<img width="500" height="115" src="https://github.com/missystem/cis415review/blob/master/FCFSex2.png"> <br />
+
+
 
 
 
