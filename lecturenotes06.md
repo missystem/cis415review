@@ -255,7 +255,8 @@
 |    P<sub>3</sub>   |      2     |      9     |
 |    P<sub>4</sub>   |      3     |      5     |
 
-
+* Preemptive SJF Gantt Chart <br />
+	
 
 
 
