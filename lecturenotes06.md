@@ -227,9 +227,11 @@
 	- We expect that the next CPU burst will be similar in length to the previous ones
 	- By computing an approximation of the length of the next CPU burst, we can pick the process with the shortest predicted CPU burst
 * The next CPU burst is generally predicted as an *exponential average* of the measured lengths of previous CPU bursts
-	- t<sub>n</sub> be the length of the nth CPU burst, 
-	- τn+1 be our predicted value for the next CPU burst. Then, for α, 0 ≤ α ≤ 1, define
-
+	- t<sub>n</sub> - the length of the nth CPU burst
+	- τ<sub>n+1</sub> - predicted value for the next CPU burst
+	- For α, 0 ≤ α ≤ 1 <br />
+	define τ<sub>n+1</sub> =αt<sub>n</sub> +(1−α)t<sub>n</sub>.
+	- 
 
 
 
