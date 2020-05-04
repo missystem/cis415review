@@ -387,6 +387,41 @@
 		- each queue gets a certain amount of CPU time which it can schedule amongst its processes
 <img width="450" height="250" src="https://github.com/missystem/cis415review/blob/master/MQscheduling.png"> <br />
 
+### Multilevel Feedback Queue
+* Allow processes move between queues <br />
+	*Aging* can be implemented this way
+* A process uses too much CPU time will be moved to a lower-priority queue
+* A process that waits too long in a lower-priority queue may be moved to a higher-priority queue
+* Multilevel-feedback-queue scheduler defined by the following parameters:
+	- Number of queues
+	- Scheduling algorithms for each queue
+	- Method used to determine when to upgrade a process
+	- Method used to determine when to demote a process
+	- Method used to determine which queue a process will enter when that process needs service
+
+<img width="350" height="210" src="https://github.com/missystem/cis415review/blob/master/MFQ.png"> <br />
+
+### 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
