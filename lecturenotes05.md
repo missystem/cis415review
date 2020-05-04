@@ -146,7 +146,9 @@
 * Interprocess or Interthread communication?
 * Sharing memory between processes or threads?
 * Terminating a process or terminating a thread (not the last one)? <br />
+Time to create 100,000 processes (Linux 2.6 kernel, x86-32 system) <br />
 (vfork(): faster fork) <br />
+clone() creates a lightweight Linux process (thread) <br />
 
 | Process creation method | Time (sec), elapsed (real) |
 | -----------------------:|:--------------------------:|
