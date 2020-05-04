@@ -154,15 +154,18 @@
 ### First-Come, First-Served (FCFS)
 * Serve the jobs in the order they arrive
 * Managed with a FIFO queue
-* Non-preemptive
+* Nonpreemptive
 	- Process is run until it has to wait or terminates
 	- OS can not stop the process and put it on ready queue
+	- *Once the CPU has been allocated to a process, that process keeps the CPU until it releases the CPU, either by terminating or by requesting I/O*
 * Simple and easy to implement
 	- When a process is ready, add it to tail of ready queue, and serve the ready queue in FCFS order
 * Fair
 	- No process is starved out
 	- Service order is immune to job size (does not depend)
-	- It depends only on *time of arrival*
+	- It depends only on *time of arrival* <br />
+
+* Example: <br />
 
 | Process | Burst Time |
 |:-------:|:----------:| 
@@ -170,21 +173,45 @@
 |    P2   |      3     |
 |    P3   |      3     |
 
-* Example: <br />
-Burst time here represents the job’s entire execution time <br />
+* Burst time here represents the job’s entire execution time <br />
 	- Suppose that the processes arrive in the order: P1, P2, P3
 		- Assume processes arrive at the same time (e.g., time 0)
-	- The Gantt chart for the schedule is:
+	- The Gantt chart for the schedule is: <br />
+	<img width="1000" height="150" src="https://github.com/missystem/cis415review/blob/master/FCFSex1.png"> <br />
+		- Waiting time for P1 = 0; P2 = 24; P3 = 27
+		- Average waiting time: (0 + 24 + 27) / 3 = 17
+* Reduce waiting time
+	- Suppose that the processes arrive in the order: P2, P3, P1
+		- Assume that they arrive at the same time
+	- The Gantt chart for the schedule is: <br />
+	<img width="1000" height="150" src="https://github.com/missystem/cis415review/blob/master/FCFSex2.png"> <br />
+		- Waiting time for P1 = 6; P2 = 0; P3 = 3
+		- Average waiting time: (6 + 0 + 3)/3 = 3
+		- Much better than previous case ... Why?
+		- *Convoy effect*: short processes gets placed behind long process in the scheduling order (all the other processes wait for the one big process to get off the CPU)
 
+### Shortest-Job-First (SJF)
+* Suppose we know length of *next* CPU burst
+* Then us these lengths to schedule the process
+	- Process with the shortest next CPU burst time goes first
+* Two schemes:
+	1. Nonpreemptive 
+		- once CPU given to the process it cannot bepreempted until it completes its CPU burst
+	2. Preemptive 
+		- if a new process arrives with CPU burst length less than remaining time of current executing process, then preempt
+		- known as the Shortest-Remaining-Time-First (SRTF)
+* SJF is optimal
+	- Gives minimum average waiting time for a set of processes
+	- So we should always use it, right?
+* It cannot be implemented at the level of CPU scheduling, as there is no way to know the length of the next CPU burst
+* Example of Nonpreemptive <br />
 
-
-
-
-
-
-
-
-
+| Process | Arrival Time | Burst Time |
+|:-------:|:------------:|:----------:|
+|    P1   |      0.0     |      7     |
+|    P2   |      2.0     |      4     |
+|    P3   |      4.0     |      1     |
+|    P4   |      5.0     |      4     |
 
 
 
