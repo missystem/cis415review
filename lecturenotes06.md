@@ -163,8 +163,6 @@
 	- No process is starved out
 	- Service order is immune to job size (does not depend)
 	- It depends only on *time of arrival*
-* Example: <br />
-Burst time here represents the job’s entire execution time
 
 | Process | Burst Time |
 |:-------:|:----------:| 
@@ -172,8 +170,11 @@ Burst time here represents the job’s entire execution time
 |    P2   |      3     |
 |    P3   |      3     |
 
-
-
+* Example: <br />
+Burst time here represents the job’s entire execution time <br />
+	- Suppose that the processes arrive in the order: P1, P2, P3
+		- Assume processes arrive at the same time (e.g., time 0)
+	- The Gantt chart for the schedule is:
 
 
 
