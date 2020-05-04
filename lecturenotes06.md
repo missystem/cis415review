@@ -229,9 +229,9 @@
 * The next CPU burst is generally predicted as an *exponential average* of the measured lengths of previous CPU bursts
 	- t<sub>n</sub> - the length of the nth CPU burst
 	- τ<sub>n+1</sub> - predicted value for the next CPU burst
-	- For α, 0 ≤ α ≤ 1 <br />
-	define τ<sub>n+1</sub> =αt<sub>n</sub> +(1−α)t<sub>n</sub>.
-	- 
+* For α, 0 ≤ α ≤ 1, define τ<sub>n+1</sub> =αt<sub>n</sub> +(1−α)t<sub>n</sub>
+	- t<sub>n</sub> - most recent information
+	- τ<sub>n</sub> - stores the past history
 
 
 
