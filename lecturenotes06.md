@@ -151,6 +151,17 @@
 * Distinguish between non-preemptive and preemptive cases
 	- This has to do with whether a running process can be stopped during its execution and put back on the ready queue so that another process can acquire the CPU and run
 
+### Scheduling Algorithms
+* First-come, First-serve (FCFS)
+	- Non-preemptive
+	- Does not account for waiting time (or much else) 
+		- Convoy problem
+* Shortest Job First (SJF)
+	- May be preemptive
+	- Optimal for minimizing waiting time (how?)
+* Priority Scheduling
+	- 
+
 ### First-Come, First-Served (FCFS)
 * Serve the jobs in the order they arrive
 * Managed with a FIFO queue
@@ -258,8 +269,86 @@
 * Preemptive SJF Gantt Chart <br />
 <img width="500" height="75" src="https://github.com/missystem/cis415review/blob/master/SRTFex.png"> <br />
 * Average waiting time <br />
-= [(10-1)+(1-1)+(17-2)+(5-3)]/4 <br />
-= 26/4 = 6.5 msec
+= [(10 - 1) + (1 - 1) + (17 - 2) + (5 - 3)] / 4 <br />
+= 26 / 4 <br />
+= 6.5 msec <br />
+
+
+### Round Robin (RR)
+* Each process gets a small unit of CPU time (time quantum / time slice)
+	- Usually 10-100 milliseconds
+	- After this time has elapsed, the process is *preempted* and added to the end of the ready queue
+* Approach
+	- Consider *n* processes in the ready queue
+	- Consider time quantum is *q*
+	- Then each process gets *1/n* of the CPU time
+	- In chunks of at most *q* time units at once
+	- No process waits more than *(n - 1)q* time units
+* Example of RR with Time Quantum = 4 <br />
+
+| Process | Burst Time |
+|:-------:|:----------:|
+| P<sub>1</sub> | 24 |
+| P<sub>2</sub> |  3 |
+| P<sub>3</sub> |  3 |
+
+* The Gantt chart <br />
+<img width="500" height="75" src="https://github.com/missystem/cis415review/blob/master/RRex.png"> <br />
+	- Typically, higher average turnaround than SJF, but better response times
+	- *q* should be large compared to context switch time 
+		- Usually *q* is between 10ms to 100ms
+		- Context switch < 10 uses
+* RR Time Quantum
+	- Round robin allows the CPU to be virtually shared between the processes
+		- Each process has the illusion that it is running in isolation (at *1/n*-th the CPU speed)
+	- Smaller time quantums make this illusion more realistic, but there are problems
+		- What is the main problem? <br />
+		If context-switch time is added in, the average turnaround time increases even more for a smaller time quantum, since more context switches are required.
+	- Larger time quantums will give more preference to processes with larger burst times
+		- What scheduling algorithm is approximated when quantums are very large? <br />
+		If the time quantum is too large, RR scheduling degenerates to an FCFS policy
+		- A rule of thumb: 80 percent of the CPU bursts should be shorter than the time quantum
+* Time Quantum and Context Switch Time
+<img width="480" height="210" src="https://github.com/missystem/cis415review/blob/master/RRcontextswitch.png"> <br />
+
+### Priority Scheduling
+* Each process is given a certain priority “value”
+* Always schedule the process with highest priority
+	- Preemptive
+	- Non-preemptive
+* Problems:
+	- Starvation (indefinit blocking)
+		- Low priority processes may never execute 
+* Solution:
+	- Aging
+		- gradually increasing the priority of processes that wait in the system for a long time
+* FCFS and SJF are specialized versions of Priority Scheduling
+	- Assigning priorities to the processes in a certain way
+		- What would the priority function be for FCFS? 
+		- What would the priority function be for SJF?
+
+* Example of Priority Scheduling <br />
+
+|      Process 		 | Burst Time |  Priority  |
+|:------------------:|:----------:|:----------:|
+|    P<sub>1</sub>   |     10     |      3     |
+|    P<sub>2</sub>   |      1     |      1     |
+|    P<sub>3</sub>   |      2     |      4     |
+|    P<sub>4</sub>   |      1     |      5     |
+|    P<sub>5</sub>   |      5     |      2     |
+
+* Priority scheduling Gantt Chart (non-preemptive)<br />
+<img width="495" height="75" src="https://github.com/missystem/cis415review/blob/master/PSex.png"> <br />
+	- Average waiting time = 8.2 msec
+
+
+
+
+
+
+
+
+
 
 
 
