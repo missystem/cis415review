@@ -256,7 +256,10 @@
 |    P<sub>4</sub>   |      3     |      5     |
 
 * Preemptive SJF Gantt Chart <br />
-	
+<img width="500" height="75" src="https://github.com/missystem/cis415review/blob/master/SRTFex.png"> <br />
+* Average waiting time <br />
+= [(10-1)+(1-1)+(17-2)+(5-3)]/4 <br />
+= 26/4 = 6.5 msec
 
 
 
