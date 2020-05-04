@@ -179,8 +179,7 @@ clone() creates a lightweight Linux process (thread) <br />
 | - record locks        | - alternate signal stack    |
 | - FS information      | - error return value        |
 | - timers              | - scheduling policy/priority|
-| - resource limits     | - Linux-specific (CPU affinity)|
-| ...                   |
+| - resource limits     | - Linux-specific (e.g., CPU affinity)|
 
 
 
