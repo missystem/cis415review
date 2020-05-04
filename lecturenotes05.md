@@ -225,8 +225,207 @@ clone() creates a lightweight Linux process (thread) <br />
 	- Manages stack pointer, program counter
 	- Switches process’s internal state among threads
 
+### Many-to-One Thread Model
+* Many user-level threads correspond to a single kernel thread
+	- Kernel is not aware of the mapping
+	- Handled by a thread library <br />
+	<img width="570" height="330" src="https://github.com/missystem/cis415review/blob/master/manytoone.png"> <br />
+* How does it work?
+	- Create and execute a new thread
+	- Upon yield, switch to another user thread in the same process
+		- kernel is unaware
+	- Upon wait, all threads are blocked 
+		- kernel is unaware there are other options
+		- can not wait and run at the same time
+
+### One-to-One Thread Model
+* One user-level thread per kernel thread
+	- A kernel thread is allocated for every user-level thread
+	- Must get the kernel to allocate resources for each new user- level thread <br />
+	<img width="570" height="330" src="https://github.com/missystem/cis415review/blob/master/onetoone.png"> <br />
+* How does it work?
+	- Create new thread
+		- system call to kernel
+	- Upon yield, switch to another kernel thread in system
+		- kernel is aware
+	- Upon wait, another thread in the process may run
+		- only the single kernel thread is blocked
+		- kernel is aware there are other options in this process
+
+### Many-to-Many Thread Model
+* A pool of user-level threads maps to a pool of kernel threads
+	- Pool sizes can be different (kernel pool is no larger)
+	-  A kernel thread is pool is allocated for every user-level thread
+	- No need for the kernel to allocate resources for each new user-level thread <br />
+	<img width="570" height="330" src="https://github.com/missystem/cis415review/blob/master/manytomany.png"> <br />
+* How does it work?
+	- Create new thread
+		- may map to kernel thread dynamically
+	- Upon yield, switch to another thread 
+		- kernel is aware
+	- Upon wait, another thread in the process may run
+		- if a kernel thread is available to be scheduled to that process
+		- kernel is aware of the mapping between user and kernel threads
+
+### Two-Level Model
+<img width="580" height="320" src="https://github.com/missystem/cis415review/blob/master/twolevel.png"> <br />
+
+### Problems Solved with Threads
+* Imagine you are building a web server
+* Problem:
+	- A web server accepts client requests for web pages, images, sound, and so forth. A busy web server may have several (perhaps thousands of) clients concurrently accessing it. If the web server ran as a traditional single-threaded process, it would be able to service only one client at a time, and a client might have to wait a very long time for its request to be serviced.
+* Solution: 
+	- You could allocate a pool of threads, one for each client
+		- thread would wait for a request, get content file, return it 
+	- How would the different thread models impact this?
+* Imagine you are building a web browser
+	- You could allocate a pool of threads 
+		- some for user interface
+		- some for retrieving content
+		- some for rendering content
+	- What happens if the user decided to stop the request? ◆
+		- mouse click on the stop button
+
+### Multithreaded Server Architecture
+<img width="1010" height="370" src="https://github.com/missystem/cis415review/blob/master/MultithreadedServerArchitecture.png"> <br />
+
+### Linux Threads
+* Linux uses one-to-one thread model
+	- Threads are called tasks
+* Linux views threads as “contexts of execution”
+	- Threads are defined separately from processes
+	- There is flexibility in what is private and shared
+* Linux system call
+	- *clone(int (\*fn)(), void \*\*stack, int flags, int argc, ...)*
+	- Create a new thread (Linux task)
+* May be created in the same address space or not
+	- Flags (on means “share”): clone VM, clone filesystem, clone files, clone signal handlers
+	- If all these flags off, what system call is clone equal to?
+
+### POSIX Threads
+* POSIX Threads is a thread API specification
+	- Does not define directly the implementation
+	- Could be implemented differently
+* A POSIX standard (IEEE 1003.1c) API for thread creation and synchronization
+	- Specification, not implementation
+	- Provided either as user-level or kernel-level (\*)
+	- API specifies behavior of the thread library
+	- Implementation is up to development of the library
+* Common in UNIX operating systems
+	- Solaris, Linux, Mac OS X
+* POSIX Threads is also known as *Pthreads*
+
+### POSIX Threads Functions
+* start the thread
+	```pthread_create()```
+* return thread ID
+	```pthread_self()```
+* for comparisons of thread ID's
+	```pthread_equal()```
+* return from the start function
+	```pthread_exit()```
+* wait for another thread to terminate & retrieve value from pthread_exit()
+	```thread_join()```
+* terminate a thread, by TID
+	```pthread_cancel()```
+* thread is immune to join or cancel & runs independently until it terminates
+	```pthread_detach()```
+* thread attribute modifiers
+	```pthread_attr_init()```
+
+### POSIX Threads FAQ
+* How to pass multiple arguments to start a thread? 
+	- Build a struct and pass a pointer to it
+* Is the pthreads ID unique to the system?
+	- No, just process – Linux task ids are system-wide
+* After pthread_create(), which thread is running? 
+	- It acts like fork in that both threads are running
+* How many threads terminate when ...
+	- exit() is called? – all in the process
+	- pthread_exit() is called? – only the calling thread
+* How are variables shared by threads? 
+	- Globals, local static, dynamic data (heap)
+
+### Figure 4.11 Multithreaded C program using the Pthreads API.
+```
+#include <pthread.h>
+#include <stdio.h> #include <stdlib.h>
+
+int sum; 	/* this data is shared by the thread(s) */
+void *runner(void *param); /* threads call this function */
+
+int main(int argc, char *argv[])
+{
+	pthread_t tid; 		/* the thread identifier */
+	pthread_attr_t attr; 	/* set of thread attributes */
+
+	/* set the default attributes of the thread */ 
+	pthread_attr_init(&attr);
+
+	/* create the thread */
+	pthread_create(&tid, &attr, runner, argv[1]);
+
+	/* wait for the thread to exit */ 
+	pthread_join(tid,NULL);
+
+	printf("sum = %d∖n",sum); 
+}
 
 
+/* The thread will execute in this function */ 
+void *runner(void *param)
+{
+	int i, upper = atoi(param);
+	sum = 0;
+
+    for (i = 1; i <= upper; i++)
+    	sum += i;
+
+    pthread_exit(0);
+}
+```
+
+### Figure 4.12 Pthread code for joining ten threads.
+```
+#define NUM_THREADS 10
+
+/* an array of threads to be joined upon */ 
+pthread_t workers[NUM THREADS];
+
+for (int i = 0; i < NUM THREADS; i++) 
+	pthread_join(workers[i], NULL);
+```
+
+### Concurrency with Threads
+* Consider the client-server example again
+* Now want to run with just a single process
+	- Need to use threads to get concurrency
+* Process "main" (parent) thread waits for clients
+	- Parent thread forks (or dispatches) a new thread to handle each new client connection
+	- Responsibilities of the child thread:
+		- handles the new connection
+		- exits when the connection terminates
+
+### Client-Server with Pthreads
+<img width="330" height="390" src="https://github.com/missystem/cis415review/blob/master/client_server_pthreads_01.png">
+<img width="580" height="390" src="https://github.com/missystem/cis415review/blob/master/client_server_pthreads_02.png">
+<img width="580" height="390" src="https://github.com/missystem/cis415review/blob/master/client_server_pthreads_03.png">
+<img width="580" height="390" src="https://github.com/missystem/cis415review/blob/master/client_server_pthreads_04.png">
+<img width="580" height="390" src="https://github.com/missystem/cis415review/blob/master/client_server_pthreads_05.png">
+<img width="580" height="390" src="https://github.com/missystem/cis415review/blob/master/client_server_pthreads_06.png">
+
+### Implications?
+* Consider a web server on a Linux platform
+* 0.0297 ms per thread create (time for clone()) 
+	- 10x faster than process forking
+	- Maximum of (1000 / 0.0297) = \~33,670 connections/sec
+	- 3 billion connections per day per machine
+		- much, much better
+* Facebook would need only 500 machines 
+* So, why do we need processes at all?<br />
+Just write everything using threads<br />
+	- Writing safe multithreaded code can be complicated 
+	- Why? What are the issues?
 
 
 
@@ -244,7 +443,7 @@ clone() creates a lightweight Linux process (thread) <br />
 	1. responsiveness
 	2. resource sharing
 	3. economy
-	4. scalability.
+	4. scalability
 * **Concurrency** 
 	- multiple threads are making progress, whereas 
 * **Parallelism** 
