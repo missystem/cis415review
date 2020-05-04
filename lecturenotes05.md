@@ -586,7 +586,7 @@ Which thread should it be delivered to? -- It depends...
 		- an upcall is a general term for an invocation of application function from the kernel
 	- User-level thread scheduler can then get a new user-level thread created
 * Way of conveying information between the kernel and the user-level thread scheduler regarding the disposition of:
-	- # user-level threads (increase or decrease)
+	- \# user-level threads (increase or decrease)
 	- User-level thread state
 		- running to waiting, waiting to ready
 
