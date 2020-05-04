@@ -145,8 +145,8 @@
 * Context switch between processes or threads? 
 * Interprocess or Interthread communication?
 * Sharing memory between processes or threads?
-* Terminating a process or terminating a thread (not the last one)? <br />
-Time to create 100,000 processes (Linux 2.6 kernel, x86-32 system) <br />
+* Terminating a process or terminating a thread (not the last one)?
+* Time to create 100,000 processes (Linux 2.6 kernel, x86-32 system) <br />
 (vfork(): faster fork) <br />
 clone() creates a lightweight Linux process (thread) <br />
 
@@ -156,8 +156,31 @@ clone() creates a lightweight Linux process (thread) <br />
 | vfork()                 | 3.52 (2.49)                |
 | clone()                 | 2.97 (2.14)                |
 
+### Implications?
+* Consider a web server on a Linux platform
+* Measure 0.22 ms per *fork()*
+	- Maximum of (1000 / 0.22) = 4545.5 connections/sec
+	- 0.45 billion connections per day per machine
+		- fine for most servers
+		- too slow for a few super-high-traffic front-line web services
+* Facebook serves O(750 billion) page views per day
+	- Guess \~1-20 HTTP connections per page
+	- Would need 3,000 -- 60,000 machines just to handle fork(), without doing any work for each connection!
+* What is the problem here?
 
+### Thread Attributes
 
+| Global to process     | Local to specific thread    |
+|:--------------------- |:--------------------------- |
+| - memory              | - thread ID                 |
+| - PID, PPID, GID, SID | - stack                     |
+| - controlling term    | - signal mask               |
+| - process credentials | - thread-specific date      |
+| - record locks        | - alternate signal stack    |
+| - FS information      | - error return value        |
+| - timers              | - scheduling policy/priority|
+| - resource limits     | - Linux-specific (CPU affinity)|
+| ...                   |
 
 
 
