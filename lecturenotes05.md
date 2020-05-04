@@ -149,9 +149,9 @@
 
 | Process creation method | Time (sec), elapsed (real) |
 | -----------------------:|:--------------------------:|
-| *fork()*                | 22.27 (7.99)               |
-| *vfork()* (faster fork) | 3.52 (2.49)                |
-| *clone()*               | 2.97 (2.14)                |
+| fork()                  | 22.27 (7.99)               |
+| vfork() (faster fork)   | 3.52 (2.49)                |
+| clone()                 | 2.97 (2.14)                |
 
 
 
