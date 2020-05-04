@@ -438,7 +438,7 @@ Just write everything using threads<br />
 * Threads can interfere with one another
 	- Impact of more threads on caches
 	- Impact of more threads on TLB
-	- Bug in one thread...
+	- Bug in one thread can lead to problems in others
 * Executing multiple threads may slow them down 
 	- Impact of single thread vs. switching among threads
 * Harder to program a multithreaded program 
@@ -556,28 +556,41 @@ Which thread should it be delivered to? -- It depends...
 		- terminate it now
 		- *pthread_cancel(thread_id)*
 
-### Scheduling
-* How many kernel threads to create for a process? 
-	- In M:N model
-* If last kernel thread for an application is to be blocked 
-	- What happens?
-	- Recall the relationship between kernel and user threads
-* It will be nice if the kernel told the application and the application had a way to get more kernel threads
-	- Scheduler activation
-		- at thread block, the kernel tells the application
-	- Application can then get a new thread created 
-		- see lightweight threads
-
-### Re-entrance and Thread-Safety
-* Terms:
-	- *Reentrant* code
-		- Code that can be run by multiple threads concurrently
-	- *Thread-safe* libraries
-		- Library code that permits multiple threads to invoke the safe function
+### Terms
+* *Reentrant* code
+	- Code that can be run by multiple threads concurrently
+* *Thread-safe* libraries
+	- Library code that permits multiple threads to invoke the safe function
+	- Mainly concerned with variables that should be private to individual threads
+	- Requires moving some global variables to local variables
 * Requirements
 	- Rely only on input data
 		- Or thread-specific data
 	- Must be careful about locking (later)
+
+### Thread Assignment (Scheduling)
+* How many kernel threads to create for a process? 
+	- In an M:N model there can be significantly more user-level threads (M) than kernel-level threads (N)
+	- Kernel threads are the “real” threads that can be allocated to a CPU (core) and run
+	- Want to keep enough kernel threads to satisfy the desired level of concurrency in a program and activity in the system
+* Suppose that all kernel threads except 1 are blocked
+	- What happens if the last kernel thread blocks?
+	- Does it matter if there are more user threads “ready” to run?
+* In multiprocessing, thread affinity is the notion of assigning a thread to run on a particular CPU
+	- Help to improve the thread’s performance by keeping its execution resources (CPU, cache, memory) local to CPU
+
+### Scheduler Activation
+* It would be nice if the kernel told the application that a kernel thread was blocking
+	- Scheduler activation
+		- at thread block, the kernel tells the application via an upcall
+		- an upcall is a general term for an invocation of application function from the kernel
+	- User-level thread scheduler can then get a new user-level thread created
+* Way of conveying information between the kernel and the user-level thread scheduler regarding the disposition of:
+	- # user-level threads (increase or decrease)
+	- User-level thread state
+		- running to waiting, waiting to ready
+
+---
 
 ## Summary
 * Threads
