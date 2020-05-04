@@ -163,8 +163,10 @@
 	- No process is starved out
 	- Service order is immune to job size (does not depend)
 	- It depends only on *time of arrival*
+* Example: <br />
+Burst time here represents the job’s entire execution time
 
-| Process | Burst Time |	Burst time here represents the job’s entire execution time
+| Process | Burst Time |
 |:-------:|:----------:| 
 |    P1   |     24     | 
 |    P2   |      3     |
