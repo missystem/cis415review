@@ -146,6 +146,7 @@
 * Interprocess or Interthread communication?
 * Sharing memory between processes or threads?
 * Terminating a process or terminating a thread (not the last one)? <br />
+
 | Process creation method | Time (sec), elapsed (real) |
 | -----------------------:|:--------------------------:|
 | *fork()*                | 22.27 (7.99)               |
