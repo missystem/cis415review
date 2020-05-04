@@ -60,9 +60,67 @@
 * OS perspective
 <img width="707" height="353" src="https://github.com/missystem/cis415review/blob/master/processscheduling.png">
 
+### When does scheduling occur?
+* CPU scheduling decisions may take place when:
+	1. A process switches from running -> waiting
+	2. A process switches from running -> ready
+	3. A process switches from waiting -> ready
+	4. A process terminates
+* Process voluntarily gives up (yields) the CPU
+	- CPU scheduler kicks in an decides who to go next
+	- Process gets put on the ready queue
+	- It could get immediately re-scheduled to run
+ 
+### Scheduling Problem
+* Choose the ready/running process to run at any time
+	- Maximize “performance”
+* Model (estimate) “performance” as a function 
+	- System performance of scheduling each process
+		- *f(process) = y*
+	- What are some choices for *f(process)*?
+* Choose the process with the best y
+	- Estimating overall performance is intractable
+	- Scheduling so all tasks are completed ASAP is a NP-complete problem
+	- Adding in preemption does not help
 
+### Preemption
+* Can we reschedule a process that is actively running (i.e., preempt its execution)?
+	- If so, we have a preemptive scheduler
+	- If not, we have a non-preemptive scheduler
+* Suppose a process becomes ready
+	- A new process is created or it is no longer waiting
+* There is a currently running process
+* However, it may be “better” (whatever this means) to schedule the process just put on the ready queue
+	- So, we have to preempt the running process
+* In what ways could the new process be better?
 
+### Basic Concepts – CPU-I/O Bursts
+* Maximum CPU utilization is obtained with multiprocessing ... Why?
+* CPU–I/O burst cycle
+	- Process execution consists of cycles of CPU execution and I/O wait
+		- run instructions (CPU burst)
+		- wait for I/O (I/O burst)
+* CPU burst distribution
+	- How much a CPU is used during a burst?
+	- This is a main concern ... Why?
+* Scheduling is aided by knowing the length of these bursts
+<img width="480" height="860" src="https://github.com/missystem/cis415review/blob/master/cpu_IO_burst.png">
 
+### Histogram of CPU Burst Times
+* Profile for a particular process
+<img width="650" height="425" src="https://github.com/missystem/cis415review/blob/master/histogram_of_cpu_burst.png">
+
+### Dispatcher
+* Dispatcher module gives control of the CPU to the process selected by the *short-term* scheduler
+* This involves:
+	- Switching context
+		- save context of running process
+		- loading process context of selected process to run
+	- Switching to user mode
+	- Jumping to the proper location in the user program to continue execution of the program
+* *Dispatch latency*
+	- time it takes for the dispatcher to stop one process and start another running
+	- Context switch time
 
 
 
