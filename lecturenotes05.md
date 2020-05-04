@@ -84,6 +84,48 @@
 * I/O
 	- Share files, sockets, ...			(*process*)
 
+### Why Multithreaded Applications?
+* Multiple threads sharing a common address space
+	- More correctly, they share process resources, including memory
+* Why would you want to do that?
+	- Some applications could be written to support concurrency
+	- How do you get concurrency?
+		- One way is to create multiple processes
+		- Use IPC to support process-level concurrency
+* Some applications want to share data structures among concurrently executing parts of the computation
+	- Is this possible with processes? => shared segments
+	- Is it difficult with processes? => well, it is not that easy
+	- Again, use IPC for process-level data sharing
+* What is the problem? What is the solution?
+
+### Advantages of Threads
+* Threads could be used if there is no need for the OS to enforce resource separation
+	- This is a trust issue, in part (back off on isolation / protection)
+	- However, introduces more issues with respect to concurrency
+* Benefits
+	* Responsiveness (improved)
+		- Possible to have a thread of execution that never blocks
+	* Resource sharing (is facilitated)
+		- All threads in a process have equal access to resources
+	* Economy (of resources)
+		- Thread-level resources are “cheaper” than process resources!
+		- Threads are “lighter weight”
+	* Utilization of multiprocessors (Scalability)
+		- Run multiple threads on multiple processes without the overhead of running multiple processes
+
+### Single-Threaded vs. Multithreaded
+* Regular UNIX process can be considered as a special case of a multithreaded process
+	- A process that contains just one thread
+* Multithreaded process has multiple threads
+
+
+
+
+
+
+
+
+
 ## Summary
 * **thread** 
 	- a basic unit of CPU utilization
