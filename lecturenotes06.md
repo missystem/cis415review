@@ -308,8 +308,11 @@
 		- What scheduling algorithm is approximated when quantums are very large? <br />
 		If the time quantum is too large, RR scheduling degenerates to an FCFS policy
 		- A rule of thumb: 80 percent of the CPU bursts should be shorter than the time quantum
-* Time Quantum and Context Switch Time
+* How a smaller time quantum increases context switches: <br />
 <img width="480" height="210" src="https://github.com/missystem/cis415review/blob/master/RRcontextswitch.png"> <br />
+* How turnaround time varies with the time quantum: <br />
+<img width="410" height="340" src="https://github.com/missystem/cis415review/blob/master/RRcontextswitch.png"> <br />
+
 
 ### Priority Scheduling
 * Each process is given a certain priority “value”
