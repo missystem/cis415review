@@ -204,7 +204,7 @@
 	- Gives minimum average waiting time for a set of processes
 	- So we should always use it, right?
 * It cannot be implemented at the level of CPU scheduling, as there is no way to know the length of the next CPU burst
-* Example of Nonpreemptive <br />
+* Example <br />
 
 | Process | Arrival Time | Burst Time |
 |:-------:|:------------:|:----------:|
@@ -213,9 +213,14 @@
 |    P3   |      4.0     |      1     |
 |    P4   |      5.0     |      4     |
 
-* Scheduler makes a decision at the time when the next job is to be scheduled
-	- SJF (non-preemptive) <br />
-	<img width="500" height="115" src="https://github.com/missystem/cis415review/blob/master/FCFSex2.png"> <br />
+* Nonpreemptive SJF
+	- Scheduler makes a decision at the time when the next job is to be scheduled <br />
+	<img width="500" height="115" src="https://github.com/missystem/cis415review/blob/master/SJFex1.png"> <br />
+	- Average waiting time = (0 + 6 + 3 + 7) / 4 = 4
+* Preemptive SJF <br />
+	- Scheduler makes a decision at any time using preemption to stop the currently running process <br />
+	<img width="520" height="105" src="https://github.com/missystem/cis415review/blob/master/SJFex2.png"> <br />
+	- Average waiting time = (9 + 1 + 0 +2) / 4 = 3
 
 
 
