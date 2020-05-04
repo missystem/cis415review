@@ -117,8 +117,40 @@
 * Regular UNIX process can be considered as a special case of a multithreaded process
 	- A process that contains just one thread
 * Multithreaded process has multiple threads
+<img width="1328" height="604" src="https://github.com/missystem/cis415review/blob/master/singleThreaded_multithreaded.png">
 
+### Working with Threads
+*  In a C program
+	- *main()* procedure defines the first thread 
+	- C programs always start at *main()*
+* Now create a second thread
+	- Allocate resources to maintain a second execution context in same address space
+		- think about what state will be needed for a thread
+	- Want something similar to *fork()* but simplere
+		- supply a procedure name when start the new thread
+	- Remember this creates another thread of execution
 
+### Threads vs. Processes (difference)
+* Easier to create than a new process
+* Less time to terminate a thread than a process
+* Less time to switch between two threads 
+	- within the same process
+* Less communication overheads
+	- communicating between the threads of one process is simple because the threads share everything 
+	- address space is shared
+	- thus memory is shared
+
+### Which is Cheaper?
+* Create new process or create new thread (in existing process)?
+* Context switch between processes or threads? 
+* Interprocess or Interthread communication?
+* Sharing memory between processes or threads?
+* Terminating a process or terminating a thread (not the last one)? <br />
+| Process creation method | Time (sec), elapsed (real) |
+| -----------------------:|:--------------------------:|
+| *fork()*                | 22.27 (7.99)               |
+| *vfork()* (faster fork) | 3.52 (2.49)                |
+| *clone()*               | 2.97 (2.14)                |
 
 
 
