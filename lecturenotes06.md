@@ -245,8 +245,15 @@
 * α = 1/2 and τ0 = 10 <br />
 <img width="600" height="433" src="https://github.com/missystem/cis415review/blob/master/nextCPUburst.png"> <br />
 
+### Example of Shortest-remaining-time-first
+* Now we add the concepts of varying arrival times and preemption to the analysis
 
-
+| Process | Arrival Time | Burst Time |
+|:-------:|:------------:|:----------:|
+|    P<sub>1</sub>   |      0     |      8     |
+|    P<sub>2</sub>   |      1     |      4     |
+|    P<sub>3</sub>   |      2     |      9     |
+|    P<sub>4</sub>   |      3     |      5     |
 
 
 
