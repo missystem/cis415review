@@ -159,8 +159,9 @@
 * Shortest Job First (SJF)
 	- May be preemptive
 	- Optimal for minimizing waiting time (how?)
+* Round Robin
 * Priority Scheduling
-	- 
+* Multilevel Queue Scheduling
 
 ### First-Come, First-Served (FCFS)
 * Serve the jobs in the order they arrive
@@ -307,12 +308,17 @@
 	- Larger time quantums will give more preference to processes with larger burst times
 		- What scheduling algorithm is approximated when quantums are very large? <br />
 		If the time quantum is too large, RR scheduling degenerates to an FCFS policy
-		- A rule of thumb: 80 percent of the CPU bursts should be shorter than the time quantum
+
 * How a smaller time quantum increases context switches: <br />
 <img width="480" height="210" src="https://github.com/missystem/cis415review/blob/master/RRcontextswitch.png"> <br />
 * How turnaround time varies with the time quantum: <br />
-<img width="410" height="340" src="https://github.com/missystem/cis415review/blob/master/RRcontextswitch.png"> <br />
-
+<img width="410" height="340" src="https://github.com/missystem/cis415review/blob/master/RRturnaround.png"> <br />
+* ==> 80 percent of the CPU bursts should be shorter than the time quantum
+* If time quantum size decreases, what happens to the context switches?
+	- Context switches are not free!
+		- Saving/restoring registers
+		- Switching address spaces
+		- Indirect costs (cache pollution)
 
 ### Priority Scheduling
 * Each process is given a certain priority “value”
@@ -344,13 +350,42 @@
 <img width="495" height="75" src="https://github.com/missystem/cis415review/blob/master/PSex.png"> <br />
 	- Average waiting time = 8.2 msec
 
+### Scheduling Desirables
+* SJF
+	- Minimize waiting time
+		- requires estimate of CPU bursts 
+* Round robin
+	- Share CPU via time quanta
+		- if burst turns out to be “too long”
+* Priorities
+	- Some processes are more important
+	- Priorities enable composition of “importance” factors
+* No single best approach -> combinations
 
+### Round Robin with Priority
+* Have a ready queue for each priority level
+* Always service the non-null queue at the highest priority level
+* Within each queue, you perform round-robin scheduling between those processes
+* Problems
+	- With fixed priorities
+		- Lower priority processes can get starved out
+	- In general, you employ a mechanism to “age” the priority of processes
+<img width="356" height="246" src="https://github.com/missystem/cis415review/blob/master/RRwithP.png"> <br />
 
-
-
-
-
-
+### Multilevel Queue Scheduling
+* Ready queue is partitioned into separate queues: 
+	- foreground (interactive)
+	- background (batch)
+* These two types of processes have different response-time requirements and so may have different scheduling needs
+* Each queue has its own scheduling algorithm: 
+	- foreground – RR
+	- background – FCFS
+* Scheduling must be done between the queues 
+	- Fixed priority scheduling
+		- possibility of starvation 
+	- Time slice
+		- each queue gets a certain amount of CPU time which it can schedule amongst its processes
+<img width="450" height="250" src="https://github.com/missystem/cis415review/blob/master/MQscheduling.png"> <br />
 
 
 
