@@ -91,7 +91,7 @@
 * Other device "bus" types
 	- SCSI, IDE, USB, ...
 <br /> PCI adaptor -> I/O controller
-<br /> yellow -> I/O bus <br />
+<br /> yellow part -> I/O bus <br />
 <img src="https://github.com/missystem/cis415review/blob/master/system_bus.png">
 
 ### Operating System Services
