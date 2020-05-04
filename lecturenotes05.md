@@ -181,6 +181,57 @@ clone() creates a lightweight Linux process (thread) <br />
 | - timers              | - scheduling policy/priority|
 | - resource limits     | - Linux-specific (e.g., CPU affinity)|
 
+### Threading Models
+* *Programming* - library or system call interface
+	- Kernel threading (most common)
+		- thread management support in the kernel
+		- invoked via system call
+		- NOTE: CPU only runs kernel threads
+	- User-space threading
+		- thread management support in user-space library
+		- threads are "thread switched" by a user-level library
+		- linked into you program
+* *Scheduling* - application or kernel scheduling
+	- May create user-level or kernel-level threads
+
+### Kernel Threads
+* Thread management support in kernel
+	- Sets of system calls for creating, invoking, and switching among threads
+* Supported and managed directly by the OS
+	- Thread objects in the kernel
+* Nearly all OSes support a notion of threads
+	- Linux -- thread and process abstractions are mixed
+	- Solaris
+	- Mac OS X
+	- Windows XP
+	- ...
+
+### User-space Threads
+* Thread management support in user-space library
+	- Sets of functions for creating, invoking, and switching among threads (all in user mode)
+	- Need to switch threads stacks in user space ...
+* Linked into your program
+	- Thread libraries
+* Examples:
+	- [Qthreads](http://www.cs.sandia.gov/qthreads/)
+	- [GNU Pth](http://www.gnu.org/software/pth/)
+	- [Cilk](https://en.wikipedia.org/wiki/Cilk)
+
+### Implementing User-space Threading
+* Threads can perform operations in user mode that are usually handled by the OS
+	- Assumes cooperating threads so hardware enforcement of separation not required
+* Idea:
+	- Think of a “dispatcher” subroutine in the process that is called when a thread is ready to relinquish control to another thread
+	- Manages stack pointer, program counter
+	- Switches process’s internal state among threads
+
+
+
+
+
+
+
+
 
 
 
