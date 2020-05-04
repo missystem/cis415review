@@ -122,6 +122,56 @@
 	- time it takes for the dispatcher to stop one process and start another running
 	- Context switch time
 
+### Scheduling Criteria
+* *Utilization / Efficiency*
+	- Keep the CPU busy 100% of the time with useful work
+* *Throughput*
+	- Maximize the number of jobs processed per hour.
+* *Turnaround time (latency)*
+	- From the time of submission to the time of completion.
+* *Waiting time*
+	- Sum of time spent (in ready queue) waiting to be scheduled on the CPU
+* *Response time*
+	- Time from submission until the first response is produced (mainly for interactive jobs)
+* *Fairness*
+	- Make sure each process gets a fair share of the CPU
+
+### Scheduling Algorithm Optimization Criteria
+* Max CPU utilization 
+* Max throughput
+* Min turnaround time 
+* Min waiting time
+* Min response time
+
+### Scheduling Algorithms
+* Some may seem intuitively better than others
+* But a lot has to do with the type of offered *workload* to the processor
+* Best scheduling comes with best context of the tasks to be completed
+	- Knowing something about the workload behavior is important
+* Distinguish between non-preemptive and preemptive cases
+	- This has to do with whether a running process can be stopped during its execution and put back on the ready queue so that another process can acquire the CPU and run
+
+### First-Come, First-Served (FCFS)
+* Serve the jobs in the order they arrive
+* Managed with a FIFO queue
+* Non-preemptive
+	- Process is run until it has to wait or terminates
+	- OS can not stop the process and put it on ready queue
+* Simple and easy to implement
+	- When a process is ready, add it to tail of ready queue, and serve the ready queue in FCFS order
+* Fair
+	- No process is starved out
+	- Service order is immune to job size (does not depend)
+	- It depends only on *time of arrival*
+
+| Process | Burst Time |	Burst time here represents the job’s entire execution time
+|:-------:|:----------:| 
+|    P1   |     24     | 
+|    P2   |      3     |
+|    P3   |      3     |
+
+
+
 
 
 
