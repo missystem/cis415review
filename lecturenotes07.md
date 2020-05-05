@@ -67,7 +67,8 @@
 	- a context switch can happen at any time
 * Suppose we have the following scenario:
 <br /><img width="253" height="125" src="https://github.com/missystem/cis415review/blob/master/Interleaving.png"><br />
-
+* Leading to incorrect execution:
+<br /><img width="380" height="120" src="https://github.com/missystem/cis415review/blob/master/incorrectExecution.png"><br />
 
 
 
