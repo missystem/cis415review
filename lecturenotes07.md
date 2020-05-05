@@ -2,13 +2,15 @@
 
 ## Outline
 * Background
-* Critical-Section Problem
-* Peterson’s Solution
-* Synchronization Hardware
-* Mutual Exclusion (Mutex) Locks
-* Semaphores
-* Monitors
-* Classic Problems of Synchronization
+* [Critical-Section Problem](https://github.com/missystem/cis415review/blob/master/lecturenotes07.md#critical-section-problem-dijkstra-1965)
+* [Peterson’s Solution](https://github.com/missystem/cis415review/blob/master/lecturenotes07.md#petersons-solution)
+* [Synchronization Hardware](https://github.com/missystem/cis415review/blob/master/lecturenotes07.md#hardware-support-for-synchronization)
+* [Mutual Exclusion (Mutex) Locks](https://github.com/missystem/cis415review/blob/master/lecturenotes07.md#mutex-locks)
+* [Semaphores](https://github.com/missystem/cis415review/blob/master/lecturenotes07.md#semaphore-dijkstra)
+* [Monitors](https://github.com/missystem/cis415review/blob/master/lecturenotes07.md#monitors)
+* [Classic Problems of Synchronization](https://github.com/missystem/cis415review/blob/master/lecturenotes07.md#classical-problems-of-synchronization)
+* [Chapter 6 Summary from OSC](https://github.com/missystem/cis415review/blob/master/lecturenotes07.md#chapter-6-summary-from-osc)
+* [Chapter 7 Summary from OSC](https://github.com/missystem/cis415review/blob/master/lecturenotes07.md#chapter-7-summary-from-osc)
 
 ---
 
