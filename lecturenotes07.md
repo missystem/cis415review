@@ -69,13 +69,52 @@
 <br /><img width="253" height="125" src="https://github.com/missystem/cis415review/blob/master/Interleaving.png"><br />
 * Leading to incorrect execution:
 <br /><img width="380" height="120" src="https://github.com/missystem/cis415review/blob/master/incorrectExecution.png"><br />
+* ==> Race condition
 
+### Race Conditions
+* Several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place
+* Race conditions are timing dependent
+	- Errors can be non-repeatable
+* Race conditions CAN cause the “state” of the execution to be inconsistent (incorrect)
+	- It does not mean that because there is a race condition that the state WILL become inconsistent
 
+### How to avoid race condition?
+* Atomic: 
+	- A set of instructions is **atomic** if it executed as if it was a single instruction (logically)
+* What does this mean exactly?
+	- Executing the instructions can not be interrupted?
+	- It has more to do with the outcomes of executing the instructions with respect to other processes
+* Suppose the 3 assembly instructions we were looking at were atomic
+* Does this avoid the race condition?
+* Critical Section: 
+	- When executing a set of instructions is vulnerable to a race condition, that set of instructions are said to constitute a **critical section**
+	- the process may be accessing — and updating — data that is shared with at least one other process
 
+### Critical Section Problem (Dijkstra, 1965)
+* Consider system of n processes {P<sub>0</sub>, P<sub>1</sub>, ... P<sub>n-1</sub>}
+* Each process has critical segment of code
+	- Process may be changing common variables, updating table, writing file, ... (in its critical section)
+	- When one process is in its critical section, no other may be in its critical section (mutual exclusion)
+* *Critical section problem* is to design a *protocol* between the processes to solve this
+	- Each process must enter the critical section (entry section)
+	- Each process then executes the critical section instructions 
+	- Each process must exit the critical section (exit section)
+	- Each process executes outside the critical section
 
+### Critical Section
+* General structure of process P<sub>i</sub> <br />
+```
+do {
+	code outside critical section
+	code to enter the critical section
+	
+		/* Only 1 process can be in critical section at a time */
+		CRITICAL SECTION 
 
-
-
+	code to exit from critical section
+	code outside critical section 
+} while (true);
+```
 
 
 
