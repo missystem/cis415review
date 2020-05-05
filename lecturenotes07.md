@@ -54,9 +54,9 @@
 	- ```tail = tail + 1``` is NOT a single machine instruction
 		- So, what? Why do we care?
 	- What assembly code does the compiler produce? <br />
-	*Load tail, R1
-	Add R1, 1, R2 
-	Store R2, tail*
+	*Load tail, R1 <br />
+	Add R1, 1, R2 <br />
+	Store R2, tail <br />*
 
 
 
