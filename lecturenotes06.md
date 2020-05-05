@@ -461,7 +461,7 @@
 		- FCFS and RR (highest priority process always runs first)
 
 ### Priorities and Time-Slice Length
-<img width="755" height="435" src="https://github.com/missystem/cis415review/blob/master/PandTSL.png"> <br />
+<img width="378" height="218" src="https://github.com/missystem/cis415review/blob/master/PandTSL.png"> <br />
 
 ### Thread Scheduling
 * When threads are supported, it is threads that are scheduled, not processes
