@@ -13,10 +13,7 @@
 ---
 
 ### Roadmap
-			Concurrent Applications
----
-				Shared Objects
-	Bounded buffer			Barrier
+<img width="408" height="250" src="">
 
 
 
