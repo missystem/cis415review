@@ -102,20 +102,8 @@
 	- Each process executes outside the critical section
 
 ### Critical Section
-* General structure of process P<sub>i</sub> <br />
-```
-do {
-	code outside critical section
-	code to enter the critical section
-	
-		/* Only 1 process can be in critical section at a time */
-		CRITICAL SECTION 
-
-	code to exit from critical section
-	code outside critical section 
-} while (true);
-```
-
+* General structure of process P<sub>i</sub>
+<br /><img width="338" height="323" src="https://github.com/missystem/cis415review/blob/master/generalCriticalSectionStructure.png"><br />
 
 
 
