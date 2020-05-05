@@ -1,8 +1,8 @@
 # CIS 415 2020S Midterm Review
 
 ## Exam 2 parts:
- 1. concepts (1.5h)
- 2. problems (1.5h)
+ 1. concepts (2h)
+ 2. problems (2h)
  
 ## Types of questions:
 * multiple choices & T/F
