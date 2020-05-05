@@ -218,7 +218,7 @@ such that for each T<sub>i</sub>, the resources that T<sub>i</sub> can still req
 	- Use the Banker’s algorithm
 
 ### Resource Allocation Graph Scheme
-* Claim edge P<sub>i</sub> -> R<sub>j</sub> indicates that process P<sub>j</sub> may request resource R<sub>j</sub>
+* Claim edge T<sub>i</sub> -> R<sub>j</sub> indicates that process T<sub>j</sub> may request resource R<sub>j</sub>
 	- Represented by a dashed line
 * Claim edge converts to a *request edge* when a process requests a resource
 * Request edge converted to an *assignment edge* when the resource is allocated to the process
@@ -248,9 +248,9 @@ such that for each T<sub>i</sub>, the resources that T<sub>i</sub> can still req
 * Let n = number of processes, and <br />
 	m = number of resources types
 * **Available**: Vector of length m. If ```Available[j] = k```, there are k instances of resource type R<sub>j</sub> available.
-* **Max**: n x m matrix. If ```Max[i,j] = k```, then process P<sub>i</sub> may request at most k instances of resource type R<sub>j</sub>
-* **Allocation**: n x m matrix. If ```Allocation[i,j] = k``` then P<sub>i</sub> is currently allocated k instances of R<sub>j</sub>
-* **Need**: n x m matrix. If Need[i,j] = k, then P<sub>i</sub> may need k more instances of R<sub>j</sub> to complete its task <br />
+* **Max**: n x m matrix. If ```Max[i,j] = k```, then process T<sub>i</sub> may request at most k instances of resource type R<sub>j</sub>
+* **Allocation**: n x m matrix. If ```Allocation[i,j] = k``` then T<sub>i</sub> is currently allocated k instances of R<sub>j</sub>
+* **Need**: n x m matrix. If Need[i,j] = k, then T<sub>i</sub> may need k more instances of R<sub>j</sub> to complete its task <br />
 	**Need [i,j] = Max[i,j] – Allocation [i,j]**
 
 ### Safety Algorithm
@@ -267,33 +267,33 @@ such that for each T<sub>i</sub>, the resources that T<sub>i</sub> can still req
 4. If Finish[i] == true for all i, then the system is in a safe state
 
 ### Resource-Request Algorithm for Process Pi
-* Request<sub>i</sub> = request vector for process P<sub>i</sub>
+* Request<sub>i</sub> = request vector for process T<sub>i</sub>
 * If Request<sub>i</sub>[j] = k then process Pi wants k instances of resource type R<sub>j</sub>
 	1. If Request<sub>i</sub> ≤ Needi go to step 2
 	Otherwise, raise error condition, since process has exceeded its maximum claim
 	2. If Request<sub>i</sub> ≤ Available, go to step 3
 	Otherwise Pi must wait, since resources are not available
-	3. Pretend to allocate requested resources to P<sub>i</sub>: <br />
+	3. Pretend to allocate requested resources to T<sub>i</sub>: <br />
 	Available = Available – Request<sub>i</sub>; <br />
 	Allocation<sub>i</sub> = Allocation<sub>i</sub> + Request<sub>i</sub>; <br />
 	Need<sub>i</sub> = Need<sub>i</sub> – Request<sub>i</sub>;<br />
-	If safe => the resources are allocated to P<sub>i</sub><br />
-	If unsafe => P<sub>i</sub> must wait, restore old resource allocation
+	If safe => the resources are allocated to T<sub>i</sub><br />
+	If unsafe => T<sub>i</sub> must wait, restore old resource allocation
 
 ### Banker's Algorithm
-* 5 processes P<sub>0</sub> through P<sub>4</sub>
+* 5 processes T<sub>0</sub> through T<sub>4</sub>
 * 3 resource types:
 	- A (10 instances), B (5 instances), C (7 instances)
 * Snapshot at time T<sub>i</sub>:
 
 | Process | Allocation | Max | Available |
 |:-------:|:----------:|:---:|:---------:|
-|		  |     ABC    | ABC |    ABC    |
-| P<sub>0</sub> | 010 | 753 | 332 |
-| P<sub>1</sub> | 200 | 322 |	  |
-| P<sub>2</sub> | 302 | 902 |	  |
-| P<sub>3</sub> | 211 | 222 |     |
-| P<sub>4</sub> | 002 | 433 |     |
+|		  |     A B C    | A B C |    A B C    |
+| T<sub>0</sub> | 0 1 0 | 7 5 3 | 3 3 2 |
+| T<sub>1</sub> | 2 0 0 | 3 2 2 | 	    |
+| T<sub>2</sub> | 3 0 2 | 9 0 2 |	    |
+| T<sub>3</sub> | 2 1 1 | 2 2 2 |       |
+| T<sub>4</sub> | 0 0 2 | 4 3 3 |       |
 
 ### Check for Safety
 * Matrix *Need* is defined to be Max – Allocation
@@ -301,11 +301,158 @@ such that for each T<sub>i</sub>, the resources that T<sub>i</sub> can still req
 | Process | Need |
 |:-:|:-:|
 | | ABC |
-| P0 | 74 | 3 |
-| P1 | 12 | 2 |
-| P2 | 60 | 0 |
-| P3 | 01 | 1 |
-| P4 | 43 | 1 |
+| T<sub>0</sub> | 74 | 3 |
+| T<sub>1</sub> | 12 | 2 |
+| T<sub>2</sub> | 60 | 0 |
+| T<sub>3</sub> | 01 | 1 |
+| T<sub>4</sub> | 43 | 1 |
+
+* The system is in a safe state since the sequence < T<sub>1</sub>, T<sub>3</sub>, T<sub>4</sub>, T<sub>2</sub>, T<sub>0</sub>> satisfies safety criteria
+
+### P1 Requests (1,0,2)
+* Let’s advance the system with T<sub>1</sub> making request (1,0,2)
+* Check that Request ≤ Available (that is, (1,0,2) ≤ (3,3,2) => true)
+
+| Process | Allocation | Max | Available |
+|:-------:|:----------:|:---:|:---------:|
+|		  |    A B C   | A B C | A B C |
+| T<sub>0</sub> | 0 1 0 | 7 5 3 | 2 3 0 |
+| T<sub>1</sub> | 2 0 0 | 3 2 2 |	    |
+| T<sub>2</sub> | 3 0 2 | 9 0 2 |	    |
+| T<sub>3</sub> | 2 1 1 | 2 2 2 |       |
+| T<sub>4</sub> | 0 0 2 | 4 3 3 |       |
+
+* Executing safety algorithm shows that sequence < P1, P3, P4, P0, P2> satisfies safety requirement
+* Can request for (3,3,0) by P4 be granted? 
+* Can request for (0,2,0) by P0 be granted?
+
+### Deadlock Detection
+* Allow system to enter deadlock state
+* Detection algorithm determines if the resource allocation graph is in a deadlock state
+* If it is, a recovery scheme is used to get out of it
+	- Assume that it is possible to, in fact, recover
+	- It is possible that this might require a rollback to a prior consistent state
+
+### Single Instance of Each Resource Type
+* Need to maintain a *wait-for* graph 
+	- Nodes are processes
+	- Pi -> Pj if Pi is waiting for Pj
+* Periodically invoke an algorithm that searches for a cycle in the wait-for graph
+	- If there is a cycle, there exists a deadlock
+* An algorithm to detect a cycle in a graph requires an order of n<sup>2</sup> operations, where n is the number of vertices in the graph
+
+### Resource-Allocation and Wait-For Graph
+* (a) Resource-allocation graph. (b) Corresponding wait-for graph.
+<br /><img width="390" height="250" src="https://github.com/missystem/cis415review/blob/master/ResourceAllocationandWaitFor.png"><br />
+
+### Several Instances of a Resource Type
+* *Available*:  A vector of length m indicates the number of available resources of each type
+* *Allocation*: An n x m matrix defines the number of resources of each type currently allocated to each process
+* *Request*: An n x m matrix indicates the current request of each process
+	- If Request<sub>i</sub>[j] = k, then process T<sub>i</sub> is requesting k more instances of resource type R<sub>j</sub>
+
+### Detection Algorithm
+1. Let Work and Finish be vectors of length m and n, respectively Initialize: <br />
+	(a) Work = Available <br />
+	(b) For i = 1,2, ..., n, if Allocation<sub>i</sub> ≠ 0, then <br />
+	Finish[i] = false; otherwise, Finish[i] = true <br />
+2. Find an index i such that both:  <br />
+	(a) Finish[i] == false <br />
+	(b) Request<sub>i</sub> ≤ Work <br />
+	If no such i exists, go to step 4 <br />
+3. Work = Work + Allocation<sub>i</sub> <br />
+	Finish[i] = true <br />
+	goto step 2 <br />
+4. If Finish[i] == false, for some i, 1 ≤ i ≤ n, <br />
+	then the system is in deadlock state
+	If Finish[i] == false, then T<sub>i</sub> is deadlocked
+
+### Example of Detection Algorithm
+* Five processes P0 through P4
+* Three resource types
+	- A (7 instances), B (2 instances), and C (6 instances)
+* Snapshot at time T0:
+
+| Process | Allocation | Max | Available |
+|:-------:|:----------:|:---:|:---------:|
+|		  |    A B C   | A B C | A B C |
+| T<sub>0</sub> | 0 1 0 | 0 0 0 | 0 0 0 |
+| T<sub>1</sub> | 2 0 0 | 2 0 2 |	    |
+| T<sub>2</sub> | 3 0 3 | 0 0 0 |	    |
+| T<sub>3</sub> | 2 1 1 | 1 0 0 |       |
+| T<sub>4</sub> | 0 0 2 | 0 0 2 |       |
+
+* Sequence <T<sub>0</sub>, T<sub>2</sub>, T<sub>3</sub>, T<sub>1</sub>, T<sub>4</sub>> gives Finish[i] = true for all i
+
+### Deadlock?
+* T<sub>2</sub> requests an additional instance of type C
+
+| Process | Request | 
+|:-------:|:-------:|
+|		  |  A B C  |
+| T<sub>0</sub> | 0 0 0 |
+| T<sub>1</sub> | 2 0 2 |
+| T<sub>2</sub> | 0 0 1 |
+| T<sub>3</sub> | 1 0 0 |
+| T<sub>4</sub> | 0 0 2 |
+
+* State of system?
+	- Can reclaim resources held by process P<sub>0</sub>, but insufficient resources to fulfill other processes requests
+❍ Deadlock exists, consisting of processes T<sub>1</sub>, T<sub>2</sub>, T<sub>3</sub>, and T<sub>4</sub>
+
+### Detection Algorithm Usage
+* When, and how often, to invoke depends on:
+	- How often a deadlock is likely to occur?
+	- How many processes will need to be rolled back?
+		- one for each disjoint cycle
+* If detection algorithm is invoked arbitrarily, there may be many cycles in the resource graph and so we would not be able to tell which of the many deadlocked processes “caused” the deadlock
+
+### Deadlock Recovery – Process and Thread Termination
+* Aborting
+	- Abort all deadlocked processes
+	- Abort one process at a time until the deadlock cycle is eliminated
+* Different schemes
+	- Abort all deadlocked processes
+	- Abort one process at a time until the deadlock cycle is eliminated
+* In which order should we choose to abort?
+	- Priority of the process
+	- How long process has computed, and how much longer to completion
+	- Resourcestheprocesshasused
+	- Resources process needs to complete
+	- How many processes will need to be terminated
+	- Isprocessinteractiveorbatch?
+
+### Deadlock Recovery – Resource Preemption
+1. Selecting a victim
+	- Attempt to minimize cost
+2. Rollback
+	- Return to some safe state
+	- Restart process for that state
+3. Starvation
+	- Same process may always be picked as victim, include number of rollback in cost factor
+
+---
+
+## Chapter 8 Summary from OSC
+*  **Deadlock occurs** in a set of processes when every process in the set is waiting for an event that can only be caused by another process in the set.
+* **4 necessary conditions** for deadlock (Deadlock is only possible when all four conditions are present)
+	1. mutual exclusion
+	2. hold and wait
+	3. no preemption
+	4. circular wait
+* Deadlocks can be **modeled** with **Resource-Allocation Graphs**
+	- where a cycle indicates deadlock
+* Deadlocks can be **prevented** by ensuring that one of the 4 necessary conditions for deadlock cannot occur
+	- Of the four necessary conditions, eliminating the circular wait is the only practical approach.
+* Deadlock can be **avoided** by using the **Banker’s Algorithm**
+	- which does not grant resources if doing so would lead the system into an unsafe state where deadlock would be possible
+* A **deadlock-detection algorithm**
+	- can evaluate processes and resources on a running system to determine if a set of processes is in a deadlocked state
+* If deadlock does occur, a system can attempt to **recover** from the deadlock by 
+	- aborting one of the processes in the circular wait
+	- preempting resources that have been assigned to a deadlocked process
+
+
 
 
 
