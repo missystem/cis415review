@@ -143,7 +143,7 @@
 ### Busy Waiting (aka Spinning)
 * Overall philosophy:
 	- Keep checking some state (variables) until they indicate other process(es) are not in critical section
-
+<br /><img width="680" height="340" src="https://github.com/missystem/cis415review/blob/master/busyWaiting.png"><br />
 
 
 
