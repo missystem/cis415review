@@ -291,11 +291,133 @@ leave_CS(myid) {
 
 ### Critical-section Solution Using Locks
 <br /><img width="170" height="165" src="https://github.com/missystem/cis415review/blob/master/lock.png"><br />
+* The infinite while loop is just to suggest that a process will possibly want to enter its critical section multiple \#s of times, including 0 times and 1 time
+* The problem before was that ```acquire``` and ```release``` could not be done in a single instruction
+* Suppose it could with a single atomic instruction
 
+### test_and_set instruction
+* Definition
+```
+boolean test_and_set(boolean *target) { 
+	boolean rv = *target;
+	*target = true;
+	return rv;
+}
+```
+* Assume it executes atomically
+* Returns the original value of passed parameter
+* Set the new value of passed parameter to TRUE
 
+### Solution using test_and_set()
+* Shared boolean variable ```lock```, initialized to FALSE
+* Mutual-exclusion implementation with ```test_and_set()```:
+```
+while (TRUE){ 
+	...
 
+	while (test_and_set(&lock) == TRUE) 
+		;
 
+		/* critical section */
 
+	lock = FALSE;
+
+		/* remainder section */
+}
+```
+* if two test and set() instructions are executed simultaneously (each on a different core), they will be executed sequentially in some arbitrary order
+
+### compare_and_swap Instruction
+* Definition:
+```
+int compare_and_swap(int *value, int expected, int newvalue)
+{
+	int temp = *value;
+
+	if (*value == expected)
+		*value = newvalue;
+
+	return temp;
+}
+```
+* Assume it executes atomically
+* Returns the original value of passed parameter value
+* Set the variable ```value``` to the value of the passed parameter ```newvalue```
+	- Only if ```value == expected```
+* That is, the swap takes place only under this condition
+
+### Solution using compare_and_swap
+* Shared integer ```lock``` initialized to 0
+```
+while (TRUE) {
+	...
+
+	while(compare_and_swap(&lock, 0, 1) != 0)
+		;	/* do nothing */
+
+		/* critical section */
+
+	lock = 0;
+
+		/* remainder section */
+}
+```
+* Does is work?
+	- satisfies the mutual-exclusion requirement
+	- does not satisfy the bounded-waiting requirement
+
+### Bounded-waiting with test_and_set
+* N processes: P<sub>0</sub>, P<sub>1</sub>, ..., P<sub>N-1</sub>
+* This is the code for P<sub>i</sub> (i.e., each process is executing this code with *i* set to the process ID (*0 ≤ i ≤ N-1*)
+* Bounded-waiting mutual exclusion with ```compare_and_swap()```
+```
+while (TRUE) {
+	waiting[i] = TRUE;
+	key = TRUE;
+	while (waiting[i] && key == 1)
+		key = compare and swap(&lock,0,1); 
+	waiting[i] = false;
+
+	    /* critical section */
+
+	j = (i + 1) % n;
+	while ((j != i) && !waiting[j])
+		j = (j + 1) % n;
+	
+	if (j == i)
+		lock = 0;
+	else
+		waiting[j] = false;
+	
+		/* remainder section */
+}
+```
+
+### Spinning vs. Blocking
+* In the previous solutions, we are spinning (busy-waiting) for some condition to change
+	- This change should be effected by some other process
+	- We are “presuming” that this other process will eventually get the CPU
+		- is this a reasonable assumption?
+		- needs a preemptive scheduler ... Why?
+* This can be *inefficient* because:
+	- wasting time quantum spinning
+	- Sometimes, the programs may not work
+		- suppose if the OS scheduler is not preemptive
+
+### Blocking Approaches
+* If instead of busy-waiting, the process relinquishes the CPU at the time when it cannot proceed, the process is said to **block**
+	- It is still wanting to get into the critical section
+	- It is put in the blocked queue
+* It is the job of the process changing the *condition* to wake up a blocked process
+	- Moves it from blocked back to ready queue
+* Advantage:
+	- Do not unnecessarily occupy CPU cycles 
+* Disadvantages?
+
+### Blocking Example
+<br /><img width="390" height="165" src="https://github.com/missystem/cis415review/blob/master/lock.png"><br />
+* Think of L as a lock
+* NOTE: These must be OS system calls! Why?
 
 
 
