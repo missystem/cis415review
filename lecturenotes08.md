@@ -289,12 +289,23 @@ such that for each T<sub>i</sub>, the resources that T<sub>i</sub> can still req
 | Process | Allocation | Max | Available |
 |:-------:|:----------:|:---:|:---------:|
 |		  |     ABC    | ABC |    ABC    |
-| P0 | 010 | 753 | 332 |
-| P1 | 200 | 322 |	   |
-| P2 | 302 | 902 |	   |
-| P3 | 211 | 222 |	   |
-| P4 | 002 | 433 |	   |
+| P<sub>0</sub> | 010 | 753 | 332 |
+| P<sub>1</sub> | 200 | 322 |	  |
+| P<sub>2</sub> | 302 | 902 |	  |
+| P<sub>3</sub> | 211 | 222 |     |
+| P<sub>4</sub> | 002 | 433 |     |
 
+### Check for Safety
+* Matrix *Need* is defined to be Max – Allocation
+
+| Process | Need |
+|:-:|:-:|
+| | ABC |
+| P0 | 74 | 3 |
+| P1 | 12 | 2 |
+| P2 | 60 | 0 |
+| P3 | 01 | 1 |
+| P4 | 43 | 1 |
 
 
 
