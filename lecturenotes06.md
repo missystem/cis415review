@@ -495,10 +495,10 @@
 	- Memory stall occur
 		- primarily because modern processors operate at much faster speeds than memory
 		- can also because of a cache miss (accessing data that are not in cache memory)
-<br /> <img width="455" height="210" src="https://github.com/missystem/cis415review/blob/master/multiprocessor.png"> <br />
+<br /> <img width="455" height="210" src="https://github.com/missystem/cis415review/blob/master/singlecore.png"> <br />
 * To remedy this situation, many recent hardware designs have imple- mented multithreaded processing cores in which two (or more) hardware threads are assigned to each core
 * Multithreaded multicore system
-<br /> <img width="470" height="125" src="https://github.com/missystem/cis415review/blob/master/multiprocessor.png"> <br />
+<br /> <img width="470" height="125" src="https://github.com/missystem/cis415review/blob/master/mtmc.png"> <br />
 
 ### Load Balancing
 * Need to keep all CPUs loaded for efficiency
