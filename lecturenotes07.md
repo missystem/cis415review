@@ -171,7 +171,7 @@
 	- Is there bounded waiting?  
 * Remember, P1 and P2 might do this multiple #s of times, including 0
 
-<br /><img width="275" height="412" src="https://github.com/missystem/cis415review/blob/master/strictAlternation.png"><img width="277" height="320" src="https://github.com/missystem/cis415review/blob/master/fixingProgress.png"><br />
+<br /><img width="275" height="412" src="https://github.com/missystem/cis415review/blob/master/strictAlternation.png"><img width="374" height="432" src="https://github.com/missystem/cis415review/blob/master/fixingProgress.png"><br />
 
 ### Fixing the “progress” requirement
 * What about this code? (Right)
