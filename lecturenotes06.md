@@ -398,15 +398,221 @@
 	- Method used to determine when to upgrade a process
 	- Method used to determine when to demote a process
 	- Method used to determine which queue a process will enter when that process needs service
-
+* Example <br />
 <img width="350" height="210" src="https://github.com/missystem/cis415review/blob/master/MFQ.png"> <br />
+* Three queues:
+	- Q<sub>0</sub> – RR with time quantum 8 milliseconds
+	- Q<sub>1</sub> – RR time quantum 16 milliseconds
+	- Q<sub>2</sub> – FCFS
+* Scheduling
+	- A new job enters queue Q<sub>0</sub> which served FCFS
+		- when it gains CPU, job receives 8 milliseconds
+		- if it does not finish in 8 milliseconds, job is moved to queue Q<sub>1</sub>
+	- At Q<sub>1</sub> job is again served FCFS and receives 16 additional milliseconds
+		- if it still does not complete, it is preempted and moved to queue Q<sub>2</sub>
 
-### 
+### Traditional UNIX Scheduling
+* Multilevel Feedback Queues
+* 128 priorities possible (-64 to +63)
+* 1 Round Robin Queue per priority
+* Every scheduling event the scheduler picks the highest priority (lowest number) non-empty queue and runs jobs in Round Robin
 
+### UNIX Process Scheduling
+* Negative numbers reserved for processes waiting in kernel mode
+	- just woken up by interrupt handlers
+	- why do they have a higher priority?
+* Time quantum = 1/10 sec 
+	- empirically found to be the longest quantum that could be used without loss of the desired response for interactive jobs such as editors
+	- Short time quantum means better interactive response
+	- Long time quantum means higher oeverall system throughput since less context switch overhead and less processor cache flush
+* Priority dynamically adjusted to reflect
+	- Resource requirement (e.g., blocked awaiting an event)
+	- Resource consumption (e.g., CPU time)
 
+### Linux Scheduler
+* Kernel 2.4 and earlier: essentially the same as the traditional UNIX scheduler
+* Kernel 2.6: O(1) scheduler
+	- Time to select process is constant regardless of system load or the number of processors
+	- Separate queue for each priority level
+	- CPU affinity (keeps processes on same CPU)
+* More recently (kernel 2.6.23 and up): CFS
+	- Completely Fair Scheduler (runs O(log N))
+		- uses red-black trees rather than runqueues
 
+### Linux Scheduling
+* Two algorithms:
+	- time-sharing 
+	- real-time
+* Time-sharing (still abstracted)
+	- Two queues: 
+		- active 
+		- expired
+	- In active, until you use your entire time slice (quantum), then expired
+		- once in expired, wait for all others to finish (fairness)
+	- Priority recalculation -- based on waiting vs. running time 
+		- from 0-10 milliseconds
+		- add waiting time to value, subtract running time
+		- adjust the static priority
+* Real-time
+	- Soft real-time
+	- Posix.1b compliant – two classes
+		- FCFS and RR (highest priority process always runs first)
 
+### Priorities and Time-Slice Length
+<img width="755" height="435" src="https://github.com/missystem/cis415review/blob/master/PandTSL.png"> <br />
 
+### Thread Scheduling
+* When threads are supported, it is threads that are scheduled, not processes
+	- Distinction between user-level and kernel-level threads
+* Many-to-one and Many-to-many models, thread library schedules user-level threads to run on LWP
+	-  Known as process-contention scope (PCS) since scheduling competition is within the process
+	- Typically done via priority set by programmer
+* Kernel thread scheduled onto available CPU is system-contention scope (SCS) - competition among all threads in sytem
+
+### Multiple-Processor Scheduling
+* CPU scheduling is more complex with multiple CPUs
+* Consider homogeneous processors within a multiprocessor
+* *Asymmetric* multiprocessing
+	- Only one processor accesses the system data structures, reducing the need for data sharing
+	- Some parts of the OS only runs on this processor
+* *Symmetric* multiprocessing (SMP)
+	- Each processor is self-scheduling
+		1. All threads may be in a common ready queue.
+		2. Each processor may have its own private queue of threads
+	- Currently, most common approach <br />
+	<img width="405" height="210" src="https://github.com/missystem/cis415review/blob/master/multiprocessor.png"> <br />
+
+### Multicore Processors
+* Recent trend to place multiple processor cores on same physical chip
+* Faster and consumes less power
+* Multiple threads per core also growing 
+	- Takes advantage of memory stall to make progress on another thread while memory retrieve happens
+
+### Multithreaded Multicore System
+* when a processor accesses memory, it spends a significant amount of time waiting for the data to become available
+	- Memory stall occur
+		- primarily because modern processors operate at much faster speeds than memory
+		- can also because of a cache miss (accessing data that are not in cache memory)
+<br /> <img width="455" height="210" src="https://github.com/missystem/cis415review/blob/master/multiprocessor.png"> <br />
+* To remedy this situation, many recent hardware designs have imple- mented multithreaded processing cores in which two (or more) hardware threads are assigned to each core
+* Multithreaded multicore system
+<br /> <img width="470" height="125" src="https://github.com/missystem/cis415review/blob/master/multiprocessor.png"> <br />
+
+### Load Balancing
+* Need to keep all CPUs loaded for efficiency
+* Load balancing keep the workload evenly distributed across all processors in an SMP system
+* Push migration
+	- periodically checks the load on each processor
+		- if it finds an imbalance
+		- evenly distributes the load by moving (or pushing) threads from overloaded to idle or less-busy processors
+	- Pushes task from overloaded CPU to other CPUs
+* Pull migration
+	- Idle processors pulls waiting task from busy processor
+
+### Processor affinity
+* Process favors the processor on which it is currently running
+	- soft affinity
+		- OS has a policy of attempting to keep a process running on the same processor
+		- but not guaranteeing that it will
+	- hard affinity
+		- allowing a process to specify a subset of processors on which it can run
+
+### Real-time Scheduling
+* *Hard real-time* systems
+	- required to complete a critical task within a guaranteed amount of time
+	- A task must be serviced by its deadline; service after the deadline has expired is the same as no service at all
+* *Soft real-time* computing
+	- requires that critical threads receive priority over less critical ones
+	- provide no guarantee as to when a critical real-time process will be scheduled
+
+* Minimizing Latency
+* Priority-Based Scheduling
+* Rate-Monotonic Scheduling
+* Earliest-Deadline-First Scheduling
+* Proportional Share Scheduling
+* POSIX Real-Time Scheduling
+
+### Algorithm Evaluation
+* Maximizing CPU utilization under the constraint that the maximum response time is 300 milliseconds
+* Maximizing throughput such that turnaround time is (on average) linearly proportional to total execution time
+
+---
+
+## Summary
+* CPU Scheduling
+	- Algorithms
+	- Combination of algorithms
+		- Multi-level Feedback Queues
+* Scheduling Systems
+	- UNIX
+	- Linux
+
+## Summary from book
+* **CPU scheduling**
+	- The task of selecting a waiting process from the ready queue 
+	- Allocating the CPU to it
+	- The CPU is allocated to the selected process by the dispatcher
+* **Scheduling algorithms**
+	- preemptive
+		- where the CPU can be taken away from a process 
+	- nonpreemptive
+		- where a process must voluntarily relinquish control of the CPU
+	- Almost all modern operating systems are preemptive
+* Scheduling algorithms can be **evaluated** by 5 criteria: 
+	1. CPU utilization
+	2. throughput
+	3. turnaround time
+	4. waiting time
+	5. response time.
+* **First-come, first-served (FCFS) scheduling**
+	- The simplest scheduling algorithm
+	- May cause short processes to wait for very long processes
+* **Shortest-job-first (SJF) scheduling**
+	- Provably optimal
+	- Providing the shortest average waiting time
+	- Implementing is difficult because predicting the length of the next CPU burst is difficult
+* **Round-robin (RR) scheduling**
+	- Allocates the CPU to each process for a time quantum
+		- If the process does not relinquish the CPU before its time quantum expires, the process is preempted, another process is scheduled to run for a time quantum
+* **Priority scheduling**
+	- Assigns each process a priority
+	- The CPU is allocated to the process with the highest priority
+	- Processes with the same priority can be scheduled in FCFS order or using RR scheduling
+* **Multilevel queue scheduling**
+	- Partitions processes into several separate queues arranged by priority
+	- The scheduler executes the processes in the highest-priority queue
+	- Different scheduling algorithms may be used in each queue.
+* **Multilevel Feedback Queues**
+	- similar to multilevel queues
+	- except that a process may migrate between different queues
+* **Multicore processors** 
+	- place one or more CPUs on the same physical chip
+	- each CPU may have more than one hardware thread
+	- From the perspective of the operating system
+		- each hardware thread appears to be a logical CPU
+* **Load balancing** on multicore systems 
+	- equalizes loads between CPU cores
+	- migrating threads between cores to balance loads may invalidate cache contents
+		- may increase memory access times
+* **Soft real-time scheduling**
+	- gives priority to real-time tasks over non-real-time tasks
+* **Hard real-time scheduling**
+	- provides timing guarantees for real-time tasks
+* **Rate-monotonic real-time scheduling**
+	- schedules periodic tasks using a static priority policy with preemption
+* **Earliest-deadline-first (EDF) scheduling**
+	- Assigns priorities according to deadline
+	- The earlier the deadline the higher the priority
+	- the later the deadline, the lower the priority.
+* **Proportional share scheduling**
+	- allocates *T* shares among all applications
+	- If an application is allocated *N* shares of time, it is ensured of having *N∕T* of the total processor time
+* **Completely fair scheduler (CFS)**
+	- Linux uses it
+	- Assigns a proportion of CPU processing time to each task
+	- The proportion is based on the virtual runtime (```vruntime```) value associated with each task
+* **Modeling and Simulations**
+	- can be used to evaluate a CPU scheduling algorithm
 
 
 
