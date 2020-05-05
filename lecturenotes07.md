@@ -842,7 +842,7 @@ while (TRUE){
 
 ### Dining Philosophers Problem Algorithm
 * The structure of philosopher *i*
-``` c
+```
 while (true) {
 	wait(chopstick[i]); 
 	wait(chopstick[(i + 1) % 5]);
@@ -857,7 +857,86 @@ while (true) {
 }
 ```
 
+### Preventing Starving Philosophers
+* Deadlock handling
+	- Allow at most 4 philosophers to be sitting simultaneously at the table
+		- cheating
+	- Allow a philosopher to pick up the forks only if both are available
+		- picking must be done in a critical section
+	- Use an asymmetric solution
+		- an odd-numbered philosopher picks up first the left fork and then the right fork
+		- even-numbered philosopher picks up first the right fork and then the left fork
 
+### Monitor Solution to Dining Philosophers
+* A monitor solution to the dining-philosophers problem
+```
+monitor DiningPhilosophers
+{
+	enum {THINKING, HUNGRY, EATING} state[5];
+	condition self[5];
+
+	void pickup(int i) { 
+		state[i] = HUNGRY; 
+		test(i);
+		if (state[i] != EATING)
+		self[i].wait();
+	}
+
+	void putdown(int i) { 
+		state[i] = THINKING; 
+		test((i + 4) % 5); 
+		test((i + 1) % 5);
+	}
+
+	void test(int i) {
+		if ((state[(i + 4) % 5] != EATING)
+			&& (state[i] == HUNGRY) 
+			&&(state[(i + 1) % 5] != EATING)) 
+		{
+	    	state[i] = EATING;
+			self[i].signal();
+		} 
+	}
+
+	initialization code() {
+		for (int i = 0; i < 5; i++)
+			state[i] = THINKING;
+	} 
+}
+```
+
+### What does each Philosopher do?
+* Each philosopher *i* invokes the operations ```pickup()``` and ```putdown()``` in the following sequence: <br />
+	```
+	DiningPhilosophers.pickup(i);
+	EAT
+	DiningPhilosophers.putdown(i);
+	```
+* No deadlock
+* Starvation is possible
+
+### Resuming Processes within a Monitor
+* If several processes queued on condition x, and ```x.signal()``` executed, which should be resumed?
+* FCFS frequently not adequate
+* conditional-wait construct of the form ```x.wait(c)```
+	- c is priority number
+	- Process with lowest number (highest priority) is scheduled next
+
+---
+
+## Chapter 7 Summary from OSC
+* Classic problems of process synchronization include 
+	- bounded-buffer
+	- readers–writers
+	- dining-philosophers problems
+	- Solutions to these problems can be developed using the tools presented in Chapter 6
+		- mutex locks
+		- semaphores
+		- monitors
+		- condition variables.
+* Linux uses a variety of approaches to protect against race conditions, including atomic variables, spinlocks, and mutex locks.
+* The POSIX API provides mutex locks, semaphores, and condition variables. POSIX provides two forms of semaphores: named and unnamed. Several unrelated processes can easily access the same named semaphore by simply referring to its name. Unnamed semaphores cannot be shared as easily, and require placing the semaphore in a region of shared memory.
+* Alternative approaches to solving the critical-section problem include transactional memory, OpenMP, and functional languages. Functional languages are particularly intriguing, as they offer a different programming paradigm from procedural languages. Unlike procedural languages, functional languages do not maintain state and therefore are generally immune from race conditions and critical sections.
 
 
 
