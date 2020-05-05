@@ -102,13 +102,47 @@
 	- Each process executes outside the critical section
 
 ### Critical Section
-* General structure of process P<sub>i</sub>
+* General structure of process *P<sub>i</sub>*
 <br /><img width="400" height="215" src="https://github.com/missystem/cis415review/blob/master/generalCriticalSectionStructure.png"><br />
+* It is the entry and exit code that defines the critical section protocol
+* The infinite do loop is just to suggest that a process will possibly want to enter its critical section multiple \#s of times, including never (0 times) or just once (1 time)
 
+### Requirements for Solution to CS Problem
+1. Mutual exclusion
+	- If process *P<sub>i</sub>* is executing in its critical section, then no other processes can be executing in their critical sections
+2. Progress
+	- If no process is executing in its critical section and some processes wish to enter their critical sections, then only those processes that are not executing in their remainder sections can participate in deciding which will enter its critical section next, and this selection cannot be postponed indefinitely
+3. Bounded waiting
+	- There exists a bound, or limit, on the number of times that other processes are allowed to enter their critical sections after a process has made a request to enter its critical section and before that request is granted
+	- Assume that each process executes at a nonzero speed
+	- No assumption concerning relative speed of the *N* processes
 
+### How to Implement Critical Sections
+* Implementing critical section solutions follows 3 fundamental approaches
+	1. Disable Interrupts
+		- Effectively stops the scheduling of other processes
+		- Does not allow another process to get the CPU
+	2. Busy Waiting / Spinlock solutions
+		- Pure software solutions
+		- Integrated hardware-software solutions
+	3. Blocking Solutions
 
+### Disabling Interrupts
+* We already know how to prevent another process from interrupting the current running process
+	- Do not allow interrupts to occur by disabling them
+* Advantages:
+	- Simple to implement (single instruction)
+* Disadvantages:
+	- Do not want to give such power to user processes
+	- Does not work on a multiprocessor ... Why?
+		- Disabling interrupts on a multiprocessor can be time consuming, since the message is passed to all the processors
+		- This message passing delays entry into each critical section, and system efficiency decreases
+		- Also consider the effect on a system’s clock if the clock is kept updated by interrupts
+	- Disables multiprogramming even if another process is NOT interested in critical section
 
-
+### Busy Waiting (aka Spinning)
+* Overall philosophy:
+	- Keep checking some state (variables) until they indicate other process(es) are not in critical section
 
 
 
