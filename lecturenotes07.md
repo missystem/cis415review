@@ -47,6 +47,10 @@
 	spoolQueue[tail] = "element";
 	```
 
+### What are trying to do?
+* Want to have “consistent” and “correct” execution <img width="355" height="125" src="https://github.com/missystem/cis415review/blob/master/spoolQueue.png">
+
+* What could go wrong?
 
 
 
