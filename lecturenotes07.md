@@ -103,7 +103,7 @@
 
 ### Critical Section
 * General structure of process P<sub>i</sub>
-<br /><img width="338" height="323" src="https://github.com/missystem/cis415review/blob/master/generalCriticalSectionStructure.png"><br />
+<br /><img width="400" height="323" src="https://github.com/missystem/cis415review/blob/master/generalCriticalSectionStructure.png"><br />
 
 
 
