@@ -57,6 +57,16 @@
 	*Load tail, R1 <br />
 	Add R1, 1, R2 <br />
 	Store R2, tail <br />*
+	- These 3 machine instructions might NOT be executed atomically ... Why not?
+		- To *execute atomically* means to execute multiple instructions logically together as if they were a single instruction without being interrupted
+	- What is the problem?
+
+### Interleaving
+* Each process executes this set of 3 instructions
+* Interrupts might happen at any time
+	- a context switch can happen at any time
+* Suppose we have the following scenario:
+<br /><img width="253" height="125" src="https://github.com/missystem/cis415review/blob/master/Interleaving.png"><br />
 
 
 
