@@ -181,6 +181,126 @@
 	- Deadlocked
 * For this reason, it does NOT meet the progress or bounded waiting requirements either
 
+### Peterson’s Solution
+* Consider 2 processes
+* Assume that the LOAD and STORE instructions are atomic and cannot be interrupted
+* The two processes share two variables: 
+	```
+	int turn;
+	boolean flag[2]
+	```
+* Variable turn indicates whose turn it is to enter the critical section
+	- The ```flag``` array 
+		- indicate if a process is ready to enter the critical section
+		- ```flag[i] = true``` implies that process P<sub>i</sub> is ready
+* Algorithm for Process Pi and Process Pj
+<br /><img width="560" height="330" src="https://github.com/missystem/cis415review/blob/master/PetersonsSolution.png"><br />
+
+### Does Peterson’s Solution work?
+* Prove that the 3 CS requirements are met:
+	- Mutual exclusion is preserved <br />
+	P<sub>i</sub> enters CS only if:<br />
+		- either ```flag[j] = false``` or ```turn = i```
+		- if both processes are interested in entering, then 1 condition is false for one and true for the other process
+	- Progress requirement is satisfied
+		- a process wanting to enter will be able to do so at some point
+		- Why?
+	- Bounded-waiting requirement is met
+		- eventually it will be P<sub>i</sub>’s turn if P<sub>i</sub> wants to enter
+* Peterson’s solution **ONLY** works for 2 process solutions
+
+### Multiple Processes
+* How do we extend for multiple processes?
+* Is there a way to modify Peterson’s approach?
+* Consider the following enter /exit routines:
+```
+int turn;
+int flag[N]; /* all set to FALSE initially */
+
+enterCS(int myid) {
+    otherid = (myid+1) % N;
+    turn = otherid;
+    flag[myid] = TRUE;
+
+    while (turn == otherid && flag[otherid] == TRUE) ;
+    /* proceed if turn == myid or flag[otherid] == FALSE */
+}
+
+leave_CS(int myid) {
+	flag[myid] = FALSE;
+}
+```
+* Remember, processes might do this multiple #s of times, including 0
+
+### Bakery Algorithm (Leslie Lamport, 1974)
+* We need to enforce a sequence in some manner that everyone will follow and contribute to making progress
+* Think about a bakery
+* See [A New Solution of Dijkstra's Concurrent Programming Problem](http://lamport.azurewebsites.net/pubs/bakery.pdf)
+```
+Notation: (a,b) < (c,d) if a<c  or  a=c and b<d
+
+Every process has a unique id (integer) Pi
+
+bool choosing[0..n-1]; /* all set to FALSE */ 
+int number[0..n-1]; /
+
+enter_CS(myid) { 
+	choosing[myid] = TRUE; 
+	number[myid] = max(number[0],number[1],...,number[n-1]) + 1;
+	choosing[myid] = FALSE; 
+	for (j=0 to n-1) {
+	    while (choosing[j])
+	      ;
+	    while (number[j] != 0) && ((number[j],Pj)<(number[myid],myid))
+	      ;
+	}
+}
+
+leave_CS(myid) {
+	number[myid] = 0;
+}
+```
+* Evaluation of the Bakery Algorithm
+	- Does it work?
+	- What do you need to prove?
+	- Show that it meets
+		- Mutual exclusion
+		- Progress
+		- Bounded waiting requirements
+	- Need to know that maximum \# processes
+
+### Looking to the Hardware
+* Complications arose because we had atomicity only at the granularity of a machine instruction
+	- What a machine instruction could do is (was) limited
+* Can we provide specialized instructions in hardware to provide additional functionality (with an instruction still being atomic)?
+	- Looking again to hardware to help solve a OS problem q Many systems (now) provide hardware support for implementing the critical section code
+* All solutions below are based on idea of locking
+	- Protecting critical regions via locks
+	- But without special instructions
+
+### Hardware Support for Synchronization
+* Uniprocessors – could disable interrupts
+	- Currently running code executes without preemption
+	- Generally too inefficient on multiprocessor systems 
+		- OS using this not broadly scalable
+* Modern CPUs provide atomic hardware instructions (2 general types)
+	- **Test-and-Set**
+		- test memory word and set value
+	- **Compare-and-Swap**
+		- swap contents of 2 memory words
+
+### Critical-section Solution Using Locks
+<br /><img width="170" height="165" src="https://github.com/missystem/cis415review/blob/master/lock.png"><br />
+
+
+
+
+
+
+
+
+
+
 
 
 
