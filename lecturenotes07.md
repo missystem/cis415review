@@ -51,6 +51,12 @@
 * Want to have “consistent” and “correct” execution 
 <br /><img width="355" height="125" src="https://github.com/missystem/cis415review/blob/master/spoolQueue.png"><br />
 * What could go wrong?
+	- ```tail = tail + 1``` is NOT a single machine instruction
+		- So, what? Why do we care?
+	- What assembly code does the compiler produce? <br />
+	*Load tail, R1
+	Add R1, 1, R2 
+	Store R2, tail*
 
 
 
