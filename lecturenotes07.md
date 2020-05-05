@@ -144,11 +144,42 @@
 * Overall philosophy:
 	- Keep checking some state (variables) until they indicate other process(es) are not in critical section
 <br /><img width="453" height="227" src="https://github.com/missystem/cis415review/blob/master/busyWaiting.png"><br />
+* Remember, P1 and P2 might do this multiple \#s of times, including 0.
 
+### Reading, Writing, and Testing Locks
+* Is the instruction below atomic?
+	<br /> A: load locked, R1 
+	<br />cmp R1, 1
+	<br />beq A<br />
+	```while (locked == TRUE)```  
+* How about these instructions?
+	```
+	locked = TRUE;
+	locked = FALSE;
+	```
+* Generally, if the high-level statement compiles to a single machine instruction, it is atomic
+* Need reading, writing, testing of locks to be atomic
 
+### Try Strict Alternation
+* Consider this code (Left)
+* Idea is to take turns using the critical section
+	- Variable turn is used for this
+* Does it work?
+* What problems do you see? 
+	- Is there mutual exclusion?
+	- Is there progress?
+	- Is there bounded waiting?  
+* Remember, P1 and P2 might do this multiple #s of times, including 0
 
+<br /><img width="275" height="412" src="https://github.com/missystem/cis415review/blob/master/strictAlternation.png"><img width="277" height="320" src="https://github.com/missystem/cis415review/blob/master/strictAlternation.png"><br />
 
-
+### Fixing the “progress” requirement
+* What about this code? (Right)
+* Each process has a flag to say that they want to enter the critical section
+* Got mutual exclusion
+* Problems?
+	- Deadlocked
+* For this reason, it does NOT meet the progress or bounded waiting requirements either
 
 
 
