@@ -42,8 +42,11 @@
 * *```tail```* points to the current end of the queue
 	- It is also a shared variable
 * Each process needs to do <br />
-	*```tail = tail + 1; <br />```*<br />
-	*```spoolQueue[tail] = "element";```*
+	```
+	tail = tail + 1; 
+	spoolQueue[tail] = "element";
+	```
+
 
 
 
